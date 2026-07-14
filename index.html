@@ -2,372 +2,505 @@
 <html lang="th">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Yuninx - Web Design</title>
-    
-    <!-- นำเข้า Fonts แบบเจาะจง -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yuninx - ทำรูปออฟไลน์fivem / MV FIVEM / กราฟฟิค</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Mitr:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Tailwind Config -->
     <script>
         tailwind.config = {
             theme: {
                 extend: {
+                    fontFamily: {
+                        'mitr': ['Mitr', 'sans-serif'],
+                        'fredoka': ['Fredoka', 'sans-serif'],
+                    },
                     colors: {
-                        brand: {
-                            light: '#F4FAFF', // พื้นหลังฟ้าอ่อน
-                            base: '#8CD1FC',  // ฟ้าสดใส (ตามเรฟ)
-                            dark: '#462B21',  // น้ำตาลเข้ม (ตามเรฟ)
-                            accent: '#DDF0FF', // ฟ้าไฮไลท์
-                            white: 'rgba(255, 255, 255, 0.85)'
-                        }
+                        'pj-bg': '#0d0b18',
+                        'pj-blue-light': '#3b2d54',
+                        'pj-blue-main': '#8b5cf6',
+                        'pj-blue-dark': '#1e1b2e',
+                        'pj-yellow-light': '#2e1b4e',
+                        'pj-yellow-main': '#d8b4fe',
+                        'pj-pink': '#a78bfa',
+                        'pj-white': '#ffffff',
+                    },
+                    boxShadow: {
+                        'soft': '0 10px 40px -10px rgba(139, 92, 246, 0.3)',
+                        'hard': '4px 4px 0px 0px rgba(27, 20, 46, 0.5)',
                     }
                 }
             }
         }
     </script>
-
     <style>
-        /* =========================================
-           บังคับฟอนต์ไม่ให้ใช้ของ iPhone เด็ดขาด 
-           ========================================= */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
+        body { font-family: 'Mitr', sans-serif; background: linear-gradient(180deg, #0d0b18 0%, #1a162b 100%); overflow-x: hidden; color: #e2e8f0; }
+        .font-eng { font-family: 'Fredoka', sans-serif; }
+        
+        /* Custom UI Shapes matching Reference 2 */
+        .shape-header {
+            border-radius: 40px 100px 100px 40px;
+            position: relative;
+            background: linear-gradient(135deg, #2e1b4e 0%, #4c1d95 100%);
         }
-
-        /* ใช้ Mitr เป็นฟอนต์หลักของทุก Element */
-        html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, textad, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video, button, input, textarea, select {
-            font-family: 'Mitr', sans-serif !important;
-            color: #462B21; /* brand-dark */
+        .shape-info {
+            border-radius: 20px;
+            background: #151223 !important;
+            border-color: #3b2d54 !important;
         }
-
-        /* ใช้ Fredoka เฉพาะคลาสที่กำหนด */
-        .font-eng {
-            font-family: 'Fredoka', sans-serif !important;
+        .shape-bubble-left {
+            border-radius: 20px;
+            position: relative;
+            background: linear-gradient(135deg, #6d28d9 0%, #4c1d95 100%) !important;
         }
-        .font-eng * {
-            font-family: 'Fredoka', sans-serif !important;
+        .shape-bubble-left::after {
+            content: '';
+            position: absolute;
+            right: -15px;
+            top: 50%;
+            transform: translateY(-50%);
+            border-width: 15px 0 15px 20px;
+            border-color: transparent transparent transparent #6d28d9;
         }
-
-        /* =========================================
-           ดีไซน์ใหม่: Glassmorphism & Mesh Gradient
-           ========================================= */
-        body {
-            background-color: #F4FAFF;
-            background-image: 
-                radial-gradient(at 10% 0%, #DDF0FF 0px, transparent 50%),
-                radial-gradient(at 90% 10%, #8CD1FC 0px, transparent 50%),
-                radial-gradient(at 50% 90%, #F7EDE2 0px, transparent 50%);
-            background-attachment: fixed;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-
-        /* ซ่อน Scrollbar */
-        ::-webkit-scrollbar { width: 0px; background: transparent; }
-
-        .container-box {
-            max-width: 500px;
-            margin: 0 auto;
-            padding: 1.5rem;
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        /* กล่องสไตล์ Bento / Glass */
-        .bento-card {
-            background: rgba(255, 255, 255, 0.65);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            border-radius: 1.5rem;
-            padding: 1.5rem;
-            box-shadow: 0 4px 30px rgba(140, 209, 252, 0.15);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        /* เมนูแบบ Pill ด้านบน */
-        .floating-nav {
-            position: sticky;
-            top: 1rem;
-            z-index: 50;
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            border-radius: 999px;
-            padding: 0.5rem 1rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 4px 20px rgba(70, 43, 33, 0.08);
-            margin-bottom: 1rem;
-        }
-
-        /* Tab Styles */
-        .tab-btn.active {
-            background-color: #8CD1FC !important;
-            color: #462B21 !important;
-            font-weight: 500;
+        .shape-nota {
+            border-radius: 20px;
+            position: relative;
         }
         
-        .work-link {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.8rem 1rem;
-            background: rgba(255, 255, 255, 0.5);
-            border: 1px solid #DDF0FF;
-            border-radius: 1rem;
-            margin-bottom: 0.5rem;
-            text-decoration: none;
-            transition: all 0.2s;
-        }
-        .work-link:active {
-            transform: scale(0.98);
-            background: #DDF0FF;
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #4c1d95; border-radius: 10px; }
+        
+        /* Modal Animation */
+        .modal { transition: opacity 0.3s ease, visibility 0.3s ease; }
+        .modal.active { opacity: 1; visibility: visible; }
+        .modal.inactive { opacity: 0; visibility: hidden; }
+        .modal-content { transition: transform 0.3s ease; transform: scale(0.95); }
+        .modal.active .modal-content { transform: scale(1); }
+
+        /* Background floating shapes */
+        .bg-shapes {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; pointer-events: none; overflow: hidden;
         }
     </style>
 </head>
-<body>
+<body class="antialiased relative selection:bg-pj-yellow-main selection:text-pj-blue-dark">
 
-    <div class="container-box">
-        
-        <!-- Navbar (แบบแคปซูลลอย) -->
-        <nav class="floating-nav">
-            <span class="font-eng font-semibold text-lg text-brand-dark tracking-wide pl-2">Yuninx</span>
-            <div class="flex gap-2 font-eng text-sm">
-                <a href="#work" class="px-3 py-1.5 rounded-full hover:bg-brand-accent/50 transition font-medium">Work</a>
-                <a href="#price" class="px-3 py-1.5 rounded-full hover:bg-brand-accent/50 transition font-medium">Queue</a>
-                <a href="#contact" class="px-3 py-1.5 bg-brand-base text-brand-dark rounded-full font-medium">Contact</a>
-            </div>
-        </nav>
-
-        <!-- Header / Hero Section (Bento Card 1) -->
-        <header class="bento-card text-center relative overflow-hidden">
-            <!-- BG Decorative SVG -->
-            <svg class="absolute -top-10 -right-10 text-brand-accent/40 w-40 h-40 rotate-12" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
-            
-            <div class="relative z-10">
-                <!-- ส่วน Badges (ปุ่มกลมเล็กๆ ด้านบนโลโก้) -->
-                <div class="flex justify-center gap-2 mb-3">
-                    <span class="w-3 h-3 rounded-full bg-green-400 inline-block shadow-sm animate-pulse"></span>
-                    <span class="w-3 h-3 rounded-full bg-blue-400 inline-block shadow-sm"></span>
-                    <span class="w-3 h-3 rounded-full bg-yellow-400 inline-block shadow-sm"></span>
-                </div>
-
-                <!-- เพิ่มช่องใส่โลโก้ตรงนี้ -->
-                <div class="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden border-[3px] border-white shadow-sm bg-brand-accent/30 flex items-center justify-center">
-                    <!-- ลิงก์รูปภาพโลโก้ของร้าน Yuninx -->
-                    <img src="https://drive.google.com/file/d/1Uml5dUWG_txsCY9P96QKndwPBPTVRkQC/view?usp=drivesdk" alt="Yuninx Logo" class="w-full h-full object-cover">
-                </div>
-
-                <div class="inline-flex items-center justify-center gap-2 bg-white/80 px-4 py-1.5 rounded-full text-xs font-medium border border-brand-accent mb-4 text-brand-dark shadow-sm">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
-                    ทำรูปออฟไลน์fivem / MV FIVEM / กราฟฟิค
-                </div>
-                
-                <h1 class="font-eng text-[2.5rem] leading-[1.1] font-bold text-brand-dark mb-1 tracking-tight">Yuninx</h1>
-                <p class="font-eng text-xl text-brand-base font-semibold mb-4 tracking-widest uppercase">Studio</p>
-                
-                <p class="text-sm leading-relaxed text-brand-dark/80 max-w-[280px] mx-auto">
-                    งานกราฟฟิคและภาพเคลื่อนไหวเต็มรูปแบบ<br>
-                    รังสรรค์ผลงานชิ้นเอกสำหรับคุณ<br>
-                    เลือกสั่งงาน = ยอมรับเงื่อนไขของร้านค้าเรียบร้อยแล้วนะคะ
-                </p>
-
-                <!-- ปุ่มเช็คคิวงานแบบเส้นประ -->
-                <a href="#price" class="mt-4 inline-block border-2 border-dashed border-brand-base bg-white/50 px-5 py-2 rounded-xl text-xs font-medium hover:bg-brand-accent/40 transition">
-                    🔍 คลิกเพื่อตรวจสอบสถานะคิวงานด้านล่าง
-                </a>
-            </div>
-        </header>
-
-        <!-- Grid Layout for Pricing & Promo -->
-        <div class="grid grid-cols-2 gap-4">
-            
-            <!-- Starting Price Box -->
-            <div class="bento-card flex flex-col justify-center items-center text-center p-5">
-                <p class="font-eng text-xs text-brand-dark/60 font-semibold uppercase tracking-wider mb-1">Queue Rate</p>
-                <div class="flex items-baseline gap-1 mb-2">
-                    <span class="text-2xl font-bold text-brand-dark">Normal</span>
-                </div>
-                <p class="text-[10px] leading-tight text-brand-dark/70">รูป/กราฟฟิค 7-14 วัน<br>งาน MV FIVEM 14 วัน</p>
-            </div>
-
-            <!-- Add on Box -->
-            <div class="bento-card flex flex-col justify-center p-4">
-                <h3 class="text-sm font-semibold mb-2 flex items-center gap-1.5">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-                    เร่งด่วนพิเศษ
-                </h3>
-                <ul class="text-[11px] space-y-1.5 text-brand-dark/80">
-                    <li class="flex justify-between"><span>คิว x2 (กราฟฟิค)</span><span class="font-medium">5-7 วัน</span></li>
-                    <li class="flex justify-between"><span>คิว x4 (กราฟฟิค)</span><span class="font-medium">1 วัน</span></li>
-                    <li class="flex justify-between border-t border-brand-accent pt-1 mt-1"><span>คิว x8 (กราฟฟิค)</span><span class="font-medium">1-2 ชม.</span></li>
-                </ul>
-            </div>
-            
-            <!-- Status Bar (แถบเช็คคิวงาน) & รายละเอียดคิวแบบเต็ม -->
-            <div id="price" class="bento-card col-span-2 bg-gradient-to-br from-brand-base/20 to-brand-accent/40 border-brand-base/30 relative overflow-hidden">
-                <div class="absolute top-3 right-3 bg-brand-dark text-white text-[10px] font-eng font-bold px-2 py-1 rounded-md">LIVE QUEUE</div>
-                
-                <h3 class="text-base font-semibold mb-1">Status Bar (แถบสถานะคิวงานปกติ)</h3>
-                <!-- แถบเช็คคิวงานจำลองแบบ Visual -->
-                <div class="w-full bg-white/50 h-3 rounded-full overflow-hidden mb-3 border border-brand-base/30">
-                    <div class="bg-brand-base h-full rounded-full" style="width: 65%;"></div>
-                </div>
-                
-                <p class="text-[11px] font-semibold text-brand-dark mb-2">⏱️ ระยะเวลาได้รับผลงานรูป / กราฟฟิค :</p>
-                <div class="grid grid-cols-2 gap-x-4 gap-y-1 text-xs text-brand-dark/80 mb-3 bg-white/40 p-2 rounded-lg">
-                    <div>• คิวปกติ: 7-14 วัน</div>
-                    <div>• คิว x2: 5-7 วัน</div>
-                    <div>• คิว x3: 2-3 วัน</div>
-                    <div>• คิว x4: 1 วัน</div>
-                    <div>• คิว x5: 15 ชั่วโมง</div>
-                    <div>• คิว x6: 10 ชั่วโมง</div>
-                    <div>• คิว x7: 3-5 ชั่วโมง</div>
-                    <div>• คิว x8: 1-2 ชั่วโมง</div>
-                </div>
-
-                <p class="text-[11px] font-semibold text-brand-dark mb-2">🎬 ระยะเวลาได้รับผลงาน MV FIVEM :</p>
-                <div class="grid grid-cols-1 gap-1 text-xs text-brand-dark/80 bg-white/40 p-2 rounded-lg">
-                    <div>• คิวปกติ: 14 วัน | • คิว x2: 7 วัน | • คิว x3: 5 วัน</div>
-                    <div>• คิว x4: 3 วัน | • คิว x5: 1-2 วัน</div>
-                    <div>• คิว x6: เริ่มทำทันที (ช้า-ไวขึ้นอยู่กับความยากง่าย)</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Details & Add-ons -->
-        <div class="bento-card">
-            <h3 class="text-sm font-semibold mb-3 flex items-center gap-2">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
-                กฎเหล็กประจำร้าน (โปรดอ่านอย่างละเอียด)
-            </h3>
-            <div class="space-y-2 text-xs border-l-2 border-red-400 pl-3">
-                <p class="text-brand-dark/90">❌ <strong>ห้ามนำรูปไปขายต่อ/ปล่อยต่อ</strong> พบเจอปรับ <span class="text-red-600 font-bold">x20</span> ของราคารูปนั้น</p>
-                <p class="text-brand-dark/90">❌ <strong>ห้ามตัดลายน้ำร้านออกเด็ดขาด</strong> และต้องแจ้งขนาดที่ต้องการให้ชัดเจน พบเจอปรับ <span class="text-red-600 font-bold">x10</span></p>
-                <p class="text-brand-dark/90">❌ <strong>ห้ามนำรูปไปใช้กับ AI</strong> ที่ต้องตัดลายน้ำออก (ปรับ <span class="text-red-600 font-bold">x20</span> ทั้งร้านและลูกค้า)</p>
-                <p class="text-brand-dark/90">❌ หากโอนผิด โอนเกิน หรือยกเลิกงาน <span class="font-bold underline">ไม่คืนเงินทุกกรณี</span></p>
-                <p class="text-brand-dark/90">⚠️ รูปที่ร้านทำผิดจะแก้ให้ฟรี แต่ลูกค้า<strong>ห้ามนำรูปดราฟต์แรกไปใช้ต่อ</strong> พบเจอปรับ <span class="text-red-600 font-bold">x10</span></p>
-            </div>
-        </div>
-
-        <!-- Portfolio Tabs (แทนที่ Modal ของเดิม) -->
-        <div id="work" class="bento-card p-0 overflow-hidden">
-            <div class="p-5 pb-3 border-b border-white/50">
-                <h2 class="font-eng text-xl font-bold text-brand-dark">Examples</h2>
-                <p class="text-xs text-brand-dark/70 mt-1">กดที่ลิงก์ด้านล่างเพื่อเปิดโฟลเดอร์ผลงานรวมทั้งหมด</p>
-            </div>
-            
-            <!-- Tab Buttons -->
-            <div class="flex p-3 gap-2 bg-brand-light/30">
-                <button onclick="switchTab('bright')" id="btn-bright" class="tab-btn active flex-1 py-2 text-xs font-medium rounded-xl border border-brand-accent text-brand-dark bg-white transition">ผลงานร้าน</button>
-                <button onclick="switchTab('dark')" id="btn-dark" class="tab-btn flex-1 py-2 text-xs font-medium rounded-xl border border-brand-accent text-brand-dark bg-white transition">โทนมืด</button>
-                <button onclick="switchTab('pastel')" id="btn-pastel" class="tab-btn flex-1 py-2 text-xs font-medium rounded-xl border border-brand-accent text-brand-dark bg-white transition">พาสเทล</button>
-            </div>
-
-            <!-- Tab Content: สดใส / ลิงก์หลักของร้าน Yuninx -->
-            <div id="tab-bright" class="p-4 max-h-[250px] overflow-y-auto">
-                <a href="https://drive.google.com/drive/folders/1n-_fQ1Qkz60-hu-VknSh-mUbtwuu6gEO" target="_blank" class="work-link bg-brand-accent/30">
-                    <span class="text-sm font-semibold">📁 ลิงก์เปิดคลังผลงาน Google Drive ลูกค้า</span>
-                    <svg class="w-4 h-4 opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </a>
-            </div>
-
-            <!-- Tab Content: โทนมืด (คงไว้ตามโครงสร้างเดิม 100%) -->
-            <div id="tab-dark" class="p-4 max-h-[250px] overflow-y-auto hidden">
-                <a href="https://pinkdark.cozyw75.workers.dev/" target="_blank" class="work-link"><span class="text-sm">ดูตัวอย่าง <span class="font-eng font-semibold ml-1">V.1</span></span><svg class="w-4 h-4 opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-                <a href="https://pinkblue.cozyw75.workers.dev/" target="_blank" class="work-link"><span class="text-sm">ดูตัวอย่าง <span class="font-eng font-semibold ml-1">V.2</span></span><svg class="w-4 h-4 opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-            </div>
-
-            <!-- Tab Content: พาสเทล (คงไว้ตามโครงสร้างเดิม 100%) -->
-            <div id="tab-pastel" class="p-4 max-h-[250px] overflow-y-auto hidden">
-                <a href="https://wish-uwu.cozyw75.workers.dev/" target="_blank" class="work-link"><span class="text-sm">ดูตัวอย่าง <span class="font-eng font-semibold ml-1">V.1</span></span><svg class="w-4 h-4 opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-            </div>
-        </div>
-
-        <!-- Rules & Steps (ดีไซน์แบบ Timeline) -->
-        <div class="bento-card">
-            <h2 class="text-lg font-semibold mb-4 border-b border-brand-accent pb-2">ขั้นตอนการสั่งงาน</h2>
-            
-            <div class="space-y-4 relative before:absolute before:inset-0 before:ml-3 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-brand-base before:to-transparent">
-                
-                <div class="relative flex items-start gap-4">
-                    <div class="w-6 h-6 rounded-full bg-brand-base text-brand-dark flex items-center justify-center font-eng text-xs z-10 shrink-0 mt-0.5 shadow-md">1</div>
-                    <div class="bg-white/60 p-3 rounded-xl border border-brand-accent/50 w-full text-xs">
-                        ทักแชทติดต่อทางร้านผ่านช่องทาง Facebook หรือ Discord ด้านล่าง
-                    </div>
-                </div>
-                
-                <div class="relative flex items-start gap-4">
-                    <div class="w-6 h-6 rounded-full bg-brand-base text-brand-dark flex items-center justify-center font-eng text-xs z-10 shrink-0 mt-0.5 shadow-md">2</div>
-                    <div class="bg-white/60 p-3 rounded-xl border border-brand-accent/50 w-full text-xs">
-                        ส่งรายละเอียดข้อมูล มู้ดแอนด์โทน หรือขนาดเรฟงานที่ต้องการให้ชัดเจน
-                    </div>
-                </div>
-
-                <div class="relative flex items-start gap-4">
-                    <div class="w-6 h-6 rounded-full bg-brand-base text-brand-dark flex items-center justify-center font-eng text-xs z-10 shrink-0 mt-0.5 shadow-md">3</div>
-                    <div class="bg-white/60 p-3 rounded-xl border border-brand-accent/50 w-full text-xs">
-                        ยืนยันการเลือกคิวงาน (คิวปกติ หรือเลือกจ่ายเร่งคิวพิเศษ x2 ถึง x8)
-                    </div>
-                </div>
-
-                <div class="relative flex items-start gap-4">
-                    <div class="w-6 h-6 rounded-full bg-brand-base text-brand-dark flex items-center justify-center font-eng text-xs z-10 shrink-0 mt-0.5 shadow-md">4</div>
-                    <div class="bg-white/60 p-3 rounded-xl border border-brand-accent/50 w-full text-xs">
-                        ชำระเงินเรียบร้อย และรอรับผลงานสุดปังตามกำหนดเวลาคิวได้เลยค่ะ!
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-        <!-- Contact Section -->
-        <div id="contact" class="grid grid-cols-2 gap-3 mb-6">
-            <a href="https://www.facebook.com/share/1DqnhnQqhD/?mibextid=wwXIfr" target="_blank" class="bento-card p-3 flex flex-col items-center justify-center gap-2 hover:bg-white/80 transition text-brand-dark">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
-                <span class="font-eng text-xs font-medium">Facebook</span>
-            </a>
-            <a href="https://discord.gg/yPFwC9Q8NU" target="_blank" class="bento-card p-3 flex flex-col items-center justify-center gap-2 hover:bg-white/80 transition text-brand-dark">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
-                <span class="font-eng text-xs font-medium">Discord</span>
-            </a>
-        </div>
-
-        <footer class="text-center text-[10px] text-brand-dark/50 font-eng pb-6">
-            &copy; 2026 Yuninx Studio. All Rights Reserved.
-        </footer>
-
+    <!-- Background Decors (From UI Ref) -->
+    <div class="bg-shapes">
+        <svg class="absolute top-10 -left-10 w-64 h-64 text-pj-blue-light opacity-30" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <path fill="currentColor" d="M44.7,-76.4C58.8,-69.2,71.8,-59.1,81.3,-46.3C90.8,-33.5,96.8,-18,95.5,-2.9C94.2,12.2,85.6,26.9,75.3,39.6C65,52.3,53,63.1,39.4,70.5C25.8,77.9,10.6,81.9,-4.3,81.4C-19.2,80.9,-33.7,75.9,-47.5,68.4C-61.3,60.9,-74.3,50.9,-82.4,37.6C-90.5,24.3,-93.7,7.7,-91.4,-8.2C-89.1,-24.1,-81.3,-39.3,-69.9,-51.1C-58.5,-62.9,-43.5,-71.3,-29.1,-75.7C-14.7,-80.1, -1.2,-80.5, 12.5,-78.9C26.2,-77.3, 30.6,-83.6, 44.7,-76.4Z" transform="translate(100 100) scale(1.1)" />
+        </svg>
+        <svg class="absolute top-[40%] right-[-50px] w-72 h-72 text-pj-yellow-light opacity-20" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <path fill="currentColor" d="M51.8,-70.5C65.5,-60.8,73.9,-43.8,77.9,-26.8C81.9,-9.8,81.5,7.2,74.9,21.8C68.3,36.4,55.5,48.6,41.2,57.1C26.9,65.6,11.1,70.4,-4.1,76.3C-19.3,82.2,-33.9,89.2,-46.9,82.9C-59.9,76.6,-71.3,57,-76.3,38.2C-81.3,19.4,-79.9,1.4,-73.4,-14.2C-66.9,-29.8,-55.3,-43,-41.8,-52.5C-28.3,-62,-14.1,-67.8,1.5,-70.1C17.1,-72.4,38.1,-80.2,51.8,-70.5Z" transform="translate(100 100)" />
+        </svg>
+        <!-- เพิ่มของตกแต่งพื้นหลัง -->
+        <svg class="absolute top-[20%] left-[10%] w-12 h-12 text-pj-pink opacity-30 animate-pulse" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+        <svg class="absolute bottom-[25%] left-[-30px] w-48 h-48 text-pj-blue-main opacity-10" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M42.7,-73.4C55.9,-65.7,67.7,-54.6,76.5,-41.2C85.3,-27.8,91.1,-12.1,89.5,2.9C87.9,17.9,78.9,32.2,68.2,44.1C57.5,56,45.1,65.4,31.4,71.5C17.7,77.6,2.7,80.4,-11.9,79.5C-26.5,78.6,-40.7,74,-53.1,65.6C-65.5,57.2,-76.1,45,-81.6,30.6C-87.1,16.2,-87.5,-0.4,-82.6,-15.5C-77.7,-30.6,-67.5,-44.2,-54.6,-52.3C-41.7,-60.4,-26.1,-63,-11.5,-63.9C3.1,-64.8,17.7,-64,29.5,-71.1C41.3,-78.2,50.3,-83.2,42.7,-73.4Z" transform="translate(100 100)"/></svg>
+        <svg class="absolute bottom-[10%] right-[5%] w-16 h-16 text-pj-pink opacity-30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
     </div>
 
-    <!-- Script สำหรับสลับ Tab ผลงาน (คงไว้ 100%) -->
+    <main class="max-w-[500px] mx-auto min-h-screen px-4 py-12 relative z-10 flex flex-col gap-8">
+
+        <!-- Header Section (Mimicking "Amigos marinos" card) -->
+        <section class="relative">
+            <!-- connecting line -->
+            <div class="absolute -right-4 top-[80%] w-12 h-32 border-r-4 border-b-4 border-pj-blue-light rounded-br-[40px] z-0"></div>
+            
+            <div class="shape-header p-8 pr-16 shadow-soft z-10 relative mt-4 ml-[-20px] mr-4">
+                
+                <!-- พื้นที่สำหรับใส่โลโก้ (โพลารอยด์ + ดาวแปะ) ขยายใหญ่ขึ้นและขยับไปทางขวา -->
+                <div class="absolute -top-10 -right-4 z-30 transform rotate-3 hover:rotate-0 transition-transform duration-300">
+                    <!-- ดาวแปะมุมซ้ายบน (ใหญ่ขึ้น) -->
+                    <svg class="absolute -top-4 -left-5 w-12 h-12 text-pj-pink drop-shadow-md z-40" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+                    </svg>
+                    
+                    <!-- กรอบรูปโพลารอยด์ (ใหญ่ขึ้น) -->
+                    <div class="w-32 h-36 bg-pj-blue-dark p-2.5 pb-8 rounded shadow-lg border border-pj-blue-light/50 flex flex-col items-center relative">
+                        <div class="w-full h-full bg-pj-bg overflow-hidden rounded-sm">
+                            <!-- นำลิงก์รูปโลโก้ของคุณมาเปลี่ยนตรง src="ตรงนี้" -->
+                            <img src="https://drive.google.com/file/d/1Uml5dUWG_txsCY9P96QKndwPBPTVRkQC/view?usp=drivesdk" alt="โลโก้" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ของตกแต่งใน Header -->
+                <svg class="absolute top-8 right-20 w-5 h-5 text-pj-pink opacity-90" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+                <svg class="absolute bottom-4 right-12 w-6 h-6 text-pj-white opacity-40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4"><circle cx="12" cy="12" r="10"/></svg>
+                <svg class="absolute top-6 left-6 w-4 h-4 text-pj-white opacity-40" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+
+                <h1 class="font-eng text-5xl text-pj-white font-bold tracking-wide drop-shadow-md mb-2 relative z-10">Yuninx<br><span class="text-2xl ml-4 opacity-90">STUDIO</span></h1>
+                <div class="inline-block bg-pj-blue-dark text-pj-white font-eng px-4 py-1.5 rounded-full text-sm mt-3 shadow-md relative z-10">
+                    Welcome to my shop
+                </div>
+            </div>
+            <p class="mt-6 ml-6 text-sm font-medium pr-4 relative z-10 text-slate-300">
+                รับทำรูปออฟไลน์fivem / MV FIVEM / กราฟฟิค ดีไซน์สวยงามระดับพรีเมียม
+            </p>
+        </section>
+
+        <!-- Services Section (Mimicking "INFORMACION" card) -->
+        <section class="relative ml-8">
+            <!-- ของตกแต่งลอยๆ ข้าง Services -->
+            <svg class="absolute -left-10 top-12 w-8 h-8 text-pj-pink opacity-80 z-20 animate-bounce" style="animation-duration: 3s;" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4h7.6l-6 4.6 2.3 7.4-6.3-4.8-6.3 4.8 2.3-7.4-6-4.6h7.6z"/></svg>
+
+            <!-- Tab on top -->
+            <div class="absolute -top-3 right-6 bg-pj-blue-light text-pj-yellow-main font-eng font-bold px-4 py-1 rounded-full text-xs shadow-sm z-20 border-2 border-pj-blue-dark flex items-center gap-1">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                Services
+            </div>
+            
+            <div class="shape-info border-2 p-6 shadow-soft relative z-10 flex gap-4">
+                <!-- ดาวตกแต่งมุมซ้ายบนของ Services -->
+                <svg class="absolute -top-3 -left-3 w-7 h-7 text-pj-pink z-20 transform -rotate-12 drop-shadow-sm" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+
+                <div class="flex-1">
+                    <div class="flex items-center gap-2 mb-3">
+                        <h2 class="font-eng text-xl font-bold uppercase tracking-wider text-pj-blue-main">Works</h2>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-pj-pink"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>
+                    </div>
+                    <p class="text-sm font-semibold mb-2 text-slate-200">งานที่ทางร้านรับทำอย่างมืออาชีพ</p>
+                    <ul class="text-xs space-y-1.5 mb-4 list-none pl-1 text-slate-300">
+                        <li class="flex items-start gap-1"><svg class="w-3 h-3 mt-0.5 text-pj-pink shrink-0" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="8"/></svg> ทำรูปออฟไลน์ FiveM ทุกรูปแบบ</li>
+                        <li class="flex items-start gap-1"><svg class="w-3 h-3 mt-0.5 text-pj-pink shrink-0" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="8"/></svg> รับทำ MV FIVEM คุณภาพสูง</li>
+                        <li class="flex items-start gap-1"><svg class="w-3 h-3 mt-0.5 text-pj-pink shrink-0" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="8"/></svg> งานกราฟฟิคดีไซน์และป้ายต่าง ๆ</li>
+                    </ul>
+                    <div class="bg-pj-blue-light/30 p-3 rounded-xl text-xs leading-relaxed text-slate-300">
+                        สร้างสรรค์ผลงานจากจินตนาการให้ออกมาเป็นกราฟฟิคระดับพรีเมียม ตอบโจทย์ทุกความต้องการของลูกค้าอย่างแน่นอน ⭐️
+                    </div>
+                </div>
+                <!-- Right vertical action area mimic -->
+                <div class="w-12 bg-pj-blue-light rounded-xl flex flex-col items-center justify-center py-4 text-pj-white shrink-0">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Section (Mimicking "Premios" left bubble card) -->
+        <section class="relative mr-8 mt-4">
+            <!-- ของตกแต่งลอยๆ ข้าง Portfolio -->
+            <svg class="absolute -right-6 -bottom-4 w-10 h-10 text-pj-pink opacity-80 z-20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+            <svg class="absolute top-2 right-2 w-4 h-4 text-pj-blue-light opacity-30 z-0" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+
+            <!-- connecting line -->
+            <div class="absolute -left-6 top-[20%] w-6 h-full border-l-4 border-t-4 border-pj-pink rounded-tl-[40px] z-0 opacity-40"></div>
+
+            <div class="shape-bubble-left p-5 shadow-soft z-10 text-pj-white">
+                <!-- ดาวตกแต่งด้านใน Portfolio -->
+                <svg class="absolute top-4 right-4 w-6 h-6 text-pj-yellow-main opacity-90 transform rotate-12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+                <svg class="absolute bottom-2 left-6 w-4 h-4 text-pj-white opacity-40 transform -rotate-12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+
+                <div class="flex items-center gap-2 mb-3">
+                    <h2 class="font-eng text-2xl font-bold tracking-wide">Portfolio</h2>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                </div>
+                <p class="text-sm mb-4 opacity-90">รวมผลงานทั้งหมดของร้าน สามารถกดเปิดดูรายละเอียดลิงก์ Drive ได้ที่นี่</p>
+                
+                <!-- Compact 3 Category Buttons -->
+                <div class="flex flex-col gap-2">
+                    <button onclick="openModal('modal-sodsai')" class="bg-pj-white text-pj-blue-dark py-2 px-4 rounded-full text-sm font-semibold flex justify-between items-center hover:bg-pj-yellow-main transition-colors">
+                        หมวดหมู่: รูปออฟไลน์ FiveM 
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="9 18 15 12 9 6"/></svg>
+                    </button>
+                    <button onclick="openModal('modal-dark')" class="bg-pj-white text-pj-blue-dark py-2 px-4 rounded-full text-sm font-semibold flex justify-between items-center hover:bg-pj-yellow-main transition-colors">
+                        หมวดหมู่: MV FIVEM 
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="9 18 15 12 9 6"/></svg>
+                    </button>
+                    <button onclick="openModal('modal-pastel')" class="bg-pj-white text-pj-blue-dark py-2 px-4 rounded-full text-sm font-semibold flex justify-between items-center hover:bg-pj-yellow-main transition-colors">
+                        หมวดหมู่: กราฟฟิคดีไซน์ 
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="9 18 15 12 9 6"/></svg>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing & Add-ons Section -->
+        <section class="ml-4 mr-4 mt-2 relative">
+            <!-- ของตกแต่งลอยๆ แถว Pricing -->
+            <svg class="absolute -right-2 top-32 w-12 h-12 text-pj-blue-light opacity-30 z-0" viewBox="0 0 24 24" fill="currentColor"><rect x="2" y="2" width="20" height="20" rx="4" transform="rotate(15 12 12)"/></svg>
+            <svg class="absolute -left-2 bottom-10 w-8 h-8 text-pj-pink opacity-20 z-0" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+
+            <div class="bg-pj-blue-dark rounded-[30px] p-1 shadow-soft border border-pj-blue-light relative z-10">
+                <!-- ดาวตกแต่งขอบบน Pricing -->
+                <svg class="absolute -top-4 right-10 w-8 h-8 text-pj-pink z-20 drop-shadow-sm transform rotate-12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+
+                <div class="bg-pj-blue-dark rounded-[26px] p-5">
+                    <div class="text-center mb-4">
+                        <div class="inline-flex bg-pj-blue-main text-pj-white font-eng font-bold px-5 py-1.5 rounded-full mb-2 shadow-sm">
+                            Status Bar
+                        </div>
+                        <h3 class="text-xl font-bold text-pj-white">ตารางคิวงาน & ระยะเวลา</h3>
+                        <p class="text-xs text-slate-400">(กรุณาตรวจสอบคิวและระยะเวลาผลิตงานด้านล่าง)</p>
+                    </div>
+
+                    <div class="space-y-3 text-sm">
+                        <div class="bg-pj-bg p-3 rounded-xl shadow-sm border border-pj-blue-light/50 text-slate-300">
+                            <p class="font-semibold text-pj-blue-main mb-1">ระยะเวลารูปภาพ / กราฟฟิค</p>
+                            <ul class="text-xs space-y-1">
+                                <li class="flex justify-between items-center"><span>คิวปกติ ﹝Queue Normal﹞</span> <span class="font-bold text-pj-white">7-14 วัน</span></li>
+                                <li class="flex justify-between items-center"><span>คิว x2 ถึง x4</span> <span class="font-bold text-pj-pink">5 วัน - 1 วัน</span></li>
+                                <li class="flex justify-between items-center"><span>คิว x5 ถึง x7</span> <span class="font-bold text-pj-pink">15 ชม. - 3 ชม.</span></li>
+                                <li class="flex justify-between items-center"><span>คิว x8 ﹝ด่วนพิเศษ﹞</span> <span class="font-bold text-pj-yellow-main">1-2 ชั่วโมง</span></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-pj-bg p-3 rounded-xl shadow-sm border border-pj-blue-light/50 text-slate-300">
+                            <p class="font-semibold text-pj-pink mb-1">ระยะเวลาผลิต MV FIVEM</p>
+                            <ul class="text-xs space-y-1">
+                                <li class="flex justify-between items-center"><span>คิวปกติ ﹝Queue Normal﹞</span> <span class="font-bold text-pj-white">14 วัน</span></li>
+                                <li class="flex justify-between items-center"><span>คิว x2 / x3 / x4</span> <span class="font-bold text-pj-pink">7 วัน / 5 วัน / 3 วัน</span></li>
+                                <li class="flex justify-between items-center"><span>คิว x5 ﹝Queue x5﹞</span> <span class="font-bold text-pj-pink">1-2 วัน</span></li>
+                                <li class="flex justify-between items-center"><span>คิว x6 ﹝เริ่มทำทันที﹞</span> <span class="font-bold text-pj-yellow-main">ตามความยากง่าย</span></li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-pj-blue-light/20 p-3 rounded-xl text-xs space-y-1 text-slate-300">
+                            <p class="font-semibold text-pj-yellow-main flex items-center gap-1"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg> หมายเหตุเพิ่มเติม</p>
+                            <p class="text-slate-400 pl-5">คิวงานปกติอาจมีการคลาดเคลื่อนเล็กน้อยตามปริมาณงาน เร่งคิวกรุณาแจ้งตอนสั่งงานนะคะ</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="text-[10px] text-center mt-3 text-slate-400 px-4">
+                *เลือกบริการชำระเงินคิวเร่ง = ยอมรับเงื่อนไขเวลาที่กำหนดข้างต้น งดวีนนะคะ 📍
+            </p>
+        </section>
+
+        <!-- Promo Section (Mimicking Center horizontal layout) -->
+        <section class="ml-8 mr-4 relative">
+            <div class="absolute -left-12 top-1/2 w-10 border-b-4 border-pj-blue-light border-dashed"></div>
+            
+            <div class="bg-pj-blue-light text-pj-white rounded-3xl p-5 shadow-soft relative overflow-hidden border border-pj-blue-main/30">
+                <svg class="absolute -right-4 -bottom-4 w-24 h-24 text-pj-blue-main opacity-20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+                
+                <!-- ดาวตกแต่งใน Promo -->
+                <svg class="absolute top-4 right-4 w-6 h-6 text-pj-pink drop-shadow-sm animate-pulse" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+
+                <h3 class="font-eng text-xl font-bold mb-1 text-pj-yellow-main">YUNINX SERVICE</h3>
+                <p class="text-lg font-bold bg-pj-blue-dark text-pj-pink inline-block px-3 py-1 rounded-lg mb-4 shadow-sm border border-pj-blue-light">FIVEM & GRAPHIC DESIGN</p>
+                
+                <div class="space-y-2 text-xs font-medium text-slate-300">
+                    <div class="flex gap-2 bg-pj-bg/40 p-2 rounded-xl border border-pj-blue-light/50">
+                        <span class="font-bold text-pj-pink">1.</span>
+                        <div><p class="font-bold text-pj-white">OFFLINE IMAGE</p><p class="opacity-90 text-slate-400">รูปออฟไลน์สวยๆ สไตล์โปรโมทเซิฟ</p></div>
+                    </div>
+                    <div class="flex gap-2 bg-pj-bg/40 p-2 rounded-xl border border-pj-blue-light/50">
+                        <span class="font-bold text-pj-pink">2.</span>
+                        <div><p class="font-bold text-pj-white">MV FIVEM VIDEO</p><p class="opacity-90 text-slate-400">ตัดต่อมิวสิควิดีโอในเกมแบบอลังการ</p></div>
+                    </div>
+                    <div class="flex gap-2 bg-pj-bg/40 p-2 rounded-xl border border-pj-blue-light/50">
+                        <span class="font-bold text-pj-pink">3.</span>
+                        <div><p class="font-bold text-pj-white">UI & GRAPHIC</p><p class="opacity-90 text-slate-400">งานป้าย ของตกแต่ง โลโก้ ครบวงจร</p></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Process & Rules (Mimicking "NOTA" card format) -->
+        <section class="mx-4 space-y-4">
+            <!-- Step Card -->
+            <div class="shape-nota bg-pj-blue-dark border-2 border-pj-blue-light p-5 shadow-sm text-slate-300">
+                <!-- ดาวตกแต่ง Process -->
+                <svg class="absolute -top-3 -right-2 w-7 h-7 text-pj-pink z-10 drop-shadow-sm transform rotate-12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+
+                <div class="flex justify-between items-start mb-3">
+                    <div>
+                        <h3 class="font-eng text-xl font-bold text-pj-blue-main uppercase">SHOP CONDITIONS</h3>
+                        <p class="text-xs font-medium text-slate-400">ข้อตกลงในการสั่งงาน</p>
+                    </div>
+                    <div class="bg-pj-blue-light text-pj-pink px-2 py-1 rounded-lg">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                </div>
+                <ul class="text-xs space-y-2 pl-4 list-disc marker:text-pj-blue-main">
+                    <li>กรุณาแจ้งขนาดรูปหรือรายละเอียดงานที่ต้องการให้ชัดเจนตั้งแต่เริ่มสั่ง</li>
+                    <li>รูปที่ร้านทำผิดพลาด สามารถส่งเคลมแก้ไขให้ได้ทันทีครับ</li>
+                    <li><span class="font-bold text-pj-pink">รูปเวอร์ชันแรกที่ส่งไปแก้ไข ห้ามนำไปใช้งานต่อเด็ดขาด</span></li>
+                    <li>หากตรวจพบการนำรูปเวอร์ชันแรกไปใช้งานต่อ จะมีการปรับตามกฎของร้าน</li>
+                </ul>
+
+                <h4 class="font-bold text-sm mt-4 mb-2 bg-pj-blue-light/50 inline-block px-2 py-0.5 rounded text-pj-white">ข้อแนะนำการสั่ง</h4>
+                <ol class="text-xs space-y-2 pl-4 list-decimal marker:text-pj-blue-main marker:font-bold">
+                    <li>เตรียมบรีฟงาน รายละเอียด มูดแอนด์โทนที่อยากได้ส่งให้แอดมิน</li>
+                    <li>ระบุประเภทคิวที่ต้องการ (คิวปกติ หรือคิวคูณด่วนพิเศษ)</li>
+                    <li>สรุปราคางาน มัดจำหรือชำระเงินเพื่อเริ่มดำเนินงานเข้าคิว</li>
+                </ol>
+                <div class="mt-3 bg-pj-bg p-2 rounded text-[10px] text-slate-400 border border-pj-blue-light/50">
+                    <span class="font-bold text-pj-pink">สำคัญ:</span> การเลือกสั่งซื้อบริการ ถือว่าลูกค้ายอมรับกฎเกณฑ์และเงื่อนไขของทางร้านทุกประการครับ
+                </div>
+            </div>
+
+            <!-- Rules Card -->
+            <div class="shape-nota bg-pj-blue-dark text-pj-white p-5 shadow-sm overflow-hidden border border-pj-blue-light">
+                <!-- ดาวตกแต่ง Rules -->
+                <svg class="absolute -bottom-4 -left-4 w-16 h-16 text-pj-blue-main opacity-10 transform -rotate-12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+                <svg class="absolute top-4 right-4 w-5 h-5 text-pj-pink opacity-80" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+
+                <div class="flex items-center gap-2 mb-3 border-b border-pj-blue-light pb-2">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                    <h3 class="font-eng text-lg font-bold uppercase tracking-widest text-pj-yellow-main">Rules & Fine</h3>
+                </div>
+                <ul class="text-xs space-y-2 font-light text-slate-300">
+                    <li class="flex items-start gap-2"><svg class="w-3 h-3 mt-0.5 shrink-0 text-pj-pink" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> ห้ามนำรูปไปขายต่อ/ปล่อยต่อ หากพบเจอปรับ x20 ของราคารูปนั้น</li>
+                    <li class="flex items-start gap-2"><svg class="w-3 h-3 mt-0.5 shrink-0 text-pj-pink" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> ห้ามตัดลายน้ำร้านออกเด็ดขาด หากพบเจอปรับ x10 ของราคารูป</li>
+                    <li class="flex items-start gap-2"><svg class="w-3 h-3 mt-0.5 shrink-0 text-pj-pink" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> ห้ามนำรูปไปใช้กับ AI ที่ต้องตัดลายน้ำออก พบเจอปรับ x20 ทั้งร้านและลูกค้า</li>
+                    <li class="flex items-start gap-2"><svg class="w-3 h-3 mt-0.5 shrink-0 text-pj-pink" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> หากโอนผิด โอนเกิน หรือลูกค้ายกเลิกงานเอง ไม่คืนเงินทุกกรณี</li>
+                    <li class="flex items-start gap-2"><svg class="w-3 h-3 mt-0.5 shrink-0 text-pj-pink" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> รูปเก่าที่สั่งแก้ห้ามใช้เด็ดขาด พบเจอปรับ x10 ของราคารูปนั้นๆ</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Course Section (Floating tag style) -->
+        <section class="ml-10 mr-4 relative">
+            <div class="absolute -left-6 top-1/2 w-6 border-b-2 border-pj-blue-main"></div>
+            <div class="bg-pj-blue-dark p-4 rounded-2xl shadow-soft border border-pj-blue-light relative">
+                <!-- ดาวตกแต่ง Course -->
+                <svg class="absolute -bottom-2 -left-3 w-7 h-7 text-pj-blue-main z-10 drop-shadow-sm transform -rotate-12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+
+                <div class="absolute -top-3 -right-2 bg-pj-pink text-pj-white text-[10px] font-bold px-2 py-1 rounded-full transform rotate-12">
+                    LINK!
+                </div>
+                <h3 class="font-bold text-sm mb-1 text-pj-yellow-main">Drive รวมคลังผลงานร้าน</h3>
+                <p class="text-xs mb-2 text-slate-300">รวมผลงานการออกแบบทั้งหมดของ Yuninx ให้เลือกชมและรีวิวเพื่อเป็นไอเดียเรฟเฟอเรนซ์</p>
+                <div class="flex gap-2 mt-3">
+                    <a href="https://drive.google.com/drive/folders/1n-_fQ1Qkz60-hu-VknSh-mUbtwuu6gEO" target="_blank" class="flex-1 bg-pj-blue-light text-pj-white text-center py-2 rounded-lg text-xs font-semibold hover:bg-pj-blue-main transition border border-pj-blue-main/30">คลิกเพื่อดูผลงานทั้งหมดใน Google Drive</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Goodnotes Section -->
+        <section class="mx-4 mt-6 relative">
+            <!-- ของตกแต่งหัวข้อ Goodnote -->
+            <svg class="absolute -top-2 right-6 w-8 h-8 text-pj-pink opacity-80" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+
+            <div class="text-center mb-6 relative">
+                <div class="absolute top-1/2 left-0 w-full h-0.5 bg-pj-blue-light/50 -z-10"></div>
+                <h2 class="font-eng text-2xl font-bold text-pj-white inline-block bg-pj-bg px-4 shadow-sm rounded-full border border-pj-blue-light">Product Pricing</h2>
+            </div>
+
+            <div class="grid gap-4">
+                <!-- Special Version -->
+                <div class="bg-pj-blue-dark p-4 rounded-2xl shadow-sm border-t-4 border-pj-blue-main relative overflow-hidden border border-pj-blue-light/30">
+                    <!-- ดาวตกแต่ง Goodnote 1 -->
+                    <svg class="absolute bottom-2 right-2 w-10 h-10 text-pj-blue-light/20 transform rotate-12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+
+                    <div class="absolute top-0 right-0 bg-pj-blue-main text-pj-white text-[10px] font-bold px-3 py-1 rounded-bl-xl">FIVEM</div>
+                    <h3 class="font-bold text-lg mb-2 mt-1 text-pj-white">รูปภาพออฟไลน์ FiveM</h3>
+                    <p class="text-xs text-slate-400 mb-2">ออกแบบกราฟฟิกระบบออฟไลน์ แบนเนอร์หน้าล็อกอิน หน้าโหลดเข้าเซิฟเวอร์</p>
+                    <ul class="text-xs space-y-1 mb-3 text-slate-300">
+                        <li>- จัดวางเลย์เอาต์สวยงาม คมชัดสูง</li>
+                        <li>- คิวปกติจัดทำในเวลา 7-14 วัน</li>
+                        <li>- มีบริการจัดทำคิวเร่งด่วนด่วนพิเศษ 1-2 ชม.</li>
+                    </ul>
+                </div>
+
+                <!-- Essential Version -->
+                <div class="bg-pj-blue-dark p-4 rounded-2xl shadow-sm border-t-4 border-pj-pink relative overflow-hidden border border-pj-blue-light/30">
+                    <!-- ดาวตกแต่ง Goodnote 2 -->
+                    <svg class="absolute bottom-2 right-2 w-10 h-10 text-pj-pink/10 transform -rotate-12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+
+                    <div class="absolute top-0 right-0 bg-pj-pink text-pj-white text-[10px] font-bold px-3 py-1 rounded-bl-xl">MV VIDEO</div>
+                    <h3 class="font-bold text-lg mb-2 mt-1 text-pj-white">รับทำตัดต่อ MV FIVEM</h3>
+                    <p class="text-xs text-slate-400 mb-2">รับตัดต่อวิดีโอ มิวสิควิดีโอในเกม ถ่ายมุมกล้องโปรดักชันอย่างดี</p>
+                    <ul class="text-xs space-y-1 mb-3 text-slate-300">
+                        <li>- งานเนียน ลื่นไหล ได้อารมณ์ตามเพลง</li>
+                        <li>- คิวงานปกติผลิตในเวลา 14 วัน</li>
+                        <li>- คิวงานเร่งด่วนสูงสุด x6 เริ่มทำทันที</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="mt-8 mb-12 flex flex-col items-center">
+            <h2 class="font-eng text-xl font-bold text-pj-blue-main mb-4 flex items-center gap-2">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                Contact
+            </h2>
+            <div class="flex gap-4">
+                <!-- FB -->
+                <a href="https://www.facebook.com/share/1DqnhnQqhD/?mibextid=wwXIfr" target="_blank" class="w-12 h-12 bg-pj-blue-dark border-2 border-pj-blue-light rounded-full flex items-center justify-center text-pj-pink hover:bg-pj-blue-main hover:text-pj-white transition-colors shadow-sm">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                </a>
+                <!-- Discord -->
+                <a href="https://discord.gg/yPFwC9Q8NU" target="_blank" class="w-12 h-12 bg-pj-blue-dark border-2 border-pj-blue-light rounded-full flex items-center justify-center text-pj-pink hover:bg-pj-blue-main hover:text-pj-white transition-colors shadow-sm">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994.021-.041.001-.09-.041-.106a13.094 13.094 0 0 1-1.873-.894.077.077 0 0 1-.008-.128c.126-.093.252-.19.372-.287a.075.075 0 0 1 .077-.011c3.92 1.793 8.18 1.793 12.061 0a.073.073 0 0 1 .078.009c.12.099.246.195.373.289a.077.077 0 0 1-.006.127 12.298 12.298 0 0 1-1.873.894.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03a.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.156-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.156 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.156-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.156 2.418z"/></svg>
+                </a>
+            </div>
+            <p class="text-xs font-semibold text-slate-400 mt-6">ขอบคุณที่ไว้วางใจ Yuninx STUDIO</p>
+        </section>
+
+    </main>
+
+    <!-- Modals for Portfolio -->
+    
+    <!-- Modal: สดใส -->
+    <div id="modal-sodsai" class="modal inactive fixed inset-0 z-50 flex items-center justify-center p-4">
+        <div class="absolute inset-0 bg-pj-blue-dark/60 backdrop-blur-sm" onclick="closeModal('modal-sodsai')"></div>
+        <div class="modal-content relative bg-pj-blue-dark w-full max-w-sm rounded-[30px] p-6 shadow-xl border-4 border-pj-blue-light">
+            <button onclick="closeModal('modal-sodsai')" class="absolute top-4 right-4 text-pj-blue-main hover:text-pj-pink">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+            <h3 class="font-eng text-xl font-bold text-pj-yellow-main mb-4 border-b-2 border-pj-blue-light/30 pb-2">Drive: รูปออฟไลน์ FiveM</h3>
+            <div class="space-y-3">
+                <a href="https://drive.google.com/drive/folders/1n-_fQ1Qkz60-hu-VknSh-mUbtwuu6gEO" target="_blank" class="flex items-center gap-2 p-3 bg-pj-bg rounded-xl hover:bg-pj-blue-light/50 transition group border border-pj-blue-light/30">
+                    <svg class="w-5 h-5 text-pj-pink" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+                    <span class="text-sm font-medium text-slate-200 group-hover:text-pj-blue-main">เปิด Google Drive ดูตัวอย่างงานภาพ</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: โทนมืด -->
+    <div id="modal-dark" class="modal inactive fixed inset-0 z-50 flex items-center justify-center p-4">
+        <div class="absolute inset-0 bg-pj-blue-dark/60 backdrop-blur-sm" onclick="closeModal('modal-dark')"></div>
+        <div class="modal-content relative bg-pj-blue-dark w-full max-w-sm max-h-[80vh] overflow-y-auto rounded-[30px] p-6 shadow-xl border-4 border-pj-blue-light">
+            <button onclick="closeModal('modal-dark')" class="absolute top-4 right-4 text-pj-blue-main hover:text-pj-pink">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+            <h3 class="font-eng text-xl font-bold text-pj-yellow-main mb-4 border-b-2 border-pj-blue-light/30 pb-2">Drive: MV FIVEM</h3>
+            <div class="space-y-2">
+                <a href="https://drive.google.com/drive/folders/1n-_fQ1Qkz60-hu-VknSh-mUbtwuu6gEO" target="_blank" class="flex items-center gap-2 p-2.5 bg-pj-bg rounded-xl hover:bg-pj-blue-light/50 transition group border border-pj-blue-light/30">
+                     <svg class="w-4 h-4 text-pj-pink" viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                    <span class="text-sm font-medium text-slate-200 group-hover:text-pj-blue-main">เปิด Google Drive ดูตัวอย่างงานวิดีโอ MV</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: พาสเทล -->
+    <div id="modal-pastel" class="modal inactive fixed inset-0 z-50 flex items-center justify-center p-4">
+        <div class="absolute inset-0 bg-pj-blue-dark/60 backdrop-blur-sm" onclick="closeModal('modal-pastel')"></div>
+        <div class="modal-content relative bg-pj-blue-dark w-full max-w-sm max-h-[80vh] overflow-y-auto rounded-[30px] p-6 shadow-xl border-4 border-pj-blue-light">
+            <button onclick="closeModal('modal-pastel')" class="absolute top-4 right-4 text-pj-blue-main hover:text-pj-pink">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+            <h3 class="font-eng text-xl font-bold text-pj-yellow-main mb-4 border-b-2 border-pj-blue-light/30 pb-2">Drive: กราฟฟิคดีไซน์</h3>
+            <div class="space-y-2">
+                <a href="https://drive.google.com/drive/folders/1n-_fQ1Qkz60-hu-VknSh-mUbtwuu6gEO" target="_blank" class="flex items-center gap-2 p-2.5 bg-pj-bg rounded-xl hover:bg-pj-blue-light/50 transition group border border-pj-blue-light/30">
+                    <svg class="w-4 h-4 text-pj-pink" viewBox="0 0 24 24" fill="currentColor"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                    <span class="text-sm font-medium text-slate-200 group-hover:text-pj-blue-main">เปิด Google Drive ดูตัวอย่างงานป้าย/กราฟฟิค</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
     <script>
-        function switchTab(tabId) {
-            // ซ่อนเนื้อหา Tab ทั้งหมด
-            document.getElementById('tab-bright').classList.add('hidden');
-            document.getElementById('tab-dark').classList.add('hidden');
-            document.getElementById('tab-pastel').classList.add('hidden');
-            
-            // ล้างสถานะ Active ของปุ่มทั้งหมด
-            document.getElementById('btn-bright').classList.remove('active');
-            document.getElementById('btn-dark').classList.remove('active');
-            document.getElementById('btn-pastel').classList.remove('active');
-            
-            // แสดงเนื้อหาและเพิ่มสถานะ Active ให้ปุ่มที่เลือก
-            document.getElementById('tab-' + tabId).classList.remove('hidden');
-            document.getElementById('btn-' + tabId).classList.add('active');
+        function openModal(id) {
+            const modal = document.getElementById(id);
+            modal.classList.remove('inactive');
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+
+        function closeModal(id) {
+            const modal = document.getElementById(id);
+            modal.classList.remove('active');
+            modal.classList.add('inactive');
+            document.body.style.overflow = ''; // Restore scrolling
         }
     </script>
 </body>
