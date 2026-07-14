@@ -84,7 +84,7 @@
               <div class="flex flex-col py-2">
                 <button id="btn-HOME" onclick="switchTab('HOME')" class="px-5 py-3 text-sm font-semibold text-left transition-colors flex items-center gap-2 bg-[#8E68D1]/10 text-[#8E68D1] border-l-4 border-[#8E68D1]">Home</button>
                 <button id="btn-T.O.S" onclick="switchTab('T.O.S')" class="px-5 py-3 text-sm font-semibold text-left transition-colors flex items-center gap-2 text-stone-600 hover:bg-[#F7F4FB] hover:text-[#8E68D1] border-l-4 border-transparent">T.O.S</button>
-                <button id="btn-ORDERING" onclick="switchTab('ORDERING')" class="px-5 py-3 text-sm font-semibold text-left transition-colors flex items-center gap-2 text-stone-600 hover:bg-[#F7F4FB] hover:text-[#8E68D1] border-l-4 border-transparent">Queue</button>
+                <button id="btn-ORDERING" onclick="switchTab('ORDERING')" class="px-5 py-3 text-sm font-semibold text-left transition-colors flex items-center gap-2 text-stone-600 hover:bg-[#F7F4FB] hover:text-[#8E68D1] border-l-4 border-transparent">Ordering</button>
                 <button id="btn-EXAMPLE" onclick="switchTab('EXAMPLE')" class="px-5 py-3 text-sm font-semibold text-left transition-colors flex items-center gap-2 text-stone-600 hover:bg-[#F7F4FB] hover:text-[#8E68D1] border-l-4 border-transparent">Example</button>
                 <button id="btn-PRICE" onclick="switchTab('PRICE')" class="px-5 py-3 text-sm font-semibold text-left transition-colors flex items-center gap-2 text-stone-600 hover:bg-[#F7F4FB] hover:text-[#8E68D1] border-l-4 border-transparent">Price</button>
                 <button id="btn-CONTACT" onclick="switchTab('CONTACT')" class="px-5 py-3 text-sm font-semibold text-left transition-colors flex items-center gap-2 text-stone-600 hover:bg-[#F7F4FB] hover:text-[#8E68D1] border-l-4 border-transparent">Contact</button>
@@ -103,10 +103,12 @@
                 <div class="absolute top-0 right-4 text-[#D4C3EF] animate-float"><i data-lucide="sparkles" style="width:24px; height:24px;"></i></div>
                 
                 <div class="w-48 h-48 sm:w-56 sm:h-56 rounded-full border-[6px] border-white shadow-[0_8px_30px_rgba(49,42,74,0.15)] mb-8 overflow-hidden bg-white flex items-center justify-center relative z-10">
-                   <img src="IMG_6210.png" alt="Profile" class="w-full h-full object-cover"/>
+                   <!-- อัปเดตรูปภาพโปรไฟล์เป็นรูปที่ลูกค้าส่งมา -->
+                   <img src="yurinx.png" alt="Profile" class="w-full h-full object-cover"/>
                 </div>
             
                 <div class="space-y-3 relative z-10 w-full flex flex-col items-center mb-6">
+                  <!-- อัปเดตชื่อร้าน -->
                   <h1 class="text-3xl sm:text-4xl font-extrabold text-[#312A4A] tracking-[0.15em] uppercase drop-shadow-sm">Yuninx</h1>
                   <p class="text-[#8E68D1] text-[10px] font-bold tracking-[0.2em] uppercase flex items-center gap-2">
                     <i data-lucide="sparkles" style="width:10px; height:10px;"></i> order • inbox <i data-lucide="sparkles" style="width:10px; height:10px;"></i>
@@ -115,33 +117,32 @@
             
                 <div class="w-8 h-[2px] bg-[#D4C3EF] rounded-full my-4 relative z-10"></div>
             
-                <!-- Badges / Status Bar (คงไว้ 100%) -->
                 <div class="text-[#312A4A]/80 text-[10px] sm:text-xs font-semibold tracking-widest uppercase space-y-2 relative z-10 mb-8">
-                  <p>Status : Open for this month</p>
-                  <p class="text-[#8E68D1]">( Applications are accepted in rounds )</p>
+                  <p>Status : Open for commissions</p>
+                  <p class="text-[#8E68D1]">( ยินดีให้บริการและพร้อมลุยงานค๊าบ )</p>
                 </div>
             
+                <!-- แก้ไขประเภทงานที่รับทำ -->
                 <div class="text-stone-500 text-[11px] font-medium leading-relaxed relative z-10 flex flex-col items-center gap-1 mb-8">
-                  <span>Welcome to Yuninx Shop</span>
-                  <span class="text-xs text-[#8E68D1] font-semibold">ทำรูปออฟไลน์fivem / MV FIVEM / กราฟฟิค</span>
-                  <span class="flex items-center gap-1.5 mt-1">Thank you for supporting! <i data-lucide="sparkles" class="text-[#8E68D1]" style="width:12px; height:12px;"></i></span>
+                  <span>ยินดีต้อนรับสู่ร้าน Yuninx</span>
+                  <span class="font-semibold text-[#8E68D1]">รับทำรูปออฟไลน์ FiveM / MV FiveM / กราฟฟิคดีไซน์</span>
+                  <span class="flex items-center gap-1.5">Thank you for supporting! <i data-lucide="sparkles" class="text-[#8E68D1]" style="width:12px; height:12px;"></i></span>
                 </div>
             
-                <!-- ปุ่มเช็คคิวงานแบบเส้นประ (คงไว้ 100%) -->
                 <div class="w-full max-w-[180px] relative z-10">
-                   <a href="https://www.facebook.com/share/1DqnhnQqhD/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-2 w-full py-3 px-4 rounded-full border border-dashed border-[#8E68D1] bg-[#F7F4FB] text-[#8E68D1] text-[11px] font-bold tracking-widest uppercase hover:bg-[#D4C3EF]/40 hover:scale-105 transition-all duration-300 shadow-sm">
+                   <a href="https://www.facebook.com/share/1DqnhnQqhD/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-2 w-full py-3 px-4 rounded-full border border-[#D4C3EF]/50 bg-[#F7F4FB] text-[#8E68D1] text-[11px] font-bold tracking-widest uppercase hover:bg-[#D4C3EF]/40 hover:scale-105 transition-all duration-300 shadow-sm">
                     <i data-lucide="facebook" style="width:14px; height:14px;"></i> Facebook Page
                   </a>
                 </div>
             </div>
 
-            <!-- T.O.S (กฎกติกาและเงื่อนไขของร้าน) -->
+            <!-- T.O.S (กฎของร้าน) -->
             <div id="content-T.O.S" class="hidden animate-fadeIn">
                 <div class="text-center mb-6 relative mt-4">
                     <p class="text-[#E5DDF0] font-medium text-sm mb-1 drop-shadow-sm">Rules & Conditions</p>
                     <h2 class="text-2xl font-bold text-[#F7F4FB] flex items-center justify-center gap-2 drop-shadow-md">
                       <i data-lucide="star" class="text-[#D4C3EF]" style="width:18px; height:18px; fill:currentColor;"></i>
-                      Term of service
+                      Rule & T.O.S
                       <i data-lucide="star" class="text-[#D4C3EF]" style="width:18px; height:18px; fill:currentColor;"></i>
                     </h2>
                 </div>
@@ -151,99 +152,88 @@
                   
                   <div class="flex items-center gap-2 mb-4 pb-3 border-b border-[#D4C3EF]/40 relative z-10">
                     <i data-lucide="alert-circle" class="text-[#312A4A]" style="width:20px; height:20px;"></i>
-                    <h3 class="font-bold text-[#312A4A]">—⁺˖°ʚ Term of service ɞ°˖⁺—</h3>
+                    <h3 class="font-bold text-[#312A4A]">—⁺˖° ʚ กฎของร้าน Yuninx ɞ °˖⁺—</h3>
                   </div>
-                  <ul class="space-y-3 mt-4 relative z-10 text-left">
-                    <li class="flex items-start gap-3 text-stone-600 text-sm leading-relaxed">
-                      <div class="mt-0.5 shrink-0 text-[#8E68D1]"><i data-lucide="check-circle-2" style="width:16px; height:16px;"></i></div>
-                      <div>ห้ามนำรูปไปขายต่อ/ปล่อยต่อ หากพบเจอปรับ x20 ของราคารูปนั้น</div>
-                    </li>
-                    <li class="flex items-start gap-3 text-stone-600 text-sm leading-relaxed">
-                      <div class="mt-0.5 shrink-0 text-[#8E68D1]"><i data-lucide="check-circle-2" style="width:16px; height:16px;"></i></div>
-                      <div>ห้ามตัดลายน้ำร้านออกเด็ดขาด แจ้งขนาดที่ต้องการให้ชัดเจน หากพบเจอปรับ x10</div>
-                    </li>
-                    <li class="flex items-start gap-3 text-stone-600 text-sm leading-relaxed">
-                      <div class="mt-0.5 shrink-0 text-[#8E68D1]"><i data-lucide="check-circle-2" style="width:16px; height:16px;"></i></div>
-                      <div>ห้ามนำรูปร้านไปทำการกระทำใดที่ต้องตัดลายน้ำออก เช่น ทำ AI พบเจอปรับ x20 ทั้งร้านและลูกค้า</div>
-                    </li>
-                    <li class="flex items-start gap-3 text-stone-600 text-sm leading-relaxed">
-                      <div class="mt-0.5 shrink-0 text-[#8E68D1]/60"><i data-lucide="alert-circle" style="width:16px; height:16px;"></i></div>
-                      <div>หากโอนผิด โอนเกิน ยกเลิกงาน ไม่คืนเงินทุกกรณี</div>
-                    </li>
-                    <li class="flex items-start gap-3 text-stone-600 text-sm leading-relaxed">
-                      <div class="mt-0.5 shrink-0 text-[#8E68D1]/60"><i data-lucide="alert-circle" style="width:16px; height:16px;"></i></div>
-                      <div>รูปที่ร้านทำผิดจะแก้ให้ครับ แต่รูปที่ส่งไปตอนแรกห้ามนำไปใช้ต่อนะครับ พบเจอปรับ x10 ของราคารูปนั้น ๆ</div>
-                    </li>
-                    <li class="flex items-start gap-3 text-[#8E68D1] font-semibold text-sm leading-relaxed mt-4 pt-3 border-t border-[#D4C3EF]/40">
-                      <div class="mt-0.5 shrink-0"><i data-lucide="help-circle" style="width:16px; height:16px;"></i></div>
-                      <div>!! เลือก = ยอมรับ นะคะ งดวีนนะคะ 📍</div>
-                    </li>
+                  <!-- อัปเดตกฎของร้านใหม่ -->
+                  <ul class="space-y-3 mt-4 relative z-10">
+                    <li class="flex items-start gap-3 text-stone-600 text-sm leading-relaxed"><div class="mt-0.5 shrink-0 text-[#8E68D1]"><i data-lucide="alert-triangle" style="width:16px; height:16px;"></i></div><div><strong>ห้ามนำรูปไปขายต่อ/ปล่อยต่อ</strong> <br/><span class="text-xs text-rose-500 font-medium">หากพบเจอปรับ x20 ของราคารูปนั้น</span></div></li>
+                    <li class="flex items-start gap-3 text-stone-600 text-sm leading-relaxed"><div class="mt-0.5 shrink-0 text-[#8E68D1]"><i data-lucide="alert-triangle" style="width:16px; height:16px;"></i></div><div><strong>ห้ามตัดลายน้ำร้านเด็ดขาด</strong> แจ้งขนาดที่ต้องการให้ชัดเจน <br/><span class="text-xs text-rose-500 font-medium">หากพบเจอปรับ x10</span></div></li>
+                    <li class="flex items-start gap-3 text-stone-600 text-sm leading-relaxed"><div class="mt-0.5 shrink-0 text-[#8E68D1]"><i data-lucide="alert-triangle" style="width:16px; height:16px;"></i></div><div><strong>ห้ามนำรูปไปทำการกระทำใดที่ต้องตัดลายน้ำออก</strong> เช่น ทำ AI <br/><span class="text-xs text-rose-500 font-medium">หากพบเจอปรับ x20 ทั้งร้านและลูกค้า</span></div></li>
+                    <li class="flex items-start gap-3 text-stone-600 text-sm leading-relaxed"><div class="mt-0.5 shrink-0 text-stone-400"><i data-lucide="alert-circle" style="width:16px; height:16px;"></i></div><div><strong>หากโอนผิด โอนเกิน หรือยกเลิกงาน</strong> ไม่คืนเงินทุกกรณี</div></li>
+                    <li class="flex items-start gap-3 text-stone-600 text-sm leading-relaxed"><div class="mt-0.5 shrink-0 text-[#8E68D1]"><i data-lucide="check-circle-2" style="width:16px; height:16px;"></i></div><div><strong>รูปที่ร้านทำผิด เค้าจะแก้ให้ค๊าบ</strong> <br/><span class="text-xs text-stone-500">แต่รูปที่ส่งไปตอนแรก ลูกค้าห้ามนำไปใช้ต่อนะคะ (พบเจอปรับ x10 ของราคารูปนั้นๆ)</span></div></li>
+                    <li class="flex items-start gap-3 text-[#8E68D1] mt-4 text-xs font-semibold"><div class="mt-0.5 shrink-0"><i data-lucide="info" style="width:14px; height:14px;"></i></div><div>!! สั่งงาน = ยอมรับเงื่อนไขนะคะ งดวีนน้า 📍</div></li>
                   </ul>
                 </div>
                 <!-- Bottom Logo -->
                 <div class="flex justify-center mt-10 mb-2 relative z-10">
                     <div class="w-20 h-20 rounded-full border-[3px] border-white shadow-[0_4px_15px_rgba(49,42,74,0.1)] overflow-hidden bg-white flex items-center justify-center">
-                        <img src="IMG_6210.png" alt="Profile Mini" class="w-full h-full object-cover"/>
+                        <img src="yurinx.png" alt="Profile Mini" class="w-full h-full object-cover"/>
                     </div>
                 </div>
             </div>
 
-            <!-- ORDERING (Queue Details) -->
+            <!-- ORDERING (คิวและระยะเวลาการทำงาน) -->
             <div id="content-ORDERING" class="hidden animate-fadeIn space-y-6 relative">
                 <div class="absolute top-20 left-0 text-[#D4C3EF] animate-float-delayed"><i data-lucide="star" style="width:24px; height:24px; fill:currentColor;"></i></div>
             
                 <div class="text-center mb-6 relative mt-4">
-                    <p class="text-[#E5DDF0] font-medium text-sm mb-1 drop-shadow-sm">Estimated Turnaround</p>
+                    <p class="text-[#E5DDF0] font-medium text-sm mb-1 drop-shadow-sm">Queue & Process</p>
                     <h2 class="text-2xl font-bold text-[#F7F4FB] flex items-center justify-center gap-2 drop-shadow-md">
                       <i data-lucide="star" class="text-[#D4C3EF]" style="width:18px; height:18px; fill:currentColor;"></i>
-                      Queue & Delivery
+                      ระยะเวลางาน & คิว
                       <i data-lucide="star" class="text-[#D4C3EF]" style="width:18px; height:18px; fill:currentColor;"></i>
                     </h2>
                 </div>
                 
+                <!-- คิวประเภทรูป/กราฟฟิค -->
                 <div class="bg-white rounded-[24px] p-6 shadow-[0_8px_30px_rgb(0,0,0,0.04)] relative z-10 border border-[#F7F4FB]">
                   <div class="flex items-center gap-2 mb-4 pb-2 border-b border-[#F7F4FB]">
                     <div class="bg-[#D4C3EF]/30 p-1.5 rounded-lg text-[#8E68D1]"><i data-lucide="image" style="width:16px; height:16px;"></i></div>
-                    <h3 class="font-bold text-[#312A4A] text-sm sm:text-base">ระยะเวลาผลงานรูป / กราฟฟิค</h3>
+                    <h3 class="font-bold text-[#312A4A]">คิวรูป / กราฟฟิคดีไซน์</h3>
                   </div>
-                  <ul class="space-y-2 text-xs sm:text-sm text-stone-600 pl-1 text-left">
-                    <li class="flex justify-between border-b border-[#F7F4FB] pb-1.5"><span>﹅ คิวปกติ ﹝Queue Normal﹞</span> <span class="font-bold text-[#8E68D1]">7-14 วัน (อาจคลาดเคลื่อน)</span></li>
-                    <li class="flex justify-between border-b border-[#F7F4FB] pb-1.5"><span>﹅ คิว x2 ﹝Queue x2﹞</span> <span class="font-semibold text-stone-700">5-7 วัน</span></li>
-                    <li class="flex justify-between border-b border-[#F7F4FB] pb-1.5"><span>﹅ คิว x3 ﹝Queue x3﹞</span> <span class="font-semibold text-stone-700">2-3 วัน</span></li>
-                    <li class="flex justify-between border-b border-[#F7F4FB] pb-1.5"><span>﹅ คิว x4 ﹝Queue x4﹞</span> <span class="font-semibold text-stone-700">1 วัน</span></li>
-                    <li class="flex justify-between border-b border-[#F7F4FB] pb-1.5"><span>﹅ คิว x5 ﹝Queue x5﹞</span> <span class="font-semibold text-stone-700">15 ชั่วโมง</span></li>
-                    <li class="flex justify-between border-b border-[#F7F4FB] pb-1.5"><span>﹅ คิว x6 ﹝Queue x6﹞</span> <span class="font-semibold text-stone-700">10 ชั่วโมง</span></li>
-                    <li class="flex justify-between border-b border-[#F7F4FB] pb-1.5"><span>﹅ คิว x7 ﹝Queue x7 ﹞</span> <span class="font-semibold text-stone-700">3-5 ชั่วโมง</span></li>
-                    <li class="flex justify-between"><span>﹅ คิว x8 ﹝Queue x8﹞</span> <span class="font-bold text-[#8E68D1]">1-2 ชั่วโมง</span></li>
+                  <ul class="space-y-2 text-sm text-stone-600 pl-1">
+                    <li class="flex justify-between border-b border-stone-50 pb-1"><span>คิวปกติ ﹝Queue Normal﹞</span> <span class="font-semibold text-[#8E68D1]">7-14 วัน (อาจคลาดเคลื่อน)</span></li>
+                    <li class="flex justify-between border-b border-stone-50 pb-1"><span>คิว x2 ﹝Queue x2﹞</span> <span class="font-semibold text-[#8E68D1]">5-7 วัน</span></li>
+                    <li class="flex justify-between border-b border-stone-50 pb-1"><span>คิว x3 ﹝Queue x3﹞</span> <span class="font-semibold text-[#8E68D1]">2-3 วัน</span></li>
+                    <li class="flex justify-between border-b border-stone-50 pb-1"><span>คิว x4 ﹝Queue x4﹞</span> <span class="font-semibold text-[#8E68D1]">1 วัน</span></li>
+                    <li class="flex justify-between border-b border-stone-50 pb-1"><span>คิว x5 ﹝Queue x5﹞</span> <span class="font-semibold text-[#8E68D1]">15 ชั่วโมง</span></li>
+                    <li class="flex justify-between border-b border-stone-50 pb-1"><span>คิว x6 ﹝Queue x6﹞</span> <span class="font-semibold text-[#8E68D1]">10 ชั่วโมง</span></li>
+                    <li class="flex justify-between border-b border-stone-50 pb-1"><span>คิว x7 ﹝Queue x7﹞</span> <span class="font-semibold text-[#8E68D1]">3-5 ชั่วโมง</span></li>
+                    <li class="flex justify-between pb-1"><span>คิว x8 ﹝Queue x8﹞</span> <span class="font-semibold text-[#8E68D1]">1-2 ชั่วโมง</span></li>
                   </ul>
                 </div>
             
+                <!-- คิวประเภท MV FIVEM -->
                 <div class="bg-white rounded-[24px] p-6 shadow-[0_8px_30px_rgb(0,0,0,0.04)] relative z-10 border border-[#F7F4FB]">
                    <div class="flex items-center gap-2 mb-4 pb-2 border-b border-[#F7F4FB]">
                     <div class="bg-[#D4C3EF]/30 p-1.5 rounded-lg text-[#8E68D1]"><i data-lucide="video" style="width:16px; height:16px;"></i></div>
-                    <h3 class="font-bold text-[#312A4A] text-sm sm:text-base">ระยะเวลาผลงาน MV FIVEM</h3>
-                   </div>
-                  <ul class="space-y-2 text-xs sm:text-sm text-stone-600 pl-1 text-left">
-                    <li class="flex justify-between border-b border-[#F7F4FB] pb-1.5"><span>﹅ คิวปกติ ﹝Queue Normal﹞</span> <span class="font-bold text-[#8E68D1]">14 วัน</span></li>
-                    <li class="flex justify-between border-b border-[#F7F4FB] pb-1.5"><span>﹅ คิว x2 ﹝Queue x2﹞</span> <span class="font-semibold text-stone-700">7 วัน</span></li>
-                    <li class="flex justify-between border-b border-[#F7F4FB] pb-1.5"><span>﹅ คิว x3 ﹝Queue x3﹞</span> <span class="font-semibold text-stone-700">5 วัน</span></li>
-                    <li class="flex justify-between border-b border-[#F7F4FB] pb-1.5"><span>﹅ คิว x4 ﹝Queue x4﹞</span> <span class="font-semibold text-stone-700">3 วัน</span></li>
-                    <li class="flex justify-between border-b border-[#F7F4FB] pb-1.5"><span>﹅ คิว x5 ﹝Queue x5﹞</span> <span class="font-semibold text-stone-700">1-2 วัน</span></li>
-                    <li class="flex flex-col text-left">
-                        <span class="font-medium text-stone-700">﹅ คิว x6 ﹝Queue x6﹞</span>
-                        <span class="text-xs text-[#8E68D1] mt-1">เริ่มทำทันที ช้าหรือไวขึ้นอยู่กับรายละเอียดความยากง่ายของงาน</span>
-                    </li>
+                    <h3 class="font-bold text-[#312A4A]">คิว MV FIVEM</h3>
+                  </div>
+                  <ul class="space-y-2 text-sm text-stone-600 pl-1">
+                    <li class="flex justify-between border-b border-stone-50 pb-1"><span>คิวปกติ ﹝Queue Normal﹞</span> <span class="font-semibold text-[#8E68D1]">14 วัน</span></li>
+                    <li class="flex justify-between border-b border-stone-50 pb-1"><span>คิว x2 ﹝Queue x2﹞</span> <span class="font-semibold text-[#8E68D1]">7 วัน</span></li>
+                    <li class="flex justify-between border-b border-stone-50 pb-1"><span>คิว x3 ﹝Queue x3﹞</span> <span class="font-semibold text-[#8E68D1]">5 วัน</span></li>
+                    <li class="flex justify-between border-b border-stone-50 pb-1"><span>คิว x4 ﹝Queue x4﹞</span> <span class="font-semibold text-[#8E68D1]">3 วัน</span></li>
+                    <li class="flex justify-between border-b border-stone-50 pb-1"><span>คิว x5 ﹝Queue x5﹞</span> <span class="font-semibold text-[#8E68D1]">1-2 วัน</span></li>
+                    <li class="flex justify-between pb-1"><span>คิว x6 ﹝Queue x6﹞</span> <span class="font-semibold text-[#8E68D1] text-right">เริ่มทำทันที (ช้าไวขึ้นกับดีเทล)</span></li>
                   </ul>
+                </div>
+            
+                <div class="pt-2 relative z-10">
+                    <a href="https://discord.gg/yPFwC9Q8NU" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-2 w-full py-3.5 px-6 rounded-2xl bg-[#F7F4FB] text-stone-700 font-medium hover:bg-[#D4C3EF]/40 transition-colors duration-300 mb-3 group relative overflow-hidden">
+                        <span class="text-[#8E68D1] group-hover:scale-110 transition-transform relative z-10"><i data-lucide="external-link" style="width:18px; height:18px;"></i></span>
+                        <span class="relative z-10 font-bold">Join Discord</span>
+                    </a>
                 </div>
                 <!-- Bottom Logo -->
                 <div class="flex justify-center mt-10 mb-2 relative z-10">
                     <div class="w-20 h-20 rounded-full border-[3px] border-white shadow-[0_4px_15px_rgba(49,42,74,0.1)] overflow-hidden bg-white flex items-center justify-center">
-                        <img src="IMG_6210.png" alt="Profile Mini" class="w-full h-full object-cover"/>
+                        <img src="yurinx.png" alt="Profile Mini" class="w-full h-full object-cover"/>
                     </div>
                 </div>
             </div>
 
-            <!-- EXAMPLE (แฟ้มสะสมผลงาน) -->
+            <!-- EXAMPLE -->
             <div id="content-EXAMPLE" class="hidden animate-fadeIn">
                 <div class="text-center mb-6 relative mt-4">
                     <p class="text-[#E5DDF0] font-medium text-sm mb-1 drop-shadow-sm">Portfolios</p>
@@ -253,34 +243,54 @@
                       <i data-lucide="star" class="text-[#D4C3EF]" style="width:18px; height:18px; fill:currentColor;"></i>
                     </h2>
                 </div>
-                <p class="text-center text-sm text-[#E5DDF0] mb-6 drop-shadow-sm">คลิกด้านล่างเพื่อดูผลงานในแฟ้มผลงานไดรฟ์</p>
+                <p class="text-center text-sm text-[#E5DDF0] mb-6 drop-shadow-sm">คลิกเพื่อดูตัวอย่างงานในแฟ้มผลงาน</p>
                 
-                <div class="grid grid-cols-1 gap-4 relative z-10 text-left">
-                  <a href="https://drive.google.com/drive/folders/1n-_fQ1Qkz60-hu-VknSh-mUbtwuu6gEO" target="_blank" rel="noopener noreferrer" class="bg-white rounded-[24px] p-5 shadow-[0_4px_20px_rgb(0,0,0,0.03)] flex items-center gap-4 hover:-translate-y-1 transition-transform group border border-transparent hover:border-[#D4C3EF]/50">
+                <div class="grid grid-cols-1 gap-4 relative z-10">
+                  <a href="https://discord.gg/yPFwC9Q8NU" target="_blank" rel="noopener noreferrer" class="bg-white rounded-[24px] p-5 shadow-[0_4px_20px_rgb(0,0,0,0.03)] flex items-center gap-4 hover:-translate-y-1 transition-transform group border border-transparent hover:border-[#D4C3EF]/50">
                     <div class="w-12 h-12 bg-[#F7F4FB] rounded-2xl flex items-center justify-center text-[#8E68D1] group-hover:bg-[#8E68D1] group-hover:text-white transition-colors">
-                        <i data-lucide="folder-open" style="width:20px; height:20px;"></i>
+                        <i data-lucide="link" style="width:20px; height:20px;"></i>
                     </div>
                     <div>
-                        <h4 class="font-bold text-[#312A4A] text-sm sm:text-base">Yurinx Portfolio</h4>
-                        <p class="text-xs text-stone-500">ผลงานออฟไลน์ FiveM / MV / Graphic ทั้งหมด</p>
+                        <h4 class="font-bold text-[#312A4A]">FiveM Designs</h4>
+                        <p class="text-xs text-stone-500">ตัวอย่างงานดีไซน์ / รูปออฟไลน์</p>
+                    </div>
+                  </a>
+                  
+                  <a href="https://discord.gg/yPFwC9Q8NU" target="_blank" rel="noopener noreferrer" class="bg-white rounded-[24px] p-5 shadow-[0_4px_20px_rgb(0,0,0,0.03)] flex items-center gap-4 hover:-translate-y-1 transition-transform group border border-transparent hover:border-[#D4C3EF]/50">
+                    <div class="w-12 h-12 bg-[#F7F4FB] rounded-2xl flex items-center justify-center text-[#8E68D1] group-hover:bg-[#8E68D1] group-hover:text-white transition-colors">
+                        <i data-lucide="link" style="width:20px; height:20px;"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-[#312A4A]">MV FiveM</h4>
+                        <p class="text-xs text-stone-500">ผลงานวิดีโอ MV ใน FiveM</p>
+                    </div>
+                  </a>
+                  
+                  <a href="https://discord.gg/yPFwC9Q8NU" target="_blank" rel="noopener noreferrer" class="bg-white rounded-[24px] p-5 shadow-[0_4px_20px_rgb(0,0,0,0.03)] flex items-center gap-4 hover:-translate-y-1 transition-transform group border border-transparent hover:border-[#D4C3EF]/50">
+                    <div class="w-12 h-12 bg-[#F7F4FB] rounded-2xl flex items-center justify-center text-[#8E68D1] group-hover:bg-[#8E68D1] group-hover:text-white transition-colors">
+                        <i data-lucide="link" style="width:20px; height:20px;"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-[#312A4A]">Graphics</h4>
+                        <p class="text-xs text-stone-500">ผลงานออกแบบกราฟฟิกทั่วไป</p>
                     </div>
                   </a>
                 </div>
                 <!-- Bottom Logo -->
                 <div class="flex justify-center mt-10 mb-2 relative z-10">
                     <div class="w-20 h-20 rounded-full border-[3px] border-white shadow-[0_4px_15px_rgba(49,42,74,0.1)] overflow-hidden bg-white flex items-center justify-center">
-                        <img src="IMG_6210.png" alt="Profile Mini" class="w-full h-full object-cover"/>
+                        <img src="yurinx.png" alt="Profile Mini" class="w-full h-full object-cover"/>
                     </div>
                 </div>
             </div>
 
-            <!-- PRICE (ราคา) -->
+            <!-- PRICE -->
             <div id="content-PRICE" class="hidden animate-fadeIn pb-4">
                 <div class="text-center mb-6 relative mt-4">
                     <p class="text-[#E5DDF0] font-medium text-sm mb-1 drop-shadow-sm">Service Rates</p>
                     <h2 class="text-2xl font-bold text-[#F7F4FB] flex items-center justify-center gap-2 drop-shadow-md">
                       <i data-lucide="star" class="text-[#D4C3EF]" style="width:18px; height:18px; fill:currentColor;"></i>
-                      Price
+                      Price & Rate
                       <i data-lucide="star" class="text-[#D4C3EF]" style="width:18px; height:18px; fill:currentColor;"></i>
                     </h2>
                 </div>
@@ -288,49 +298,67 @@
                 <div class="bg-white rounded-[24px] p-4 shadow-[0_4px_15px_rgba(142,104,209,0.06)] border border-[#D4C3EF]/20 flex justify-center gap-6 mb-2 relative z-10">
                    <div class="flex flex-col items-center gap-1">
                      <div class="w-10 h-10 bg-[#312A4A]/10 rounded-full flex items-center justify-center text-[#312A4A]"><i data-lucide="check-circle-2" style="width:20px; height:20px;"></i></div>
-                     <span class="text-[10px] font-bold text-[#312A4A]">K-PLUS</span>
+                     <span class="text-[10px] font-bold text-[#312A4A]">BANKING</span>
                    </div>
                    <div class="flex flex-col items-center gap-1">
                      <div class="w-10 h-10 bg-[#8E68D1]/10 rounded-full flex items-center justify-center text-[#8E68D1]"><i data-lucide="check-circle-2" style="width:20px; height:20px;"></i></div>
                      <span class="text-[10px] font-bold text-[#8E68D1]">TRUE MONEY</span>
                    </div>
                 </div>
-                <p class="text-center text-xs text-[#E5DDF0] mb-4 drop-shadow-sm">ช่องทางการชำระเงิน</p>
+                <p class="text-center text-xs text-[#E5DDF0] mb-4 drop-shadow-sm">ช่องทางการชำระเงินหลักของร้าน</p>
             
-                <div class="space-y-2 relative z-10 text-left">
+                <div class="space-y-2 relative z-10">
                     <!-- Price Card 1 -->
                     <div class="bg-white rounded-[32px] p-6 shadow-[0_8px_30px_rgba(142,104,209,0.12)] relative mt-6 border border-[#D4C3EF]/20">
                         <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#D4C3EF]/40 text-[#8E68D1] text-[10px] font-bold px-3 py-1 rounded-full flex items-center gap-1 shadow-sm border border-[#D4C3EF]/50">
-                          HOT DEAL <i data-lucide="sparkles" style="width:10px; height:10px;"></i>
+                          BEST SELLER <i data-lucide="sparkles" style="width:10px; height:10px;"></i>
                         </div>
-                        <h3 class="text-lg font-bold text-center text-[#312A4A] mt-2 mb-1">รูปออฟไลน์ FIVEM</h3>
-                        <p class="text-center text-xs text-stone-400 mb-4">สวยปัง คุมโทน งานคมชัดสไตล์เก๋</p>
+                        <h3 class="text-lg font-bold text-center text-[#312A4A] mt-2 mb-1">รูปออฟไลน์ FiveM</h3>
+                        <p class="text-center text-xs text-stone-400 mb-4">สวย เท่ห์ คุมโทนสไตล์คุณ</p>
                         <div class="bg-[#F7F4FB] border border-[#D4C3EF]/30 rounded-2xl p-4">
                            <div class="flex justify-between items-center mb-3">
-                              <span class="flex items-center gap-1.5 text-[#8E68D1] font-medium text-sm"><i data-lucide="star" style="width:14px; height:14px; fill:currentColor;"></i> ติดต่อสอบถาม</span>
-                              <span class="text-lg font-bold text-[#8E68D1]">DM For Rate</span>
+                              <span class="flex items-center gap-1.5 text-[#8E68D1] font-medium text-sm"><i data-lucide="star" style="width:14px; height:14px; fill:currentColor;"></i> เริ่มต้น</span>
+                              <span class="text-xl font-bold text-[#8E68D1]">Inbox</span>
                            </div>
                            <ul class="space-y-2.5">
-                                 <li class="flex gap-2 text-xs text-stone-600 items-start"><i data-lucide="check" class="text-[#312A4A] mt-0.5 shrink-0" style="width:14px; height:14px;"></i> <span>แต่งรูปออฟไลน์สวยปังคุมโทน</span></li>
-                                 <li class="flex gap-2 text-xs text-stone-600 items-start"><i data-lucide="check" class="text-[#312A4A] mt-0.5 shrink-0" style="width:14px; height:14px;"></i> <span>บรีฟแนวที่ต้องการได้ตามใจชอบ</span></li>
+                                 <li class="flex gap-2 text-xs text-stone-600 items-start"><i data-lucide="check" class="text-[#312A4A] mt-0.5 shrink-0" style="width:14px; height:14px;"></i> <span>แต่งภาพตามความต้องการ</span></li>
+                                 <li class="flex gap-2 text-xs text-stone-600 items-start"><i data-lucide="check" class="text-[#312A4A] mt-0.5 shrink-0" style="width:14px; height:14px;"></i> <span>งานละเอียด คุณภาพสูง</span></li>
                            </ul>
                         </div>
                     </div>
                     <!-- Price Card 2 -->
                     <div class="bg-white rounded-[32px] p-6 shadow-[0_8px_30px_rgba(142,104,209,0.12)] relative mt-6 border border-[#D4C3EF]/20">
                         <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#D4C3EF]/40 text-[#8E68D1] text-[10px] font-bold px-3 py-1 rounded-full flex items-center gap-1 shadow-sm border border-[#D4C3EF]/50">
-                          HOT DEAL <i data-lucide="sparkles" style="width:10px; height:10px;"></i>
+                          HOT ITEM <i data-lucide="sparkles" style="width:10px; height:10px;"></i>
                         </div>
-                        <h3 class="text-lg font-bold text-center text-[#312A4A] mt-2 mb-1">MV FIVEM / GRAPHIC</h3>
-                        <p class="text-center text-xs text-stone-400 mb-4">ตัดต่อระดับคุณภาพคอ FIVEM แท้</p>
+                        <h3 class="text-lg font-bold text-center text-[#312A4A] mt-2 mb-1">MV FIVEM</h3>
+                        <p class="text-center text-xs text-stone-400 mb-4">ตัดต่อภาพสวย เอฟเฟคตระการตา</p>
                         <div class="bg-[#F7F4FB] border border-[#D4C3EF]/30 rounded-2xl p-4">
                            <div class="flex justify-between items-center mb-3">
-                              <span class="flex items-center gap-1.5 text-[#8E68D1] font-medium text-sm"><i data-lucide="star" style="width:14px; height:14px; fill:currentColor;"></i> ติดต่อสอบถาม</span>
-                              <span class="text-lg font-bold text-[#8E68D1]">DM For Rate</span>
+                              <span class="flex items-center gap-1.5 text-[#8E68D1] font-medium text-sm"><i data-lucide="star" style="width:14px; height:14px; fill:currentColor;"></i> เริ่มต้น</span>
+                              <span class="text-xl font-bold text-[#8E68D1]">Inbox</span>
                            </div>
                            <ul class="space-y-2.5">
-                                 <li class="flex gap-2 text-xs text-stone-600 items-start"><i data-lucide="check" class="text-[#312A4A] mt-0.5 shrink-0" style="width:14px; height:14px;"></i> <span>ตัดต่อวิดีโอ MV คมชัด ลื่นไหล</span></li>
-                                 <li class="flex gap-2 text-xs text-stone-600 items-start"><i data-lucide="check" class="text-[#312A4A] mt-0.5 shrink-0" style="width:14px; height:14px;"></i> <span>สร้างสรรค์งานกราฟิกดึงดูดสายตา</span></li>
+                                 <li class="flex gap-2 text-xs text-stone-600 items-start"><i data-lucide="check" class="text-[#312A4A] mt-0.5 shrink-0" style="width:14px; height:14px;"></i> <span>เลือกคิวด่วนพิเศษ x2 ถึง x6 ได้</span></li>
+                                 <li class="flex gap-2 text-xs text-stone-600 items-start"><i data-lucide="check" class="text-[#312A4A] mt-0.5 shrink-0" style="width:14px; height:14px;"></i> <span>ตัดต่อโดยมืออาชีพ</span></li>
+                           </ul>
+                        </div>
+                    </div>
+                    <!-- Price Card 3 -->
+                    <div class="bg-white rounded-[32px] p-6 shadow-[0_8px_30px_rgba(142,104,209,0.12)] relative mt-6 border border-[#D4C3EF]/20">
+                        <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#D4C3EF]/40 text-[#8E68D1] text-[10px] font-bold px-3 py-1 rounded-full flex items-center gap-1 shadow-sm border border-[#D4C3EF]/50">
+                          CREATIVE <i data-lucide="sparkles" style="width:10px; height:10px;"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-center text-[#312A4A] mt-2 mb-1">GRAPHICS</h3>
+                        <p class="text-center text-xs text-stone-400 mb-4">งานออกแบบกราฟฟิกดีไซน์ทุกรูปแบบ</p>
+                        <div class="bg-[#F7F4FB] border border-[#D4C3EF]/30 rounded-2xl p-4">
+                           <div class="flex justify-between items-center mb-3">
+                              <span class="flex items-center gap-1.5 text-[#8E68D1] font-medium text-sm"><i data-lucide="star" style="width:14px; height:14px; fill:currentColor;"></i> เริ่มต้น</span>
+                              <span class="text-xl font-bold text-[#8E68D1]">Inbox</span>
+                           </div>
+                           <ul class="space-y-2.5">
+                                 <li class="flex gap-2 text-xs text-stone-600 items-start"><i data-lucide="check" class="text-[#312A4A] mt-0.5 shrink-0" style="width:14px; height:14px;"></i> <span>งานคมชัด สไตล์โมเดิร์น</span></li>
+                                 <li class="flex gap-2 text-xs text-stone-600 items-start"><i data-lucide="check" class="text-[#312A4A] mt-0.5 shrink-0" style="width:14px; height:14px;"></i> <span>ส่งงานตรงเวลาตามบรีฟ</span></li>
                            </ul>
                         </div>
                     </div>
@@ -338,12 +366,12 @@
                 <!-- Bottom Logo -->
                 <div class="flex justify-center mt-10 mb-2 relative z-10">
                     <div class="w-20 h-20 rounded-full border-[3px] border-white shadow-[0_4px_15px_rgba(49,42,74,0.1)] overflow-hidden bg-white flex items-center justify-center">
-                        <img src="IMG_6210.png" alt="Profile Mini" class="w-full h-full object-cover"/>
+                        <img src="yurinx.png" alt="Profile Mini" class="w-full h-full object-cover"/>
                     </div>
                 </div>
             </div>
 
-            <!-- CONTACT (ติดต่อ) -->
+            <!-- CONTACT -->
             <div id="content-CONTACT" class="hidden animate-fadeIn flex flex-col items-center pb-8 relative">
                 <div class="absolute top-10 right-4 text-[#D4C3EF] animate-float"><i data-lucide="message-circle" style="width:32px; height:32px;"></i></div>
             
@@ -355,9 +383,10 @@
                       <i data-lucide="star" class="text-[#D4C3EF]" style="width:18px; height:18px; fill:currentColor;"></i>
                     </h2>
                 </div>
-                <p class="text-center text-sm text-[#E5DDF0] mb-8 drop-shadow-sm">ช่องทางการติดต่อและสั่งงาน</p>
+                <p class="text-center text-sm text-[#E5DDF0] mb-8 drop-shadow-sm">ช่องทางการติดต่อและสั่งงานของ Yuninx</p>
                 
-                <div class="w-full space-y-4 relative z-10 text-left">
+                <div class="w-full space-y-4 relative z-10">
+                  <!-- Facebook Contact -->
                   <a href="https://www.facebook.com/share/1DqnhnQqhD/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="flex items-center p-4 rounded-[24px] bg-white shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-transparent hover:border-[#D4C3EF] transition-all group">
                     <div class="bg-[#312A4A]/10 text-[#312A4A] p-3 rounded-2xl group-hover:scale-110 group-hover:bg-[#312A4A] group-hover:text-white transition-all mr-4">
                       <i data-lucide="facebook" style="width:24px; height:24px;"></i>
@@ -371,13 +400,14 @@
                     </div>
                   </a>
             
+                  <!-- Discord Contact -->
                   <a href="https://discord.gg/yPFwC9Q8NU" target="_blank" rel="noopener noreferrer" class="flex items-center p-4 rounded-[24px] bg-white shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-transparent hover:border-[#D4C3EF] transition-all group">
                     <div class="bg-[#8E68D1]/10 text-[#8E68D1] p-3 rounded-2xl group-hover:scale-110 group-hover:bg-[#8E68D1] group-hover:text-white transition-all mr-4">
                       <i data-lucide="message-square" style="width:24px; height:24px;"></i>
                     </div>
                     <div class="flex-grow">
                       <p class="font-bold text-[#312A4A] text-lg">Discord</p>
-                      <p class="text-sm text-stone-500">เซิร์ฟเวอร์ดิสคอร์ด Yuninx</p>
+                      <p class="text-sm text-stone-500">Join Community</p>
                     </div>
                      <div class="text-[#D4C3EF] group-hover:text-[#8E68D1] transition-colors">
                         <i data-lucide="external-link" style="width:20px; height:20px;"></i>
@@ -387,7 +417,7 @@
                 <!-- Bottom Logo -->
                 <div class="flex justify-center mt-10 mb-2 relative z-10">
                     <div class="w-20 h-20 rounded-full border-[3px] border-white shadow-[0_4px_15px_rgba(49,42,74,0.1)] overflow-hidden bg-white flex items-center justify-center">
-                        <img src="IMG_6210.png" alt="Profile Mini" class="w-full h-full object-cover"/>
+                        <img src="yurinx.png" alt="Profile Mini" class="w-full h-full object-cover"/>
                     </div>
                 </div>
             </div>
