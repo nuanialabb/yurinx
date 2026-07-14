@@ -110,7 +110,6 @@
                 </div>
 
                 <div class="w-48 h-48 sm:w-56 sm:h-56 rounded-full border-[6px] border-white shadow-[0_8px_30px_rgba(49,42,74,0.15)] mb-6 overflow-hidden bg-white flex items-center justify-center relative z-10">
-                   <!-- อัปเดตแปลงเป็น Direct Link เรียบร้อยเพื่อให้รูปแสดงผล -->
                    <img src="https://lh3.googleusercontent.com/d/1Uml5dUWG_txsCY9P96QKndwPBPTVRkQC" alt="Profile" class="w-full h-full object-cover"/>
                 </div>
             
@@ -140,11 +139,8 @@
                   <span class="flex items-center gap-1.5">Thank you for supporting! <i data-lucide="sparkles" class="text-[#8E68D1]" style="width:12px; height:12px;"></i></span>
                 </div>
             
-                <!-- ปุ่มเช็คคิวงานแบบเส้นประ -->
+                <!-- ปุ่ม Facebook Page (นำ Check Queue ออกแล้ว) -->
                 <div class="w-full max-w-[200px] relative z-10">
-                   <a href="#" class="flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-xl border-2 border-dashed border-[#8E68D1] bg-[#F7F4FB]/60 text-[#8E68D1] text-[11px] font-bold tracking-widest uppercase hover:bg-[#8E68D1]/10 transition-all duration-300 mb-3">
-                    <i data-lucide="calendar" style="width:14px; height:14px;"></i> Check Queue Here
-                  </a>
                    <a href="https://www.facebook.com/share/1DqnhnQqhD/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-2 w-full py-3 px-4 rounded-full border border-[#D4C3EF]/50 bg-[#F7F4FB] text-[#8E68D1] text-[11px] font-bold tracking-widest uppercase hover:bg-[#D4C3EF]/40 hover:scale-105 transition-all duration-300 shadow-sm">
                     <i data-lucide="facebook" style="width:14px; height:14px;"></i> Facebook Page
                   </a>
@@ -226,7 +222,7 @@
                 </div>
             </div>
 
-            <!-- EXAMPLE -->
+            <!-- EXAMPLE (ปรับปรุงให้กดคลิกได้ทุกอันแล้ว) -->
             <div id="content-EXAMPLE" class="hidden animate-fadeIn">
                 <div class="text-center mb-6 relative mt-4">
                     <p class="text-[#E5DDF0] font-medium text-sm mb-1 drop-shadow-sm">Portfolios</p>
@@ -236,38 +232,56 @@
                       <i data-lucide="star" class="text-[#D4C3EF]" style="width:18px; height:18px; fill:currentColor;"></i>
                     </h2>
                 </div>
-                <p class="text-center text-sm text-[#E5DDF0] mb-6 drop-shadow-sm">ตัวอย่างผลงานประเภทต่างๆ</p>
+                <p class="text-center text-sm text-[#E5DDF0] mb-6 drop-shadow-sm">ตัวอย่างผลงานประเภทต่างๆ (คลิกเพื่อดูผลงาน)</p>
                 
                 <div class="grid grid-cols-1 gap-4 relative z-10">
-                  <div class="bg-white rounded-[24px] p-5 shadow-[0_4px_20px_rgb(0,0,0,0.03)] flex items-center gap-4 border border-transparent">
-                    <div class="w-12 h-12 bg-[#F7F4FB] rounded-2xl flex items-center justify-center text-[#8E68D1]">
-                        <i data-lucide="image" style="width:20px; height:20px;"></i>
+                  <!-- ปุ่มย่อยที่ 1 -->
+                  <a href="#" class="bg-white rounded-[24px] p-5 shadow-[0_4px_20px_rgb(0,0,0,0.03)] flex items-center gap-4 border border-transparent hover:border-[#D4C3EF] hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] transition-all duration-300 group block">
+                    <div class="flex items-center w-full">
+                        <div class="w-12 h-12 bg-[#F7F4FB] rounded-2xl flex items-center justify-center text-[#8E68D1] group-hover:bg-[#8E68D1] group-hover:text-white transition-colors duration-300 mr-4 shrink-0">
+                            <i data-lucide="image" style="width:20px; height:20px;"></i>
+                        </div>
+                        <div class="flex-grow text-left">
+                            <h4 class="font-bold text-[#312A4A]">FIVEM Offline Picture</h4>
+                            <p class="text-xs text-stone-500">รูปภาพออฟไลน์เกม FiveM</p>
+                        </div>
+                        <div class="text-[#D4C3EF] group-hover:text-[#8E68D1] transition-colors">
+                            <i data-lucide="chevron-right" style="width:20px; height:20px;"></i>
+                        </div>
                     </div>
-                    <div>
-                        <h4 class="font-bold text-[#312A4A]">FIVEM Offline Picture</h4>
-                        <p class="text-xs text-stone-500">รูปภาพออฟไลน์เกม FiveM</p>
-                    </div>
-                  </div>
+                  </a>
                   
-                  <div class="bg-white rounded-[24px] p-5 shadow-[0_4px_20px_rgb(0,0,0,0.03)] flex items-center gap-4 border border-transparent">
-                    <div class="w-12 h-12 bg-[#F7F4FB] rounded-2xl flex items-center justify-center text-[#8E68D1]">
-                        <i data-lucide="video" style="width:20px; height:20px;"></i>
+                  <!-- ปุ่มย่อยที่ 2 -->
+                  <a href="#" class="bg-white rounded-[24px] p-5 shadow-[0_4px_20px_rgb(0,0,0,0.03)] flex items-center gap-4 border border-transparent hover:border-[#D4C3EF] hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] transition-all duration-300 group block">
+                    <div class="flex items-center w-full">
+                        <div class="w-12 h-12 bg-[#F7F4FB] rounded-2xl flex items-center justify-center text-[#8E68D1] group-hover:bg-[#8E68D1] group-hover:text-white transition-colors duration-300 mr-4 shrink-0">
+                            <i data-lucide="video" style="width:20px; height:20px;"></i>
+                        </div>
+                        <div class="flex-grow text-left">
+                            <h4 class="font-bold text-[#312A4A]">MV FIVEM</h4>
+                            <p class="text-xs text-stone-500">มิวสิควิดีโอ/งานตัดต่อในดีไซน์ FiveM</p>
+                        </div>
+                        <div class="text-[#D4C3EF] group-hover:text-[#8E68D1] transition-colors">
+                            <i data-lucide="chevron-right" style="width:20px; height:20px;"></i>
+                        </div>
                     </div>
-                    <div>
-                        <h4 class="font-bold text-[#312A4A]">MV FIVEM</h4>
-                        <p class="text-xs text-stone-500">มิวสิควิดีโอ/งานตัดต่อในดีไซน์ FiveM</p>
-                    </div>
-                  </div>
+                  </a>
                   
-                  <div class="bg-white rounded-[24px] p-5 shadow-[0_4px_20px_rgb(0,0,0,0.03)] flex items-center gap-4 border border-transparent">
-                    <div class="w-12 h-12 bg-[#F7F4FB] rounded-2xl flex items-center justify-center text-[#8E68D1]">
-                        <i data-lucide="palette" style="width:20px; height:20px;"></i>
+                  <!-- ปุ่มย่อยที่ 3 -->
+                  <a href="#" class="bg-white rounded-[24px] p-5 shadow-[0_4px_20px_rgb(0,0,0,0.03)] flex items-center gap-4 border border-transparent hover:border-[#D4C3EF] hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] transition-all duration-300 group block">
+                    <div class="flex items-center w-full">
+                        <div class="w-12 h-12 bg-[#F7F4FB] rounded-2xl flex items-center justify-center text-[#8E68D1] group-hover:bg-[#8E68D1] group-hover:text-white transition-colors duration-300 mr-4 shrink-0">
+                            <i data-lucide="palette" style="width:20px; height:20px;"></i>
+                        </div>
+                        <div class="flex-grow text-left">
+                            <h4 class="font-bold text-[#312A4A]">Graphic Design</h4>
+                            <p class="text-xs text-stone-500">งานออกแบบกราฟิกทั่วไปตามบรีฟ</p>
+                        </div>
+                        <div class="text-[#D4C3EF] group-hover:text-[#8E68D1] transition-colors">
+                            <i data-lucide="chevron-right" style="width:20px; height:20px;"></i>
+                        </div>
                     </div>
-                    <div>
-                        <h4 class="font-bold text-[#312A4A]">Graphic Design</h4>
-                        <p class="text-xs text-stone-500">งานออกแบบกราฟิกทั่วไปตามบรีฟ</p>
-                    </div>
-                  </div>
+                  </a>
                 </div>
                 <!-- Bottom Logo -->
                 <div class="flex justify-center mt-10 mb-2 relative z-10">
