@@ -3,21 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yuninx - Welcome to my shop</title>
+    <title>Pinkjulieland - Welcome to my shop</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Mitr:wght@300;400;500;600&family=Slackey&display=swap" rel="stylesheet">
     <style>
         :root {
-            --color-pink-bg: #1a1525;
-            --color-pink-dot: #2d243d;
-            --color-pink-dark: #b67eff;
-            --color-pink-light: #503d6e;
-            --color-brown-dark: #e2d9f3;
-            --color-brown-light: #bcaada;
+            --color-pink-bg: #ffe4ef;
+            --color-pink-dot: #fff;
+            --color-pink-dark: #ff85b3;
+            --color-pink-light: #ffb8d1;
+            --color-brown-dark: #5c3a21;
+            --color-brown-light: #7b5338;
         }
-
         /* ใช้ฟอนต์ Mitr สำหรับเนื้อหาทั่วไป */
         body {
             font-family: 'Mitr', sans-serif;
@@ -28,32 +27,27 @@
             color: var(--color-brown-dark);
             scroll-behavior: smooth;
         }
-
         /* ฟอนต์ส่วนหัว Slackey (เพิ่ม Mitr เป็น Fallback สำหรับภาษาไทย) */
         .font-slackey {
             font-family: 'Slackey', 'Mitr', cursive;
         }
-
         .text-shadow-cute {
-            text-shadow: 2px 2px 0px #1a1525, 3px 3px 0px var(--color-pink-dark);
+            text-shadow: 2px 2px 0px #fff, 3px 3px 0px var(--color-pink-light);
         }
-
         /* Clean Container แทนแบบเก่า */
         .clean-box {
-            background: rgba(34, 28, 48, 0.95);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             border-radius: 40px;
-            box-shadow: 0 10px 40px rgba(182, 126, 255, 0.15);
+            box-shadow: 0 10px 40px rgba(255, 133, 179, 0.15);
         }
-
         /* Custom Scrollbar */
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: var(--color-pink-bg); }
         ::-webkit-scrollbar-thumb { background: var(--color-pink-dark); border-radius: 10px; }
-
+        
         .modal-enter { animation: modalFadeIn 0.3s ease-out forwards; }
         .modal-exit { animation: modalFadeOut 0.2s ease-in forwards; }
-        
         @keyframes modalFadeIn {
             from { opacity: 0; transform: scale(0.95); }
             to { opacity: 1; transform: scale(1); }
@@ -62,7 +56,6 @@
             from { opacity: 1; transform: scale(1); }
             to { opacity: 0; transform: scale(0.95); }
         }
-
         /* Slider Animations */
         .slider-track {
             display: flex;
@@ -76,391 +69,391 @@
 <body class="min-h-screen pb-12">
 
     <!-- Overlay สำหรับ Sidebar Menu -->
-    <div id="menu-overlay" onclick="toggleMenu()" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 hidden opacity-0 transition-opacity duration-300"></div>
+    <div id=\"menu-overlay\" onclick="toggleMenu()" class="fixed inset-0 bg-black/30 backdrop-blur-sm z-40 hidden opacity-0 transition-opacity duration-300"></div>
 
     <!-- Sidebar Menu 🎀 -->
-    <div id="side-menu" class="fixed inset-y-0 left-0 w-64 bg-[#221c30]/95 backdrop-blur-md shadow-2xl z-50 transform -translate-x-full transition-transform duration-300 ease-in-out border-r border-[#b67eff]/20">
+    <div id="side-menu" class="fixed inset-y-0 left-0 w-64 bg-white/95 backdrop-blur-md shadow-2xl z-50 transform -translate-x-full transition-transform duration-300 ease-in-out border-r border-pink-200">
         <div class="p-5 h-full flex flex-col">
             <!-- Header Menu -->
-            <div class="flex justify-between items-center mb-6 border-b border-[#503d6e] pb-4">
-                <span class="font-slackey text-xl text-[#b67eff] text-shadow-cute">MENU</span>
-                <button onclick="toggleMenu()" class="text-purple-300 hover:text-purple-400 bg-purple-950 p-1 rounded-full transition">
+            <div class="flex justify-between items-center mb-6 border-b border-pink-100 pb-4">
+                <span class="font-slackey text-xl text-[#ff85b3] text-shadow-cute">MENU</span>
+                <button onclick="toggleMenu()" class="text-pink-300 hover:text-pink-500 bg-pink-50 p-1 rounded-full transition">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
                 </button>
             </div>
-            
             <!-- Menu Links -->
-            <div class="space-y-3 font-medium text-[#e2d9f3] flex-1">
-                <a href="#services" onclick="toggleMenu()" class="flex items-center gap-3 p-3 hover:bg-purple-900/40 rounded-xl transition text-[15px]">
-                    <span class="text-[#b67eff]"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.6H22l-6.2 4.5 2.4 7.6-6.2-4.5-6.2 4.5 2.4-7.6-6.2-4.5h7.6z"/></svg></span> บริการของเรา
+            <div class="space-y-3 font-medium text-[#5c3a21] flex-1">
+                <a href="#services" onclick="toggleMenu()" class="flex items-center gap-3 p-3 hover:bg-pink-50 rounded-xl transition text-[15px]">
+                    <span class="text-[#ff85b3]"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.6H22l-6.2 4.5 2.4 7.6-6.2-4.5-6.2 4.5 2.4-7.6-6.2-4.5h7.6z"/></svg></span> บริการของเรา
                 </a>
-                <a href="#portfolio" onclick="toggleMenu()" class="flex items-center gap-3 p-3 hover:bg-purple-900/40 rounded-xl transition text-[15px]">
-                    <span class="text-[#b67eff]"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></span> ตัวอย่างงาน
+                <a href="#portfolio" onclick="toggleMenu()" class="flex items-center gap-3 p-3 hover:bg-pink-50 rounded-xl transition text-[15px]">
+                    <span class="text-[#ff85b3]"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></span> ตัวอย่างงาน
                 </a>
-                <a href="#pricing" onclick="toggleMenu()" class="flex items-center gap-3 p-3 hover:bg-purple-900/40 rounded-xl transition text-[15px]">
-                    <span class="text-[#b67eff]"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58.55 0 1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41 0-.55-.23-1.06-.59-1.42zM5.5 7C4.67 7 4 6.33 4 5.5S4.67 4 5.5 4 7 4.67 7 5.5 6.33 7 5.5 7z"/></svg></span> Price List / คิวงาน
+                <a href="#pricing" onclick="toggleMenu()" class="flex items-center gap-3 p-3 hover:bg-pink-50 rounded-xl transition text-[15px]">
+                    <span class="text-[#ff85b3]"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58.55 0 1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41 0-.55-.23-1.06-.59-1.42zM5.5 7C4.67 7 4 6.33 4 5.5S4.67 4 5.5 4 7 4.67 7 5.5 6.33 7 5.5 7z"/></svg></span> Price List
                 </a>
-                <a href="#course" onclick="toggleMenu()" class="flex items-center gap-3 p-3 hover:bg-purple-900/40 rounded-xl transition text-[15px]">
-                    <span class="text-[#b67eff]"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20 18c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2H0v2h24v-2h-4zM4 6h16v10H4V6z"/></svg></span> คอร์สสอนทำเว็บ
+                <a href="#course" onclick="toggleMenu()" class="flex items-center gap-3 p-3 hover:bg-pink-50 rounded-xl transition text-[15px]">
+                    <span class="text-[#ff85b3]"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20 18c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2H0v2h24v-2h-4zM4 6h16v10H4V6z"/></svg></span> คอร์สสอนทำเว็บ
                 </a>
-                <a href="#goodnote" onclick="toggleMenu()" class="flex items-center gap-3 p-3 hover:bg-purple-900/40 rounded-xl transition text-[15px]">
-                    <span class="text-[#b67eff]"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z"/></svg></span> Goodnote App
+                <a href="#goodnote" onclick="toggleMenu()" class="flex items-center gap-3 p-3 hover:bg-pink-50 rounded-xl transition text-[15px]">
+                    <span class="text-[#ff85b3]"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z"/></svg></span> Goodnote App
                 </a>
-                <a href="#contact" onclick="toggleMenu()" class="flex items-center gap-3 p-3 hover:bg-purple-900/40 rounded-xl transition text-[15px]">
-                    <span class="text-[#b67eff]"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></span> ติดต่อเรา
+                <a href="#contact" onclick="toggleMenu()" class="flex items-center gap-3 p-3 hover:bg-pink-50 rounded-xl transition text-[15px]">
+                    <span class="text-[#ff85b3]"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></span> ติดต่อเรา
                 </a>
             </div>
-            
             <!-- Bottom Menu Info -->
-            <div class="mt-auto border-t border-[#503d6e] pt-4 text-center">
-                <p class="font-slackey text-xs text-purple-400">YUNINX SHOP</p>
+            <div class="mt-auto border-t border-pink-100 pt-4 text-center">
+                <p class="font-slackey text-xs text-pink-400">PINKJULIELAND</p>
             </div>
         </div>
     </div>
 
     <!-- Top Bar -->
-    <div class="w-full bg-[#221c30]/90 backdrop-blur-md border-b border-[#503d6e] py-3 px-4 flex justify-between items-center text-[10px] sm:text-xs font-slackey text-purple-400 font-medium uppercase tracking-wider sticky top-0 z-30 shadow-sm">
+    <div class="w-full bg-white/90 backdrop-blur-md border-b border-pink-200 py-3 px-4 flex justify-between items-center text-[10px] sm:text-xs font-slackey text-pink-400 font-medium uppercase tracking-wider sticky top-0 z-30 shadow-sm">
         <div class="flex items-center gap-2 sm:gap-3">
             <!-- Hamburger Menu (3 ขีด) -->
-            <button onclick="toggleMenu()" class="p-1.5 hover:bg-purple-900 rounded-md text-purple-400 transition-colors focus:outline-none cursor-pointer">
+            <button onclick="toggleMenu()" class="p-1.5 hover:bg-pink-100 rounded-md text-pink-500 transition-colors focus:outline-none cursor-pointer">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                     <line x1="3" y1="12" x2="21" y2="12"></line>
                     <line x1="3" y1="6" x2="21" y2="6"></line>
                     <line x1="3" y1="18" x2="21" y2="18"></line>
                 </svg>
             </button>
-            <span>YUNINX ></span>
-            <span class="text-purple-500 hidden sm:inline">></span>
+            <span>PINKJULIELAND &gt;</span>
+            <span class="text-pink-300 hidden sm:inline">&gt;</span>
         </div>
         <div class="flex items-center gap-4">
             <span class="flex items-center gap-1">
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>
                 NO COPY
             </span>
-            <span class="hidden sm:inline border-l border-[#503d6e] pl-4">DO NOT STEAL</span>
+            <span class="hidden sm:inline border-l border-pink-200 pl-4">DO NOT STEAL</span>
         </div>
     </div>
 
     <!-- Main Container -->
     <main class="max-w-2xl mx-auto mt-6 sm:mt-10 px-4 relative z-0">
-        
         <!-- The Clean Board -->
-        <div class="clean-box p-6 sm:p-10 z-0 border border-purple-900/30">
+        <div class="clean-box p-6 sm:p-10 z-0 border border-white">
             
             <!-- Header Section -->
             <div class="text-center mb-8 relative flex flex-col items-center">
                 <!-- Decorations (Stars & Sparkles) ✨ -->
-                <svg class="absolute top-2 left-2 sm:left-10 w-6 h-6 text-[#b67eff] animate-pulse" viewBox="0 0 24 24" fill="currentColor">
+                <!-- Top Left Sparkle -->
+                <svg class="absolute top-2 left-2 sm:left-10 w-6 h-6 text-[#ff85b3] animate-pulse" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M12 0C12 0 12 10 22 12C12 14 12 24 12 24C12 24 12 14 2 12C12 10 12 0 12 0Z" />
                 </svg>
-                <svg class="absolute top-6 right-4 sm:right-12 w-5 h-5 text-purple-400 animate-bounce" style="animation-duration: 2.5s;" viewBox="0 0 24 24" fill="currentColor">
+                <!-- Top Right Star -->
+                <svg class="absolute top-6 right-4 sm:right-12 w-5 h-5 text-[#ffb8d1] animate-bounce" style="animation-duration: 2.5s;" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M12 2l2.4 7.6H22l-6.2 4.5 2.4 7.6-6.2-4.5-6.2 4.5 2.4-7.6-6.2-4.5h7.6z"/>
                 </svg>
-                <svg class="absolute bottom-4 left-8 sm:left-16 w-4 h-4 text-purple-500 animate-pulse" style="animation-delay: 1s;" viewBox="0 0 24 24" fill="currentColor">
+                <!-- Bottom Left Tiny Sparkle -->
+                <svg class="absolute bottom-4 left-8 sm:left-16 w-4 h-4 text-[#ffb8d1] animate-pulse" style="animation-delay: 1s;" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M12 0C12 0 12 10 22 12C12 14 12 24 12 24C12 24 12 14 2 12C12 10 12 0 12 0Z" />
                 </svg>
-                <svg class="absolute bottom-8 right-8 sm:right-16 w-4 h-4 text-[#b67eff]" viewBox="0 0 24 24" fill="currentColor">
+                <!-- Bottom Right Tiny Star -->
+                <svg class="absolute bottom-8 right-8 sm:right-16 w-4 h-4 text-[#ff85b3]" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M12 2l2.4 7.6H22l-6.2 4.5 2.4 7.6-6.2-4.5-6.2 4.5 2.4-7.6-6.2-4.5h7.6z"/>
                 </svg>
 
                 <!-- Profile Picture -->
                 <div class="relative w-28 h-28 sm:w-32 sm:h-32 mb-2 group">
-                    <div class="absolute inset-0 bg-gradient-to-tr from-[#b67eff] to-[#503d6e] rounded-full opacity-40 blur-md group-hover:opacity-60 transition duration-300"></div>
-                    <img src="https://drive.google.com/thumbnail?id=1Uml5dUWG_txsCY9P96QKndwPBPTVRkQC&sz=w500" alt="Profile Picture" class="relative w-full h-full object-cover rounded-full border-4 border-[#221c30] shadow-md z-10 transition-transform duration-300 group-hover:scale-105">
-                    <div class="absolute -bottom-1 -right-1 bg-[#221c30] rounded-full p-1.5 shadow-sm z-20 border border-purple-900/40">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="#b67eff"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                    <!-- Glow Effect -->
+                    <div class="absolute inset-0 bg-gradient-to-tr from-[#ff85b3] to-[#ffb8d1] rounded-full opacity-40 blur-md group-hover:opacity-60 transition duration-300"></div>
+                    <!-- Image -->
+                    <img src="https://i.pinimg.com/736x/89/90/48/899048ab0cc455154006fdb9676964b3.jpg" alt="Profile Picture" class="relative w-full h-full object-cover rounded-full border-4 border-white shadow-md z-10 transition-transform duration-300 group-hover:scale-105">
+                    <!-- Cute Heart Badge -->
+                    <div class="absolute -bottom-1 -right-1 bg-white rounded-full p-1.5 shadow-sm z-20 border border-pink-100">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="#ff85b3"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
                     </div>
                 </div>
 
-                <h1 class="font-slackey text-4xl sm:text-5xl font-bold text-[#b67eff] text-shadow-cute mb-3 tracking-wide mt-3">Yuninx</h1>
-                <h2 class="font-slackey text-xl text-[#e2d9f3] bg-[#2d243d] inline-block px-6 py-1.5 rounded-full shadow-sm">Welcome to my shop</h2>
+                <h1 class="font-slackey text-4xl sm:text-5xl font-bold text-[#ff85b3] text-shadow-cute mb-3 tracking-wide mt-3">Pinkjulieland</h1>
+                <h2 class="font-slackey text-xl text-[#5c3a21] bg-[#ffe4ef] inline-block px-6 py-1.5 rounded-full shadow-sm">Welcome to my shop</h2>
             </div>
 
             <!-- Image Slider Section -->
             <div class="mb-10 relative rounded-3xl overflow-hidden shadow-md group">
                 <div class="slider-track" id="slider-track">
                     <!-- Slide 1 -->
-                    <div class="slide bg-gradient-to-r from-purple-900 to-[#221c30] h-40 sm:h-56 flex flex-col items-center justify-center text-center p-4">
-                        <span class="font-slackey text-2xl sm:text-3xl text-[#b67eff] mb-2">ทำรูปออฟไลน์ FiveM</span>
-                        <span class="text-sm text-[#e2d9f3] bg-black/40 px-4 py-1 rounded-full">ดีไซน์สวยงามเป็นเอกลักษณ์</span>
+                    <div class="slide bg-gradient-to-r from-pink-200 to-pink-100 h-40 sm:h-56 flex flex-col items-center justify-center text-center p-4">
+                        <span class="font-slackey text-2xl sm:text-3xl text-[#5c3a21] mb-2">บริการรับทำเว็บไซต์</span>
+                        <span class="text-sm text-[#7b5338] bg-white/50 px-4 py-1 rounded-full">เริ่มต้นเพียง 129.-</span>
                     </div>
                     <!-- Slide 2 -->
-                    <div class="slide bg-gradient-to-r from-[#2d243d] to-purple-950 h-40 sm:h-56 flex flex-col items-center justify-center text-center p-4">
-                        <span class="font-slackey text-2xl sm:text-3xl text-[#b67eff] mb-2">MV FIVEM</span>
-                        <span class="text-sm text-[#e2d9f3] bg-black/40 px-4 py-1 rounded-full">ตัดต่อคุณภาพระดับพรีเมียม</span>
+                    <div class="slide bg-gradient-to-r from-[#ffe4ef] to-[#ffb8d1] h-40 sm:h-56 flex flex-col items-center justify-center text-center p-4">
+                        <span class="font-slackey text-2xl sm:text-3xl text-[#5c3a21] mb-2">Goodnote App</span>
+                        <span class="text-sm text-[#7b5338] bg-white/50 px-4 py-1 rounded-full">เมลรวม 20.- เท่านั้น</span>
                     </div>
                     <!-- Slide 3 -->
-                    <div class="slide bg-gradient-to-r from-purple-950 to-purple-900 h-40 sm:h-56 flex flex-col items-center justify-center text-center p-4">
-                        <span class="font-slackey text-2xl sm:text-3xl text-[#b67eff] mb-2">งานกราฟฟิคทุกรูปแบบ</span>
-                        <span class="text-sm text-[#e2d9f3] bg-black/40 px-4 py-1 rounded-full">งานไว มั่นใจคุณภาพ</span>
+                    <div class="slide bg-gradient-to-r from-pink-100 to-[#ffe4ef] h-40 sm:h-56 flex flex-col items-center justify-center text-center p-4">
+                        <span class="font-slackey text-2xl sm:text-3xl text-[#5c3a21] mb-2">คอร์สสอนทำเว็บร้าน</span>
+                        <span class="text-sm text-[#7b5338] bg-white/50 px-4 py-1 rounded-full">ราคาโปรโมชั่น 299.-</span>
                     </div>
                 </div>
-                
                 <!-- Slider Controls -->
-                <button onclick="prevSlide()" class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 text-[#b67eff] w-8 h-8 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity shadow-sm hover:bg-black">
+                <button onclick="prevSlide()" class="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 text-[#ff85b3] w-8 h-8 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity shadow-sm hover:bg-white">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
                 </button>
-                <button onclick="nextSlide()" class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 text-[#b67eff] w-8 h-8 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity shadow-sm hover:bg-black">
+                <button onclick="nextSlide()" class="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 text-[#ff85b3] w-8 h-8 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity shadow-sm hover:bg-white">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
                 </button>
-                
                 <!-- Slider Dots -->
                 <div class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2" id="slider-dots">
-                    <button class="w-4 h-2 rounded-full bg-[#b67eff] transition-all"></button>
-                    <button class="w-2 h-2 rounded-full bg-white/40 transition-all"></button>
-                    <button class="w-2 h-2 rounded-full bg-white/40 transition-all"></button>
+                    <button class="w-4 h-2 rounded-full bg-[#ff85b3] transition-all"></button>
+                    <button class="w-2 h-2 rounded-full bg-white/60 transition-all"></button>
+                    <button class="w-2 h-2 rounded-full bg-white/60 transition-all"></button>
                 </div>
             </div>
 
-            <!-- Intro Section / บริการของร้าน -->
-            <div id="services" class="text-center mb-10 bg-[#2d243d] p-6 rounded-2xl border border-purple-900/40 shadow-sm mt-6">
+            <!-- Intro Section -->
+            <div id="services" class="text-center mb-10 bg-[#fff0f5] p-6 rounded-2xl border border-pink-100 shadow-sm mt-6">
+                <!-- ไอคอน Services -->
                 <div class="flex justify-center mb-4">
-                    <div class="bg-[#1a1525] rounded-full p-2.5 shadow-sm border border-purple-900/40 text-[#b67eff]">
+                    <div class="bg-white rounded-full p-2.5 shadow-sm border border-pink-100 text-[#ff85b3]">
                         <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
                     </div>
                 </div>
-                <p class="text-[15px] sm:text-base leading-relaxed text-[#e2d9f3]">
-                    ยินดีต้อนรับสู่ร้าน <span class="text-[#b67eff] font-semibold">Yuninx</span> ผู้ให้บริการด้านงานกราฟฟิคและโปรดักชั่น FiveM ครบวงจร<br>
-                    <span class="text-purple-300 text-sm mt-1 inline-block">สร้างสรรค์ผลงานอย่างมืออาชีพตามใจคุณ</span>
+                <p class="text-[15px] sm:text-base leading-relaxed text-[#5c3a21]">
+                    ร้านจูรับทำเว็บไซต์ครบวงจร และจำหน่ายแอป Goodnote ทุกรูปแบบ<br>
+                    <span class="text-[#ff85b3] font-semibold text-lg mt-1 inline-block">เริ่มต้นที่ 20.- เท่านั้น</span>
                 </p>
             </div>
 
             <!-- Services Section -->
             <div class="mb-10">
-                <h3 class="font-slackey text-2xl font-semibold mb-4 flex items-center gap-2 text-[#b67eff]">
+                <h3 class="font-slackey text-2xl font-semibold mb-4 flex items-center gap-2 text-[#ff85b3]">
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                    งานที่รับทำ (Services)
+                    เว็บที่รับทำ หลากหลายประเภท
                 </h3>
-                <ul class="space-y-3 text-[15px] sm:text-base mb-5 text-[#e2d9f3]">
-                    <li class="flex items-center gap-3 bg-purple-950/40 p-3 rounded-xl border border-purple-900/20"><svg class="w-4 h-4 flex-shrink-0 text-[#b67eff]" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="8"/></svg> ทำรูปออฟไลน์ FiveM ทุกสไตล์</li>
-                    <li class="flex items-center gap-3 bg-purple-950/40 p-3 rounded-xl border border-purple-900/20"><svg class="w-4 h-4 flex-shrink-0 text-[#b67eff]" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="8"/></svg> ตัดต่อและสร้างสรรค์ MV FIVEM คุณภาพสูง</li>
-                    <li class="flex items-center gap-3 bg-purple-950/40 p-3 rounded-xl border border-purple-900/20"><svg class="w-4 h-4 flex-shrink-0 text-[#b67eff]" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="8"/></svg> งานดีไซน์กราฟฟิคทั่วไปตามบรีฟ</li>
+                <ul class="space-y-3 text-[15px] sm:text-base mb-5 text-[#5c3a21]">
+                    <li class="flex items-center gap-3 bg-pink-50/50 p-2 rounded-xl"><svg class="w-4 h-4 flex-shrink-0 text-[#ffb8d1]" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="8"/></svg> เว็บเรทราคาแอปพรีเมียม</li>
+                    <li class="flex items-center gap-3 bg-pink-50/50 p-2 rounded-xl"><svg class="w-4 h-4 flex-shrink-0 text-[#ffb8d1]" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="8"/></svg> เว็บเรทราคารับเติมเกมส์</li>
+                    <li class="flex items-center gap-3 bg-pink-50/50 p-2 rounded-xl"><svg class="w-4 h-4 flex-shrink-0 text-[#ffb8d1]" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="8"/></svg> เว็บเรทราคารับทำป้าย</li>
+                    <li class="flex items-center gap-3 bg-pink-50/50 p-2 rounded-xl"><svg class="w-4 h-4 flex-shrink-0 text-[#ffb8d1]" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="8"/></svg> เว็บอื่น ๆ สอบถามเพิ่มเติมได้ค่ะ</li>
                 </ul>
+                <p class="text-sm bg-pink-100/50 p-4 rounded-xl text-[#7b5338]">
+                    เว็บสารพัดประโยชน์ไม่จำกัดข้อมูลในการใส่ อยากให้แสดงอะไรบนหน้าเว็บ ใส่มาได้เลย ทางเราออกแบบจัดวางให้ฟรี
+                </p>
             </div>
 
             <!-- Popups for Sample Work -->
-            <div id="portfolio" class="mb-10 bg-[#2d243d] border border-purple-900/40 rounded-2xl p-6 text-center shadow-md relative overflow-hidden mt-6">
+            <div id="portfolio" class="mb-10 bg-[#5c3a21] rounded-2xl p-6 text-center shadow-md relative overflow-hidden mt-6">
+                <!-- SVG พื้นหลัง -->
                 <svg class="absolute -right-4 -bottom-4 opacity-10 w-24 h-24 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-                
+                <!-- ไอคอนหัวใจน่ารักๆ -->
                 <div class="flex justify-center mb-4 mt-2 relative z-10">
-                    <svg width="40" height="40" viewBox="0 0 24 24" fill="#b67eff"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="#ffb8d1"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
                 </div>
-                
-                <h3 class="font-slackey text-white text-2xl font-medium mb-5 relative z-10">ตัวอย่างผลงานของเรา (Portfolio)</h3>
+                <h3 class="font-slackey text-white text-2xl font-medium mb-5 relative z-10">ตัวอย่างงานเว็บพิ้งจู คลิกที่นี่</h3>
                 <div class="flex flex-wrap justify-center gap-3 relative z-10">
-                    <a href="https://drive.google.com/drive/folders/12naPphb2ytZOvFqNYXu6za_iFL18pasU" target="_blank" class="bg-[#b67eff] text-black px-6 py-2.5 rounded-full hover:bg-white hover:text-[#b67eff] transition duration-300 text-sm font-medium border-2 border-[#b67eff] shadow-sm">งานกราฟฟิค</a>
-                    <a href="https://drive.google.com/drive/folders/1Er_HHdMAEzAtv3GgNQkO0oZ1WdxaeucO" target="_blank" class="bg-[#1a1525] text-white px-6 py-2.5 rounded-full hover:bg-white hover:text-[#1a1525] transition duration-300 text-sm font-medium border-2 border-[#1a1525] shadow-sm">งานรูปภาพ</a>
-                    <a href="https://drive.google.com/drive/folders/1FYcvzfhqCcV6lmzHMK0yRCBixTvHayKf" target="_blank" class="bg-purple-900 text-white px-6 py-2.5 rounded-full hover:bg-white transition duration-300 text-sm font-medium border-2 border-purple-900 shadow-sm">งาน MV FiveM</a>
+                    <button onclick="openModal('modal-bright')" class="bg-[#ff85b3] text-white px-6 py-2.5 rounded-full hover:bg-white hover:text-[#ff85b3] transition duration-300 text-sm font-medium border-2 border-[#ff85b3] shadow-sm">สดใส</button>
+                    <button onclick="openModal('modal-dark')" class="bg-[#3a2515] text-white px-6 py-2.5 rounded-full hover:bg-white hover:text-[#3a2515] transition duration-300 text-sm font-medium border-2 border-[#3a2515] shadow-sm">โทนมืด</button>
+                    <button onclick="openModal('modal-pastel')" class="bg-[#ffb8d1] text-[#5c3a21] px-6 py-2.5 rounded-full hover:bg-white transition duration-300 text-sm font-medium border-2 border-[#ffb8d1] shadow-sm">พาสเทล</button>
                 </div>
             </div>
 
-            <!-- Pricing & Queue System -->
+            <!-- Pricing Web -->
             <div id="pricing" class="mb-10">
-                <div class="bg-[#221c30] rounded-2xl p-6 border border-purple-900/40 shadow-sm mt-6">
+                <div class="bg-white rounded-2xl p-6 border border-pink-100 shadow-sm mt-6">
+                    <!-- ไอคอน Price -->
                     <div class="flex justify-center mb-4">
-                        <div class="bg-[#2d243d] rounded-full p-2.5 border border-purple-900/40 text-[#b67eff]">
+                        <div class="bg-[#ffe4ef] rounded-full p-2.5 border border-pink-200 text-[#ff85b3]">
                             <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58.55 0 1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41 0-.55-.23-1.06-.59-1.42zM5.5 7C4.67 7 4 6.33 4 5.5S4.67 4 5.5 4 7 4.67 7 5.5 6.33 7 5.5 7z"/></svg>
                         </div>
                     </div>
-
-                    <h3 class="text-center font-slackey text-2xl text-[#b67eff] mb-2 mt-1">ระยะเวลา & ระดับคิวงาน</h3>
-                    <p class="text-center text-purple-300 font-medium text-sm mb-5">เลือกประเภทคิวงานตามความเร่งด่วนของท่าน</p>
+                    <h3 class="text-center font-slackey text-2xl text-[#5c3a21] mb-2 mt-1">Price List</h3>
+                    <p class="text-center text-[#ff85b3] font-semibold text-xl mb-2">ราคาเริ่มต้น 129.-</p>
+                    <p class="text-xs text-center text-[#7b5338] mb-5">(สำหรับรายละเอียดไม่เกิน 200 lines และใส่โลโก้อย่างเดียว)</p>
                     
-                    <!-- ส่วนเช็คคิวรูป/กราฟฟิค -->
-                    <div class="text-[15px] space-y-3 mb-6">
-                        <p class="font-medium text-[#b67eff] border-b border-purple-900/60 pb-2 flex items-center gap-2">
-                            <span>🎨</span> ระยะเวลาคิวงานรูป / กราฟฟิค (มีคลาดเคลื่อนเล็กน้อย)
-                        </p>
-                        <ul class="space-y-2 text-sm text-[#e2d9f3]">
-                            <li class="flex justify-between items-center bg-[#2d243d] p-2.5 rounded-lg"><span>คิวปกติ (Queue Normal)</span> <span class="text-[#b67eff] font-medium">7-14 วัน</span></li>
-                            <li class="flex justify-between items-center bg-[#2d243d] p-2.5 rounded-lg"><span>คิว x2 (Queue x2)</span> <span class="text-[#b67eff] font-medium">5-7 วัน</span></li>
-                            <li class="flex justify-between items-center bg-[#2d243d] p-2.5 rounded-lg"><span>คิว x3 (Queue x3)</span> <span class="text-[#b67eff] font-medium">2-3 วัน</span></li>
-                            <li class="flex justify-between items-center bg-[#2d243d] p-2.5 rounded-lg"><span>คิว x4 (Queue x4)</span> <span class="text-[#b67eff] font-medium">1 วัน</span></li>
-                            <li class="flex justify-between items-center bg-[#2d243d] p-2.5 rounded-lg"><span>คิว x5 (Queue x5)</span> <span class="text-[#b67eff] font-medium">15 ชั่วโมง</span></li>
-                            <li class="flex justify-between items-center bg-[#2d243d] p-2.5 rounded-lg"><span>คิว x6 (Queue x6)</span> <span class="text-[#b67eff] font-medium">10 ชั่วโมง</span></li>
-                            <li class="flex justify-between items-center bg-[#2d243d] p-2.5 rounded-lg"><span>คิว x7 (Queue x7)</span> <span class="text-[#b67eff] font-medium">3-5 ชั่วโมง</span></li>
-                            <li class="flex justify-between items-center bg-[#2d243d] p-2.5 rounded-lg"><span>คิว x8 (Queue x8)</span> <span class="text-[#b67eff] font-medium">1-2 ชั่วโมง</span></li>
+                    <div class="text-[15px] space-y-3 mb-5">
+                        <p class="font-medium text-[#5c3a21] border-b border-pink-100 pb-2">กรณีรายละเอียดเพิ่มขึ้น</p>
+                        <ul class="space-y-2 pl-2">
+                            <li class="flex justify-between items-center bg-gray-50 p-2 rounded-lg"><span>เกิน 200 lines</span> <span class="text-[#ff85b3] font-medium">เริ่มที่ 139.-</span></li>
+                            <li class="flex justify-between items-center bg-gray-50 p-2 rounded-lg"><span>เกิน 400 lines</span> <span class="text-[#ff85b3] font-medium">เริ่มที่ 189.-</span></li>
+                            <li class="flex justify-between items-center bg-gray-50 p-2 rounded-lg"><span>เกิน 600 lines</span> <span class="text-[#ff85b3] font-medium">เริ่มที่ 249.-</span></li>
                         </ul>
                     </div>
 
-                    <!-- ส่วนเช็คคิว MV -->
-                    <div class="text-[15px] space-y-3">
-                        <p class="font-medium text-[#b67eff] border-b border-purple-900/60 pb-2 flex items-center gap-2">
-                            <span>🎬</span> ระยะเวลาคิวงาน MV FIVEM
-                        </p>
-                        <ul class="space-y-2 text-sm text-[#e2d9f3]">
-                            <li class="flex justify-between items-center bg-[#2d243d] p-2.5 rounded-lg"><span>คิวปกติ (Queue Normal)</span> <span class="text-[#b67eff] font-medium">14 วัน</span></li>
-                            <li class="flex justify-between items-center bg-[#2d243d] p-2.5 rounded-lg"><span>คิว x2 (Queue x2)</span> <span class="text-[#b67eff] font-medium">7 วัน</span></li>
-                            <li class="flex justify-between items-center bg-[#2d243d] p-2.5 rounded-lg"><span>คิว x3 (Queue x3)</span> <span class="text-[#b67eff] font-medium">5 วัน</span></li>
-                            <li class="flex justify-between items-center bg-[#2d243d] p-2.5 rounded-lg"><span>คิว x4 (Queue x4)</span> <span class="text-[#b67eff] font-medium">3 วัน</span></li>
-                            <li class="flex justify-between items-center bg-[#2d243d] p-2.5 rounded-lg"><span>คิว x5 (Queue x5)</span> <span class="text-[#b67eff] font-medium">1-2 วัน</span></li>
-                            <li class="flex justify-between items-center bg-[#2d243d] p-2.5 rounded-lg"><span>คิว x6 (Queue x6)</span> <span class="text-purple-300 text-xs text-right">เริ่มทำทันที (ความเร็วขึ้นอยู่กับความยากของงาน)</span></li>
-                        </ul>
+                    <div class="bg-[#fff0f5] p-4 rounded-xl text-sm space-y-3 mb-4">
+                        <p class="flex items-center gap-2"><svg class="w-4 h-4 text-[#ff85b3]" viewBox="0 0 24 24" fill="currentColor"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg> Add on รูปแบนเนอร์ 1–2 รูป +29.-</p>
+                        <p class="flex items-start gap-2"><svg class="w-4 h-4 mt-1 text-[#ff85b3]" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> แก้ไขข้อมูลหลังส่งตรวจสอบ ฟรี 1 ครั้ง</p>
+                        <p class="text-[13px] text-[#7b5338] pl-6 leading-relaxed">หลังส่งลิงก์งานแล้ว หากมีการแก้ไขเพิ่มเติม คิดค่าปรับแก้จุดละ 5.- (ข้อความ)<br>เปลี่ยนรูปจุดละ 29.-</p>
                     </div>
+                    <p class="text-[11px] text-[#7b5338] italic text-center">หมายเหตุ: ราคาขึ้นอยู่กับความละเอียดของข้อมูลและปริมาณเนื้อหา ทางร้านขอสงวนสิทธิ์ในการประเมินราคาตามความเหมาะสมนะคะ</p>
                 </div>
             </div>
 
             <!-- Promotion -->
-            <div class="mb-10 bg-gradient-to-br from-[#503d6e] to-[#221c30] rounded-2xl p-6 text-white border border-purple-900/40 shadow-md relative overflow-hidden">
-                 <svg class="absolute top-4 left-4 w-5 h-5 text-purple-400/60 animate-pulse" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C12 0 12 10 22 12C12 14 12 24 12 24C12 24 12 14 2 12C12 10 12 0 12 0Z" /></svg>
-                 <svg class="absolute bottom-6 right-16 w-4 h-4 text-purple-400/50 animate-pulse" style="animation-delay: 0.5s;" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C12 0 12 10 22 12C12 14 12 24 12 24C12 24 12 14 2 12C12 10 12 0 12 0Z" /></svg>
-                 
-                 <div class="absolute -right-2 -top-2 opacity-20">
+            <div class="mb-10 bg-gradient-to-br from-[#ffb8d1] to-[#ff85b3] rounded-2xl p-6 text-white shadow-md relative overflow-hidden">
+                <!-- Sparkling stars decoration ✨ -->
+                <svg class="absolute top-4 left-4 w-5 h-5 text-white/60 animate-pulse" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C12 0 12 10 22 12C12 14 12 24 12 24C12 24 12 14 2 12C12 10 12 0 12 0Z" /></svg>
+                <svg class="absolute bottom-6 right-16 w-4 h-4 text-white/50 animate-pulse" style="animation-delay: 0.5s;" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C12 0 12 10 22 12C12 14 12 24 12 24C12 24 12 14 2 12C12 10 12 0 12 0Z" /></svg>
+                <div class="absolute -right-2 -top-2 opacity-30">
                     <svg width="60" height="60" viewBox="0 0 24 24" fill="#ffffff"><path d="M21.03 3.51c-.81-.8-2.31-.81-4.2-.06C14.7 4.3 13.2 5.56 12 7.02 10.8 5.56 9.3 4.3 7.17 3.45c-1.89-.75-3.39-.74-4.2.06-1.12 1.11-1.25 3.33-.29 5.8 1.12 2.87 3.65 6.01 7.14 8.65L12 19.86l2.18-1.9c3.49-2.64 6.02-5.78 7.14-8.65.96-2.47.83-4.69-.29-5.8z"/></svg>
-                 </div>
-                <h3 class="text-xl font-slackey mb-3 text-[#b67eff]">YUNINX QUALITY</h3>
-                <p class="text-lg font-semibold mb-2 text-purple-200">ยินดีให้บริการตลอด 24 ชั่วโมง</p>
-                <p class="text-sm text-purple-300 leading-relaxed">ทุกผลงานของร้านผ่านกระบวนการออกแบบ ตรวจเช็คความสวยงาม และเรนเดอร์ด้วยประสิทธิภาพสูงสุด เพื่อให้คุณได้รับชิ้นงานที่ดีที่สุดในคอมมูนิตี้</p>
+                </div>
+                <h3 class="text-xl font-slackey mb-3 text-[#5c3a21]">PROMOTION</h3>
+                <p class="text-lg font-semibold mb-4">จัดเซ็ต สามเว็บในราคา 359 บาท</p>
+                
+                <div class="space-y-3 text-sm">
+                    <div class="bg-white/20 p-3 rounded-xl backdrop-blur-sm">
+                        <p class="font-medium">เว็บที่ 1 portfolio แนะนำตัว</p>
+                        <p class="text-xs opacity-90 mt-1">ระบุว่าขายอะไร มีคอนแทคชัดเจน</p>
+                    </div>
+                    <div class="bg-white/20 p-3 rounded-xl backdrop-blur-sm">
+                        <p class="font-medium">เว็บที่ 2 ป้ายบัญชี</p>
+                        <p class="text-xs opacity-90 mt-1">มีปุ่มให้ลูกค้าคัดลอกเลขบัญชีได้</p>
+                    </div>
+                    <div class="bg-white/20 p-3 rounded-xl backdrop-blur-sm">
+                        <p class="font-medium">เว็บที่ 3 สามารถเลือกเองได้</p>
+                        <p class="text-xs opacity-90 mt-1">เลือกจากเท็มเพลทที่มีเท่านั้น</p>
+                    </div>
+                </div>
+                <div class="text-center mt-5">
+                    <span class="text-[15px] font-semibold bg-white text-[#ff85b3] px-6 py-2 rounded-full shadow-sm inline-block">ตกเว็บละ 100 นิดๆ คุ้มมาก</span>
+                </div>
+            </div>
+
+            <!-- Steps & Conditions -->
+            <div class="mb-10">
+                <h3 class="font-slackey text-2xl font-semibold mb-5 text-[#5c3a21] inline-block">ขั้นตอน & เงื่อนไข</h3>
+                <ul class="space-y-4 text-[15px] text-[#7b5338]">
+                    <li class="flex gap-3"><svg class="w-5 h-5 flex-shrink-0 text-[#ffb8d1] mt-0.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg> ตามปกติรองาน 4–8 ชั่วโมง แล้วแต่คิวของวันนั้น ๆ</li>
+                    <li class="flex gap-3"><svg class="w-5 h-5 flex-shrink-0 text-[#ffb8d1] mt-0.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg> งานเร่ง *2 ของราคา</li>
+                    <li class="flex gap-3"><svg class="w-5 h-5 flex-shrink-0 text-[#ffb8d1] mt-0.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg> สามารถแคปหน้าเว็บที่อยากได้ของร้านเรา มาเป็นเรฟได้ หากไม่แคป แล้วแก้เยอะ จะทำให้กระทบคิวถัดไป</li>
+                    <li class="flex gap-3"><svg class="w-5 h-5 flex-shrink-0 text-[#ffb8d1] mt-0.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg> เน้นย้ำหลังจากส่งงานให้รีเช็ค ตอบกลับภายในไม่เกิน 30 นาที</li>
+                    <li class="flex gap-3"><svg class="w-5 h-5 flex-shrink-0 text-[#ffb8d1] mt-0.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg> หากไม่เลือกเท็มเพลตแล้วอยากให้ ออกแบบใหม่เป็นแนวเฉพาะของ ร้านนั้นๆ บวกเพิ่ม 200 บาท</li>
+                </ul>
+            </div>
+
+            <!-- How to Order -->
+            <div class="mb-10 bg-[#fff5f8] p-6 rounded-2xl shadow-sm">
+                <h3 class="font-slackey text-xl font-semibold mb-4 text-[#ff85b3] flex items-center gap-2">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M3 3v18h18V3H3zm16 16H5V5h14v14zM7 7h10v2H7V7zm0 4h10v2H7v-2zm0 4h7v2H7v-2z"/></svg>
+                    ขั้นตอนการสั่ง
+                </h3>
+                <ol class="list-decimal list-inside space-y-3 text-[15px] text-[#7b5338]">
+                    <li>เขียนรายละเอียดร้านค้า หรือพิมพ์ข้อมูลร้านค้าส่งมาได้เลย อยากใส่อะไร ใส่ได้ทุกอย่าง หลักๆจะมี ชื่อร้าน คอนแทคร้าน เป็นต้น รายละเอียดอื่นๆใส่ได้ไม่จำกัด</li>
+                    <li>ใส่ลิงก์ตัวอย่างงานมาเลย หากมีโลโก้ให้แนบมาทีหลังใส่ Google Drive เท่านั้น ลิงก์นี้รูปนี้ ระบุให้ชัดเจน</li>
+                    <li>ชำระเงินราคาเริ่มต้นที่ 129.- ส่งงานให้เช็ค หากเกินจากราคาเริ่มต้น เค้าจะแจ้งยอดที่เหลือ ให้ชำระเงินยอดคงค้าง หากพอดีราคาเริ่มต้น ก็จะไม่เก็บยอดชำระเพิ่ม</li>
+                    <li>รอรับลิงก์</li>
+                </ol>
+                <div class="mt-5 text-[13px] bg-white p-4 rounded-xl border border-pink-100 space-y-2">
+                    <p class="text-pink-500 font-medium">#หมายเหตุ เนื่องจากข้อมูลของแต่ละบุคคลมากน้อยไม่เท่ากัน จึงคิดราคาก่อนส่งงานไม่ได้ค่ะ เพื่อความเท่าเทียมทั้ง 2 ฝ่าย ขอสงวนสิทธิ์ในการเก็บค่าบริการแบบข้างต้นค่ะ</p>
+                    <p class="text-pink-500 font-medium">#ทางร้านไม่รับเปลี่ยนโดเมนนะคะ</p>
+                </div>
             </div>
 
             <!-- Rules -->
             <div class="mb-10">
-                <h3 class="font-slackey text-2xl font-semibold mb-4 text-[#b67eff]">กฎของร้าน (Terms & Rules)</h3>
-                <div class="bg-[#2d243d] p-5 rounded-2xl text-[14px] sm:text-[15px] space-y-4 border border-purple-900/30 text-[#e2d9f3] leading-relaxed">
-                    <p class="flex items-start gap-2"><span>🐰</span> <span>ห้ามนำรูปไปขายต่อ/ปล่อยต่อ หากพบเจอปรับ <b>x20</b> ของราคารูปนั้น</span></p>
-                    <p class="flex items-start gap-2"><span>🐰</span> <span>ห้ามตัดลายน้ำร้านออกเด็ดขาด แจ้งขนาดที่ต้องการให้ชัดเจน หากพบเจอปรับ <b>x10</b></span></p>
-                    <p class="flex items-start gap-2"><span>🐰</span> <span>ห้ามนำรูปร้านไปทำการกระทำใดที่ต้องตัดลายน้ำออก เช่น นำไปใช้ทำ AI หากพบเจอปรับ <b>x20</b> ทั้งตัวร้านค้าและลูกค้าผู้ใช้งาน</span></p>
-                    <p class="flex items-start gap-2"><span>🐰</span> <span>หากโอนเงินผิด โอนเงินเกิน หรือขอยกเลิกงาน ทางร้านไม่คืนเงินทุกกรณี</span></p>
-                    <p class="flex items-start gap-2"><span>🐰</span> <span>หากเป็นรูปที่ร้านทำผิดพลาดเอง ทางร้านจะแก้ให้ฟรีครับ แต่รูปเวอร์ชันที่ส่งไปแก้ไขตอนแรก ลูกค้าห้ามนำไปใช้งานต่อนะครับ หากพบเจอปรับ <b>x10</b> ของราคารูปนั้นๆ</span></p>
-                    <div class="mt-4 p-3 bg-red-950/40 border border-red-900/50 rounded-xl text-center font-medium text-red-300 text-xs sm:text-sm">
-                        📍 การเลือกสั่งซื้อบริการ = ยอมรับเงื่อนไขแล้วนะคะ งดวีนทุกกรณีค่ะ 📍
-                    </div>
+                <h3 class="font-slackey text-2xl font-semibold mb-4 text-[#5c3a21]">กฎของร้าน</h3>
+                <div class="bg-[#f9f9f9] p-5 rounded-2xl text-[15px] space-y-3 border border-gray-100 text-[#5c3a21] leading-relaxed">
+                    <p>• โอนเงินแล้วไม่คืนเงินทุกกรณี ไม่ว่าจะราคาเริ่มต้น หรือ จ่ายเต็มแล้ว</p>
+                    <p>• ยกเลิกหลังตรวจงานแล้ว ไม่คืนเงิน และส่งงานให้ตามปกติ</p>
+                    <p>• ในอนาคตอาจมีการเปลี่ยนลิงก์ ไม่ว่าเหตุผลอะไรก็ตามแต่ หากนำลิงก์ไปเปลี่ยนโดเมนแล้วมีค่าใช้จ่ายเพิ่มเติม ทางร้านไม่รับผิดชอบทุกกรณี รับผิดชอบแค่ในส่วนของลิงก์มีปัญหา หลังจากแก้ไขแล้ว อยากนำไปเปลี่ยนโดเมนต่อก็สามารถทำได้ค่ะ เพราะในส่วนนี้หากใช้โดเมนเดิมก็ไม่เสียค่าใช้จ่ายใดๆค่ะ</p>
+                    <p>• งดจิกงดเร่งทุกกรณีนะคะ เค้าติดงานประจำจะรีบตอบกลับให้เร็วที่สุดค่ะโดยปกติแล้ว งานเว็บจะทำแค่สี่ถึง 8 ชั่วโมงโดยส่วนมากจะไม่เกิน 4 ชั่วโมงค่ะ</p>
                 </div>
             </div>
 
-            <!-- Course / Goodnote Section -->
-            <div id="course" class="hidden"></div>
-            <div id="goodnote" class="hidden"></div>
-
-            <!-- Footer / Contact -->
-            <div id="contact" class="mt-12 pt-8 border-t border-purple-900/40 text-center">
-                <div class="flex justify-center mb-5">
-                    <div class="bg-[#2d243d] rounded-full p-3 text-[#b67eff]">
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            <!-- Course -->
+            <div id="course" class="mb-10 bg-white border border-[#ff85b3] rounded-3xl p-8 text-center shadow-sm relative overflow-hidden mt-6">
+                <div class="flex justify-center mb-4 relative z-10">
+                    <div class="bg-white rounded-full p-2.5 shadow-sm border border-pink-100 text-[#ff85b3]">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M20 18c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2H0v2h24v-2h-4zM4 6h16v10H4V6z"/></svg>
                     </div>
                 </div>
-
-                <h3 class="font-slackey text-2xl text-[#b67eff] mb-5">ช่องทางการติดต่อ (Contact)</h3>
-                <div class="flex justify-center gap-5 mb-8">
-                    <!-- Facebook -->
-                    <a href="https://www.facebook.com/share/1DqnhnQqhD/?mibextid=wwXIfr" target="_blank" class="w-12 h-12 rounded-full bg-[#2d243d] text-[#b67eff] flex items-center justify-center hover:bg-[#b67eff] hover:text-black transition duration-300 shadow-sm border border-purple-900/30">
-                        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"/></svg>
-                    </a>
-                    <!-- Discord -->
-                    <a href="https://discord.gg/yPFwC9Q8NU" target="_blank" class="w-12 h-12 rounded-full bg-[#2d243d] text-[#b67eff] flex items-center justify-center hover:bg-[#b67eff] hover:text-black transition duration-300 shadow-sm border border-purple-900/30">
-                        <svg width="24" height="24" fill="currentColor" viewBox="0 0 127.14 96.36" style="padding: 2px;"><path d="M107.7,8.07A105.15,105.15,0,0,0,77.26,0a77.19,77.19,0,0,0-3.3,6.83A96.67,96.67,0,0,0,53.22,6.83,77.19,77.19,0,0,0,49.88,0,105.15,105.15,0,0,0,19.44,8.07C3.66,31.58-1.86,54.65,1,77.53A105.73,105.73,0,0,0,32,96.36a77.7,77.7,0,0,0,6.63-10.85,68.43,68.43,0,0,1-10.5-5c.9-.65,1.76-1.34,2.58-2a75.58,75.58,0,0,0,72.9,0c.82.71,1.68,1.4,2.58,2a68.86,68.86,0,0,1-10.5,5,77.7,77.7,0,0,0,6.63,10.85,105.73,105.73,0,0,0,31.58-18.83C129.24,50.7,123.49,27.88,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53S36.18,40.36,42.45,40.36,53.87,46,53.87,53,48.72,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.24,60,73.24,53S78.41,40.36,84.69,40.36,96.11,46,96.11,53,91,65.69,84.69,65.69Z"/></svg>
-                    </a>
+                <div class="absolute top-0 right-0 w-24 h-24 bg-[#ffe4ef] rounded-bl-full -z-10"></div>
+                <h3 class="text-2xl font-slackey text-[#5c3a21] mb-3">คอร์สสอนทำเว็บร้าน สไตล์พิ้งจู</h3>
+                <p class="text-[15px] text-[#7b5338] mb-4 leading-relaxed">สำหรับใครที่อยากทำเว็บเป็นแล้วนำไปสร้างรายได้<br>สอนตั้งแต่ 0 → ทำเป็นเว็บใช้งานได้จริง<br>มีเทมเพลตมากกว่า 20 แบบ แทบจะจับมือสอน สามารถสอบถาม รีเควสต์ได้ตามใจ</p>
+                <p class="text-xl font-bold text-[#ff85b3] mb-6">ราคา 299.- <span class="text-sm line-through text-gray-400 font-normal ml-1">จากราคาปกติ 399.-</span></p>
+                <div class="flex flex-col sm:flex-row gap-3 justify-center">
+                    <a href="https://drive.google.com/drive/folders/1fj024BhkgC1ctJeiwyZUG3USteSdzWzr" target="_blank" class="bg-[#ff85b3] text-white py-2.5 px-6 rounded-full text-sm font-medium hover:bg-[#ffb8d1] transition shadow-sm">ดูรายละเอียดคอร์ส</a>
+                    <a href="https://purple-wind-aced.cozyw75.workers.dev/" target="_blank" class="bg-pink-50 text-[#5c3a21] py-2.5 px-6 rounded-full text-sm font-medium hover:bg-pink-100 transition border border-pink-100">อ่านกฎเพิ่มเติมก่อนเข้าคอร์ส</a>
                 </div>
-                <p class="text-xs text-purple-400 tracking-widest font-medium uppercase">THANK YOU FOR CHOOSING YUNINX SHOP</p>
+            </div>
+
+            <!-- Fonts -->
+            <div class="mb-10 bg-[#fff0f5] p-6 rounded-3xl flex flex-col sm:flex-row items-center gap-6 shadow-sm">
+                <div class="flex-1 text-center sm:text-left">
+                    <h3 class="font-slackey text-2xl text-[#ff85b3] mb-3">พิ้งจูขายฟอนต์</h3>
+                    <p class="text-sm text-[#7b5338] mb-2 font-medium">ขั้นตอนการสั่งฟอนต์ :</p>
+                    <ol class="list-decimal list-inside text-sm text-[#7b5338] space-y-2">
+                        <li>เลือกฟอนต์ แจ้งสิทธิ์การใช้งาน (พาณิชย์/ส่วนตัว)</li>
+                        <li>ชำระยอด แปะสลิปและ E-mail</li>
+                        <li>รอรับฟอนต์ได้เลย</li>
+                    </ol>
+                </div>
+                <div class="w-full sm:w-auto">
+                    <a href="https://drive.google.com/drive/folders/1y4siEIS7i8XjYICoxJ_-fJH9ffywo92L" target="_blank" class="block w-full sm:w-auto text-center bg-white text-[#ff85b3] border-2 border-[#ff85b3] px-8 py-3 rounded-full text-sm font-medium hover:bg-[#ff85b3] hover:text-white transition shadow-sm">ดูตัวอย่างฟอนต์ทั้งหมด</a>
+                </div>
+            </div>
+
+            <!-- Goodnote Section -->
+            <div id="goodnote" class="mb-8 mt-6">
+                <div class="text-center mb-8">
+                    <h2 class="font-slackey text-3xl font-bold text-[#5c3a21] mb-2">Goodnote App</h2>
+                    <p class="text-[15px] text-[#ff85b3]">แอปพลิเคชันสำหรับจดบันทึก</p>
+                </div>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
+                    <!-- รุ่นพิเศษ -->
+                    <div class="border border-[#ffb8d1] rounded-2xl p-5 bg-white flex flex-col hover:shadow-md transition">
+                        <h4 class="font-semibold text-[#5c3a21] border-b border-pink-100 pb-3 mb-3 text-lg">รุ่นพิเศษ (ถาวร)</h4>
+                        <p class="text-xs text-pink-500 bg-pink-50 inline-block px-2 py-1 rounded-md mb-3 self-start">ใช้ได้เฉพาะไอโอเอส</p>
+                        <ul class="text-[13px] text-[#7b5338] space-y-2 mb-5 flex-1 pl-4 list-disc marker:text-pink-300">
+                            <li>สมุดโน๊ต ไวท์บอร์ด และเอกสารไม่จำกัด</li>
+                            <li>แชร์ลิ้งค์แบบสาธารณะ</li>
+                            <li>การถอดเสียงแบบไม่จำกัด</li>
+                        </ul>
+                        <div class="bg-pink-50 p-3 rounded-xl text-sm space-y-2">
+                            <p class="flex justify-between items-center"><span class="text-[#ff85b3]">เมลรวม</span> <b class="text-[#5c3a21]">20.-</b></p>
+                            <p class="flex justify-between items-center"><span class="text-[#ff85b3]">หาร 5 คน</span> <b class="text-[#5c3a21]">149.-</b></p>
+                            <p class="flex justify-between items-center"><span class="text-[#ff85b3]">ส่วนตัว</span> <b class="text-[#5c3a21]">490.-</b></p>
+                        </div>
+                    </div>
+
+                    <!-- Essential -->
+                    <div class="border border-[#ffb8d1] rounded-2xl p-5 bg-white flex flex-col hover:shadow-md transition">
+                        <h4 class="font-semibold text-[#5c3a21] border-b border-pink-100 pb-3 mb-3 text-lg">Essential (รายปี)</h4>
+                        <ul class="text-[13px] text-[#7b5338] space-y-2 mb-5 flex-1 pl-4 list-disc marker:text-pink-300">
+                            <li>ปลดล็อคข้อความ ลายมือ เสียง ฯลฯ</li>
+                            <li>สมุดโน๊ต ไวท์บอร์ด ไม่จำกัด</li>
+                            <li>ค้นคว้าคณิตศาสตร์ ai (525 เครดิต)</li>
+                            <li>ถอดเสียงไม่จำกัด</li>
+                            <li>แอนดรอยด์ วินโดว์ เว็บ iOS</li>
+                        </ul>
+                        <div class="bg-pink-50 p-3 rounded-xl text-sm space-y-2">
+                            <p class="flex justify-between items-center"><span class="text-[#ff85b3]">เมลรวม</span> <b class="text-[#5c3a21]">20.-</b></p>
+                            <p class="flex justify-between items-center"><span class="text-[#ff85b3]">หาร 5 คน</span> <b class="text-[#5c3a21]">79.-</b></p>
+                            <p class="flex justify-between items-center"><span class="text-[#ff85b3]">ส่วนตัว</span> <b class="text-[#5c3a21]">229.-</b></p>
+                        </div>
+                    </div>
+
+                    <!-- Pro -->
+                    <div class="border-2 border-[#ff85b3] rounded-2xl p-5 bg-[#fff0f5] flex flex-col relative overflow-hidden hover:shadow-md transition shadow-sm">
+                        <div class="absolute -right-8 top-3 bg-[#ff85b3] text-white text-[11px] font-bold py-1 px-10 rotate-45 shadow-sm">BEST</div>
+                        <h4 class="font-semibold text-[#5c3a21] border-b border-pink-200 pb-3 mb-3 text-lg">Pro (รายปี)</h4>
+                        <ul class="text-[13px] text-[#7b5338] space-y-2 mb-5 flex-1 pl-4 list-disc marker:text-pink-400">
+                            <li>มีครบทุกอย่างใน essential</li>
+                            <li>ค้นคว้าคณิตศาสตร์ ai (525 เครดิต)</li>
+                            <li>จดโน๊ตอัตโนมัติและสรุปแบบเรียลไทม์</li>
+                            <li>เชื่อมต่อ Google ปฏิทิน</li>
+                            <li>แชร์ลิ้งค์ส่วนตัว & ทำงานร่วมกันเรียลไทม์</li>
+                        </ul>
+                        <div class="bg-white p-3 rounded-xl text-sm space-y-2">
+                            <p class="flex justify-between items-center"><span class="text-[#ff85b3]">เมลรวม</span> <b class="text-[#5c3a21]">20.-</b></p>
+                            <p class="flex justify-between items-center"><span class="text-[#ff85b3]">หาร 5 คน</span> <b class="text-[#5c3a21]">149.-</b></p>
+                            <p class="flex justify-between items-center"><span class="text-[#ff85b3]">ส่วนตัว</span> <b class="text-[#5c3a21]">490.-</b></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <p class="text-xs text-center text-pink-500 mt-4 bg-pink-50 py-2 rounded-lg">* ถ้าจะใช้งานในระบบแอนดรอยด์วินโดว์หรือเว็บแนะนำเป็นแบบส่วนตัวอย่างเดียวค่ะ</p>
             </div>
 
         </div>
     </main>
 
-    <!-- Modals (ยังคงโครงสร้างเดิมทั้งหมด) -->
-    <div id="modal-bright" class="fixed inset-0 bg-black/40 backdrop-blur-sm hidden items-center justify-center z-50 px-4"></div>
-    <div id="modal-dark" class="fixed inset-0 bg-black/40 backdrop-blur-sm hidden items-center justify-center z-50 px-4"></div>
-    <div id="modal-pastel" class="fixed inset-0 bg-black/40 backdrop-blur-sm hidden items-center justify-center z-50 px-4"></div>
-
-    <!-- Script for Modals & Slider -->
-    <script>
-        function toggleMenu() {
-            const menu = document.getElementById('side-menu');
-            const overlay = document.getElementById('menu-overlay');
-            if (menu.classList.contains('-translate-x-full')) {
-                menu.classList.remove('-translate-x-full');
-                overlay.classList.remove('hidden');
-                setTimeout(() => overlay.classList.remove('opacity-0'), 10);
-            } else {
-                menu.classList.add('-translate-x-full');
-                overlay.classList.add('opacity-0');
-                setTimeout(() => overlay.classList.add('hidden'), 300);
-            }
-        }
-
-        function openModal(id) {
-            const modal = document.getElementById(id);
-            if(!modal) return;
-            modal.classList.remove('hidden');
-            modal.style.display = 'flex';
-            if(modal.children[0]) {
-                modal.children[0].classList.remove('modal-exit');
-                modal.children[0].classList.add('modal-enter');
-            }
-        }
-
-        function closeModal(id) {
-            const modal = document.getElementById(id);
-            if(!modal) return;
-            const content = modal.children[0];
-            if(content) {
-                content.classList.remove('modal-enter');
-                content.classList.add('modal-exit');
-            }
-            setTimeout(() => {
-                modal.classList.add('hidden');
-                modal.style.display = 'none';
-            }, 200);
-        }
-
-        window.onclick = function(event) {
-            if (event.target.classList.contains('fixed') && !event.target.id.includes('menu')) {
-                closeModal(event.target.id);
-            }
-        }
-
-        let currentSlide = 0;
-        const track = document.getElementById('slider-track');
-        const slides = document.querySelectorAll('.slide');
-        const dots = document.querySelectorAll('#slider-dots button');
-        const totalSlides = slides.length;
-        let slideInterval;
-
-        function updateSlider() {
-            if(!track) return;
-            track.style.transform = `translateX(-${currentSlide * 100}%)`;
-            dots.forEach((dot, index) => {
-                if (index === currentSlide) {
-                    dot.classList.remove('bg-white/40', 'w-2');
-                    dot.classList.add('bg-[#b67eff]', 'w-4');
-                } else {
-                    dot.classList.remove('bg-[#b67eff]', 'w-4');
-                    dot.classList.add('bg-white/40', 'w-2');
-                }
-            });
-        }
-
-        function nextSlide() {
-            currentSlide = (currentSlide + 1) % totalSlides;
-            updateSlider();
-            resetInterval();
-        }
-
-        function prevSlide() {
-            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-            updateSlider();
-            resetInterval();
-        }
-
-        function startInterval() {
-            slideInterval = setInterval(nextSlide, 3500);
-        }
-
-        function resetInterval() {
-            clearInterval(slideInterval);
-            startInterval();
-        }
-
-        dots.forEach((dot, index) => {
-            dot.addEventListener('click', () => {
-                currentSlide = index;
-                updateSlider();
-                resetInterval();
-            });
-        });
-
-        updateSlider();
-        startInterval();
-    </script>
 </body>
 </html>
