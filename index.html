@@ -3,449 +3,464 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yuninx Commission</title>
-    
-    <!-- Google Fonts: Kanit -->
-    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Tailwind CSS (CDN) -->
+    <title>Yuninx - Welcome to my shop</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Lucide Icons (CDN) -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mitr:wght@300;400;500;600&family=Slackey&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Kanit', sans-serif;
-        }
-        
-        /* Hide scrollbar */
-        .hide-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-        .hide-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-        
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(8px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-fadeIn {
-            animation: fadeIn 0.3s ease-out forwards;
+        :root {
+            --color-pink-bg: #1a1525;
+            --color-pink-dot: #2d243d;
+            --color-pink-dark: #b67eff;
+            --color-pink-light: #503d6e;
+            --color-brown-dark: #e2d9f3;
+            --color-brown-light: #bcaada;
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-10px) rotate(5deg); }
+        /* ใช้ฟอนต์ Mitr สำหรับเนื้อหาทั่วไป */
+        body {
+            font-family: 'Mitr', sans-serif;
+            background-color: var(--color-pink-bg);
+            background-image: radial-gradient(var(--color-pink-dot) 15%, transparent 16%), radial-gradient(var(--color-pink-dot) 15%, transparent 16%);
+            background-size: 24px 24px;
+            background-position: 0 0, 12px 12px;
+            color: var(--color-brown-dark);
+            scroll-behavior: smooth;
         }
-        @keyframes float-delayed {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-12px) rotate(-5deg); }
+
+        /* ฟอนต์ส่วนหัว Slackey (เพิ่ม Mitr เป็น Fallback สำหรับภาษาไทย) */
+        .font-slackey {
+            font-family: 'Slackey', 'Mitr', cursive;
         }
-        .animate-float {
-            animation: float 3s ease-in-out infinite;
+
+        .text-shadow-cute {
+            text-shadow: 2px 2px 0px #1a1525, 3px 3px 0px var(--color-pink-dark);
         }
-        .animate-float-delayed {
-            animation: float-delayed 3.5s ease-in-out infinite 1s;
+
+        /* Clean Container แทนแบบเก่า */
+        .clean-box {
+            background: rgba(34, 28, 48, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 40px;
+            box-shadow: 0 10px 40px rgba(182, 126, 255, 0.15);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--color-pink-bg); }
+        ::-webkit-scrollbar-thumb { background: var(--color-pink-dark); border-radius: 10px; }
+
+        .modal-enter { animation: modalFadeIn 0.3s ease-out forwards; }
+        .modal-exit { animation: modalFadeOut 0.2s ease-in forwards; }
+        
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        @keyframes modalFadeOut {
+            from { opacity: 1; transform: scale(1); }
+            to { opacity: 0; transform: scale(0.95); }
+        }
+
+        /* Slider Animations */
+        .slider-track {
+            display: flex;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .slide {
+            min-width: 100%;
         }
     </style>
 </head>
-<body class="min-h-screen bg-[#120F1A] text-stone-200 flex justify-center selection:bg-[#8A63D2]/40">
+<body class="min-h-screen pb-12">
 
-    <!-- Mobile-sized container -->
-    <div class="w-full max-w-md bg-[#1C1926] min-h-screen shadow-2xl shadow-black/50 flex flex-col relative overflow-hidden">
-        
-        <!-- Top curved background -->
-        <div class="absolute top-0 left-0 w-full h-[280px] bg-gradient-to-b from-[#0D0B12] via-[#5A3E91] to-[#1C1926] rounded-b-[40px] z-0"></div>
+    <!-- Overlay สำหรับ Sidebar Menu -->
+    <div id="menu-overlay" onclick="toggleMenu()" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 hidden opacity-0 transition-opacity duration-300"></div>
 
-        <!-- Global Decorative Elements -->
-        <div class="absolute top-[6%] left-[10%] text-white/40 animate-float"><i data-lucide="star" style="width:20px; height:20px; fill:currentColor;"></i></div>
-        <div class="absolute top-[12%] right-[15%] text-white/30 animate-float-delayed"><i data-lucide="sparkles" style="width:28px; height:28px;"></i></div>
-        <div class="absolute top-[22%] left-[18%] text-black/40 animate-float" style="animation-duration: 4s;"><i data-lucide="moon" style="width:24px; height:24px; fill:currentColor;"></i></div>
-        <div class="absolute top-[32%] right-[8%] text-[#8A63D2]/30 animate-float-delayed"><i data-lucide="star" style="width:14px; height:14px; fill:currentColor;"></i></div>
-
-        <!-- Hamburger Menu Icon -->
-        <div class="absolute top-6 right-6 z-50">
-          <button onclick="toggleMenu()" class="p-2.5 bg-white/5 hover:bg-white/10 backdrop-blur-md rounded-xl border border-white/10 shadow-[0_4px_15px_rgba(0,0,0,0.3)] transition-all text-white">
-            <i id="icon-menu" data-lucide="menu" style="width:24px; height:24px;"></i>
-            <i id="icon-x" data-lucide="x" style="width:24px; height:24px;" class="hidden"></i>
-          </button>
-        </div>
-
-        <!-- Dropdown Menu Overlay -->
-        <div id="mobile-menu" class="hidden">
-            <!-- Background overlay to click-close -->
-            <div class="fixed inset-0 z-40" onclick="closeMenu()"></div>
-            <!-- Menu Box -->
-            <div class="absolute top-20 right-6 w-48 bg-[#1C1926]/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/10 overflow-hidden z-50 animate-fadeIn">
-              <div class="flex flex-col py-2">
-                <button id="btn-HOME" onclick="switchTab('HOME')" class="px-5 py-3 text-sm font-semibold text-left transition-colors flex items-center gap-2 bg-[#8A63D2]/20 text-[#BA9FF5] border-l-4 border-[#8A63D2]">Home</button>
-                <button id="btn-T.O.S" onclick="switchTab('T.O.S')" class="px-5 py-3 text-sm font-semibold text-left transition-colors flex items-center gap-2 text-stone-400 hover:bg-[#252136] hover:text-[#BA9FF5] border-l-4 border-transparent">T.O.S</button>
-                <button id="btn-ORDERING" onclick="switchTab('ORDERING')" class="px-5 py-3 text-sm font-semibold text-left transition-colors flex items-center gap-2 text-stone-400 hover:bg-[#252136] hover:text-[#BA9FF5] border-l-4 border-transparent">Ordering</button>
-                <button id="btn-EXAMPLE" onclick="switchTab('EXAMPLE')" class="px-5 py-3 text-sm font-semibold text-left transition-colors flex items-center gap-2 text-stone-400 hover:bg-[#252136] hover:text-[#BA9FF5] border-l-4 border-transparent">Example</button>
-                <button id="btn-PRICE" onclick="switchTab('PRICE')" class="px-5 py-3 text-sm font-semibold text-left transition-colors flex items-center gap-2 text-stone-400 hover:bg-[#252136] hover:text-[#BA9FF5] border-l-4 border-transparent">Price</button>
-                <button id="btn-CONTACT" onclick="switchTab('CONTACT')" class="px-5 py-3 text-sm font-semibold text-left transition-colors flex items-center gap-2 text-stone-400 hover:bg-[#252136] hover:text-[#BA9FF5] border-l-4 border-transparent">Contact</button>
-              </div>
+    <!-- Sidebar Menu 🎀 -->
+    <div id="side-menu" class="fixed inset-y-0 left-0 w-64 bg-[#221c30]/95 backdrop-blur-md shadow-2xl z-50 transform -translate-x-full transition-transform duration-300 ease-in-out border-r border-[#b67eff]/20">
+        <div class="p-5 h-full flex flex-col">
+            <!-- Header Menu -->
+            <div class="flex justify-between items-center mb-6 border-b border-[#503d6e] pb-4">
+                <span class="font-slackey text-xl text-[#b67eff] text-shadow-cute">MENU</span>
+                <button onclick="toggleMenu()" class="text-purple-300 hover:text-purple-400 bg-purple-950 p-1 rounded-full transition">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
             </div>
-        </div>
-
-        <!-- Spacer -->
-        <div class="pt-24 px-6 relative z-20"></div>
-
-        <!-- Dynamic Content Area -->
-        <div class="flex-grow px-5 pb-12 relative z-10 -mt-2">
             
-            <!-- HOME -->
-            <div id="content-HOME" class="flex flex-col items-center text-center animate-fadeIn relative mt-6">
-                <div class="absolute top-0 right-4 text-[#8A63D2] animate-float"><i data-lucide="sparkles" style="width:24px; height:24px;"></i></div>
-                
-                <div class="w-48 h-48 sm:w-56 sm:h-56 rounded-full border-[6px] border-[#1C1926] shadow-[0_8px_30px_rgba(0,0,0,0.5)] mb-8 overflow-hidden bg-[#1C1926] flex items-center justify-center relative z-10">
-                   <img src="https://drive.google.com/file/d/1Uml5dUWG_txsCY9P96QKndwPBPTVRkQC/view?usp=drivesdk" alt="Profile" class="w-full h-full object-cover"/>
-                </div>
-            
-                <div class="space-y-3 relative z-10 w-full flex flex-col items-center mb-6">
-                  <h1 class="text-3xl sm:text-4xl font-extrabold text-white tracking-[0.15em] uppercase drop-shadow-sm">Yuninx</h1>
-                  <p class="text-[#BA9FF5] text-[10px] font-bold tracking-[0.2em] uppercase flex items-center gap-2">
-                    <i data-lucide="sparkles" style="width:10px; height:10px;"></i> Graphic • MV FiveM <i data-lucide="sparkles" style="width:10px; height:10px;"></i>
-                  </p>
-                </div>
-            
-                <div class="w-8 h-[2px] bg-[#8A63D2] rounded-full my-4 relative z-10"></div>
-            
-                <div class="text-white/90 text-[10px] sm:text-xs font-semibold tracking-widest uppercase space-y-2 relative z-10 mb-8">
-                  <p>Status : Open for commissioning</p>
-                  <p class="text-[#BA9FF5]">( เลือก = ยอมรับกฎของร้านเรียบร้อย )</p>
-                </div>
-            
-                <div class="text-stone-400 text-[11px] font-medium leading-relaxed relative z-10 flex flex-col items-center gap-1 mb-8">
-                  <span>Welcome to Yuninx Studio</span>
-                  <span class="flex items-center gap-1.5">ทำรูปออฟไลน์fivem / MV FIVEM / กราฟฟิค <i data-lucide="sparkles" class="text-[#BA9FF5]" style="width:12px; height:12px;"></i></span>
-                </div>
-            
-                <div class="w-full max-w-[180px] relative z-10">
-                   <a href="https://www.facebook.com/share/1DqnhnQqhD/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-2 w-full py-3 px-4 rounded-full border border-[#8A63D2]/30 bg-[#252136] text-[#BA9FF5] text-[11px] font-bold tracking-widest uppercase hover:bg-[#8A63D2]/20 hover:scale-105 transition-all duration-300 shadow-sm">
-                    <i data-lucide="facebook" style="width:14px; height:14px;"></i> Facebook Page
-                  </a>
-                </div>
+            <!-- Menu Links -->
+            <div class="space-y-3 font-medium text-[#e2d9f3] flex-1">
+                <a href="#services" onclick="toggleMenu()" class="flex items-center gap-3 p-3 hover:bg-purple-900/40 rounded-xl transition text-[15px]">
+                    <span class="text-[#b67eff]"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.6H22l-6.2 4.5 2.4 7.6-6.2-4.5-6.2 4.5 2.4-7.6-6.2-4.5h7.6z"/></svg></span> บริการของเรา
+                </a>
+                <a href="#portfolio" onclick="toggleMenu()" class="flex items-center gap-3 p-3 hover:bg-purple-900/40 rounded-xl transition text-[15px]">
+                    <span class="text-[#b67eff]"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></span> ตัวอย่างงาน
+                </a>
+                <a href="#pricing" onclick="toggleMenu()" class="flex items-center gap-3 p-3 hover:bg-purple-900/40 rounded-xl transition text-[15px]">
+                    <span class="text-[#b67eff]"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58.55 0 1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41 0-.55-.23-1.06-.59-1.42zM5.5 7C4.67 7 4 6.33 4 5.5S4.67 4 5.5 4 7 4.67 7 5.5 6.33 7 5.5 7z"/></svg></span> Price List / คิวงาน
+                </a>
+                <a href="#course" onclick="toggleMenu()" class="flex items-center gap-3 p-3 hover:bg-purple-900/40 rounded-xl transition text-[15px]">
+                    <span class="text-[#b67eff]"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20 18c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2H0v2h24v-2h-4zM4 6h16v10H4V6z"/></svg></span> คอร์สสอนทำเว็บ
+                </a>
+                <a href="#goodnote" onclick="toggleMenu()" class="flex items-center gap-3 p-3 hover:bg-purple-900/40 rounded-xl transition text-[15px]">
+                    <span class="text-[#b67eff]"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z"/></svg></span> Goodnote App
+                </a>
+                <a href="#contact" onclick="toggleMenu()" class="flex items-center gap-3 p-3 hover:bg-purple-900/40 rounded-xl transition text-[15px]">
+                    <span class="text-[#b67eff]"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></span> ติดต่อเรา
+                </a>
             </div>
-
-            <!-- T.O.S -->
-            <div id="content-T.O.S" class="hidden animate-fadeIn">
-                <div class="text-center mb-6 relative mt-4">
-                    <p class="text-stone-400 font-medium text-sm mb-1 drop-shadow-sm">Rules & Conditions</p>
-                    <h2 class="text-2xl font-bold text-white flex items-center justify-center gap-2 drop-shadow-md">
-                      <i data-lucide="star" class="text-[#BA9FF5]" style="width:18px; height:18px; fill:currentColor;"></i>
-                      Term of service
-                      <i data-lucide="star" class="text-[#BA9FF5]" style="width:18px; height:18px; fill:currentColor;"></i>
-                    </h2>
-                </div>
-
-                <div class="bg-[#252136] rounded-[24px] p-6 shadow-xl border border-white/5 relative overflow-hidden">
-                  <div class="absolute -right-4 -top-4 text-[#8A63D2] opacity-10"><i data-lucide="moon" style="width:64px; height:64px; fill:currentColor;"></i></div>
-                  
-                  <div class="flex items-center gap-2 mb-4 pb-3 border-b border-white/10 relative z-10">
-                    <i data-lucide="alert-circle" class="text-[#BA9FF5]" style="width:20px; height:20px;"></i>
-                    <h3 class="font-bold text-white">—⁺˖° ʚ กฎและข้อตกลงของร้าน ɞ °˖⁺—</h3>
-                  </div>
-                  <ul class="space-y-3 mt-4 relative z-10 text-stone-300 text-sm leading-relaxed">
-                    <li class="flex items-start gap-3"><div class="mt-0.5 shrink-0 text-[#BA9FF5]"><i data-lucide="alert-circle" style="width:16px; height:16px;"></i></div><div>ห้ามนำรูปไปขายต่อ/ปล่อยต่อ หากพบเจอปรับ <span class="text-[#BA9FF5] font-bold">x20</span> ของราคารูปนั้น</div></li>
-                    <li class="flex items-start gap-3"><div class="mt-0.5 shrink-0 text-[#BA9FF5]"><i data-lucide="alert-circle" style="width:16px; height:16px;"></i></div><div>ห้ามตัดลายน้ำร้านออกเด็ดขาด แจ้งขนาดที่ต้องการให้ชัดเจน หากพบเจอปรับ <span class="text-[#BA9FF5] font-bold">x10</span></div></li>
-                    <li class="flex items-start gap-3"><div class="mt-0.5 shrink-0 text-[#BA9FF5]"><i data-lucide="alert-circle" style="width:16px; height:16px;"></i></div><div>ห้ามนำรูปร้านไปทำการกระทำใดที่ต้องตัดลายน้ำออก เช่น ทำ AI พบเจอปรับ <span class="text-[#BA9FF5] font-bold">x20</span> ทั้งร้านและลูกค้า</div></li>
-                    <li class="flex items-start gap-3"><div class="mt-0.5 shrink-0 text-[#BA9FF5]"><i data-lucide="alert-circle" style="width:16px; height:16px;"></i></div><div>หากโอนผิด โอนเกิน หรือยกเลิกงาน <span class="text-red-400 font-medium">ไม่คืนเงินทุกกรณี</span></div></li>
-                    <li class="flex items-start gap-3"><div class="mt-0.5 shrink-0 text-[#BA9FF5]"><i data-lucide="alert-circle" style="width:16px; height:16px;"></i></div><div>รูปที่ร้านทำผิดจะแก้ให้ครับ แต่รูปที่ส่งไปตอนแรก ลูกค้าห้ามนำไปใช้ต่อนะครับ พบเจอปรับ <span class="text-[#BA9FF5] font-bold">x10</span> ของราคารูปนั้นๆ</div></li>
-                    <li class="flex items-start gap-3 pt-2 text-[#BA9FF5] font-medium text-xs"><div class="mt-0.5 shrink-0"><i data-lucide="check" style="width:14px; height:14px;"></i></div><div>!! เลือกสั่งซื้อ = ยอมรับเงื่อนไข งดวีนทุกกรณี 📍</div></li>
-                  </ul>
-                </div>
-                <!-- Bottom Logo -->
-                <div class="flex justify-center mt-10 mb-2 relative z-10">
-                    <div class="w-20 h-20 rounded-full border-[3px] border-[#1C1926] shadow-xl overflow-hidden bg-[#1C1926] flex items-center justify-center">
-                        <img src="https://drive.google.com/file/d/1Uml5dUWG_txsCY9P96QKndwPBPTVRkQC/view?usp=drivesdk" alt="Profile Mini" class="w-full h-full object-cover"/>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ORDERING -->
-            <div id="content-ORDERING" class="hidden animate-fadeIn space-y-6 relative">
-                <div class="absolute top-20 left-0 text-[#8A63D2]/40 animate-float-delayed"><i data-lucide="star" style="width:24px; height:24px; fill:currentColor;"></i></div>
             
-                <div class="text-center mb-6 relative mt-4">
-                    <p class="text-stone-400 font-medium text-sm mb-1 drop-shadow-sm">Queue Details</p>
-                    <h2 class="text-2xl font-bold text-white flex items-center justify-center gap-2 drop-shadow-md">
-                      <i data-lucide="star" class="text-[#BA9FF5]" style="width:18px; height:18px; fill:currentColor;"></i>
-                      ระยะเวลารับงาน
-                      <i data-lucide="star" class="text-[#BA9FF5]" style="width:18px; height:18px; fill:currentColor;"></i>
-                    </h2>
-                </div>
-                
-                <div class="bg-[#252136] rounded-[24px] p-5 shadow-xl border border-white/5 relative z-10">
-                  <div class="flex items-center gap-2 mb-4 pb-2 border-b border-white/10">
-                    <div class="bg-[#8A63D2]/20 p-1.5 rounded-lg text-[#BA9FF5]"><i data-lucide="image" style="width:16px; height:16px;"></i></div>
-                    <h3 class="font-bold text-white">ผลงานรูปภาพ / กราฟฟิค</h3>
-                  </div>
-                  <ul class="space-y-2 text-sm text-stone-300">
-                    <li class="flex justify-between"><span>Normal Queue:</span> <span class="text-[#BA9FF5]">7-14 วัน (อาจคลาดเคลื่อน)</span></li>
-                    <li class="flex justify-between"><span>Queue x2:</span> <span class="text-white">5-7 วัน</span></li>
-                    <li class="flex justify-between"><span>Queue x3:</span> <span class="text-white">2-3 วัน</span></li>
-                    <li class="flex justify-between"><span>Queue x4:</span> <span class="text-white">1 วัน</span></li>
-                    <li class="flex justify-between"><span>Queue x5:</span> <span class="text-white">15 ชั่วโมง</span></li>
-                    <li class="flex justify-between"><span>Queue x6:</span> <span class="text-white">10 ชั่วโมง</span></li>
-                    <li class="flex justify-between"><span>Queue x7:</span> <span class="text-white">3-5 ชั่วโมง</span></li>
-                    <li class="flex justify-between"><span>Queue x8:</span> <span class="text-[#BA9FF5] font-bold">1-2 ชั่วโมง</span></li>
-                  </ul>
-                </div>
-            
-                <div class="bg-[#252136] rounded-[24px] p-5 shadow-xl border border-white/5 relative z-10">
-                   <div class="flex items-center gap-2 mb-4 pb-2 border-b border-white/10">
-                    <div class="bg-[#8A63D2]/20 p-1.5 rounded-lg text-[#BA9FF5]"><i data-lucide="video" style="width:16px; height:16px;"></i></div>
-                    <h3 class="font-bold text-white">ผลงาน MV FIVEM</h3>
-                  </div>
-                  <ul class="space-y-2 text-sm text-stone-300">
-                    <li class="flex justify-between"><span>Normal Queue:</span> <span class="text-[#BA9FF5]">14 วัน</span></li>
-                    <li class="flex justify-between"><span>Queue x2:</span> <span class="text-white">7 วัน</span></li>
-                    <li class="flex justify-between"><span>Queue x3:</span> <span class="text-white">5 วัน</span></li>
-                    <li class="flex justify-between"><span>Queue x4:</span> <span class="text-white">3 วัน</span></li>
-                    <li class="flex justify-between"><span>Queue x5:</span> <span class="text-white">1-2 วัน</span></li>
-                    <li class="flex justify-between"><span>Queue x6:</span> <span class="text-[#BA9FF5]">เริ่มทำเลย (ตามความยากง่าย)</span></li>
-                  </ul>
-                </div>
-                <!-- Bottom Logo -->
-                <div class="flex justify-center mt-10 mb-2 relative z-10">
-                    <div class="w-20 h-20 rounded-full border-[3px] border-[#1C1926] shadow-xl overflow-hidden bg-[#1C1926] flex items-center justify-center">
-                        <img src="https://drive.google.com/file/d/1Uml5dUWG_txsCY9P96QKndwPBPTVRkQC/view?usp=drivesdk" alt="Profile Mini" class="w-full h-full object-cover"/>
-                    </div>
-                </div>
+            <!-- Bottom Menu Info -->
+            <div class="mt-auto border-t border-[#503d6e] pt-4 text-center">
+                <p class="font-slackey text-xs text-purple-400">YUNINX SHOP</p>
             </div>
-
-            <!-- EXAMPLE -->
-            <div id="content-EXAMPLE" class="hidden animate-fadeIn">
-                <div class="text-center mb-6 relative mt-4">
-                    <p class="text-stone-400 font-medium text-sm mb-1 drop-shadow-sm">Portfolios</p>
-                    <h2 class="text-2xl font-bold text-white flex items-center justify-center gap-2 drop-shadow-md">
-                      <i data-lucide="star" class="text-[#BA9FF5]" style="width:18px; height:18px; fill:currentColor;"></i>
-                      Example
-                      <i data-lucide="star" class="text-[#BA9FF5]" style="width:18px; height:18px; fill:currentColor;"></i>
-                    </h2>
-                </div>
-                <p class="text-center text-sm text-stone-400 mb-6 drop-shadow-sm">คลิกเพื่อดูผลงานในแฟ้มผลงาน</p>
-                
-                <div class="grid grid-cols-1 gap-4 relative z-10">
-                  <a href="https://drive.google.com/drive/folders/12naPphb2ytZOvFqNYXu6za_iFL18pasU" target="_blank" rel="noopener noreferrer" class="bg-[#252136] rounded-[24px] p-5 shadow-xl flex items-center gap-4 hover:-translate-y-1 transition-transform group border border-transparent hover:border-[#8A63D2]/40">
-                    <div class="w-12 h-12 bg-[#1C1926] rounded-2xl flex items-center justify-center text-[#BA9FF5] group-hover:bg-[#8A63D2] group-hover:text-white transition-colors">
-                        <i data-lucide="link" style="width:20px; height:20px;"></i>
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-white">Graphic Work</h4>
-                        <p class="text-xs text-stone-400">ดูตัวอย่างงานกราฟฟิค</p>
-                    </div>
-                  </a>
-                  
-                  <a href="https://drive.google.com/drive/folders/1Er_HHdMAEzAtv3GgNQkO0oZ1WdxaeucO" target="_blank" rel="noopener noreferrer" class="bg-[#252136] rounded-[24px] p-5 shadow-xl flex items-center gap-4 hover:-translate-y-1 transition-transform group border border-transparent hover:border-[#8A63D2]/40">
-                    <div class="w-12 h-12 bg-[#1C1926] rounded-2xl flex items-center justify-center text-[#BA9FF5] group-hover:bg-[#8A63D2] group-hover:text-white transition-colors">
-                        <i data-lucide="link" style="width:20px; height:20px;"></i>
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-white">Image Work</h4>
-                        <p class="text-xs text-stone-400">ดูตัวอย่างรูปออฟไลน์ FiveM</p>
-                    </div>
-                  </a>
-                  
-                  <a href="https://drive.google.com/drive/folders/1FYcvzfhqCcV6lmzHMK0yRCBixTvHayKf" target="_blank" rel="noopener noreferrer" class="bg-[#252136] rounded-[24px] p-5 shadow-xl flex items-center gap-4 hover:-translate-y-1 transition-transform group border border-transparent hover:border-[#8A63D2]/40">
-                    <div class="w-12 h-12 bg-[#1C1926] rounded-2xl flex items-center justify-center text-[#BA9FF5] group-hover:bg-[#8A63D2] group-hover:text-white transition-colors">
-                        <i data-lucide="link" style="width:20px; height:20px;"></i>
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-white">MV FiveM</h4>
-                        <p class="text-xs text-stone-400">ดูตัวอย่างงานวิดีโอ MV</p>
-                    </div>
-                  </a>
-                </div>
-                <!-- Bottom Logo -->
-                <div class="flex justify-center mt-10 mb-2 relative z-10">
-                    <div class="w-20 h-20 rounded-full border-[3px] border-[#1C1926] shadow-xl overflow-hidden bg-[#1C1926] flex items-center justify-center">
-                        <img src="https://drive.google.com/file/d/1Uml5dUWG_txsCY9P96QKndwPBPTVRkQC/view?usp=drivesdk" alt="Profile Mini" class="w-full h-full object-cover"/>
-                    </div>
-                </div>
-            </div>
-
-            <!-- PRICE -->
-            <div id="content-PRICE" class="hidden animate-fadeIn pb-4">
-                <div class="text-center mb-6 relative mt-4">
-                    <p class="text-stone-400 font-medium text-sm mb-1 drop-shadow-sm">Rates & Payments</p>
-                    <h2 class="text-2xl font-bold text-white flex items-center justify-center gap-2 drop-shadow-md">
-                      <i data-lucide="star" class="text-[#BA9FF5]" style="width:18px; height:18px; fill:currentColor;"></i>
-                      Price & Service
-                      <i data-lucide="star" class="text-[#BA9FF5]" style="width:18px; height:18px; fill:currentColor;"></i>
-                    </h2>
-                </div>
-                
-                <div class="bg-[#252136] rounded-[24px] p-4 shadow-xl border border-white/5 flex justify-center gap-6 mb-2 relative z-10">
-                   <div class="flex flex-col items-center gap-1">
-                     <div class="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center text-[#BA9FF5]"><i data-lucide="check-circle-2" style="width:20px; height:20px;"></i></div>
-                     <span class="text-[10px] font-bold text-white">BANK TRANSFER</span>
-                   </div>
-                   <div class="flex flex-col items-center gap-1">
-                     <div class="w-10 h-10 bg-[#8A63D2]/20 rounded-full flex items-center justify-center text-[#BA9FF5]"><i data-lucide="check-circle-2" style="width:20px; height:20px;"></i></div>
-                     <span class="text-[10px] font-bold text-[#BA9FF5]">TRUE MONEY</span>
-                   </div>
-                </div>
-                <p class="text-center text-xs text-stone-400 mb-4 drop-shadow-sm">ช่องทางการชำระเงิน (สอบถามรายละเอียดในแชท)</p>
-            
-                <div class="space-y-2 relative z-10">
-                    <!-- Price Card 1 -->
-                    <div class="bg-[#252136] rounded-[32px] p-6 shadow-xl relative mt-6 border border-white/5">
-                        <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#8A63D2]/30 text-[#BA9FF5] text-[10px] font-bold px-3 py-1 rounded-full flex items-center gap-1 shadow-sm border border-[#8A63D2]/40">
-                          HIGH QUALITY <i data-lucide="sparkles" style="width:10px; height:10px;"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-center text-white mt-2 mb-1">รูปออฟไลน์ FiveM</h3>
-                        <p class="text-center text-xs text-stone-400 mb-4">ตกแต่งสวยงามตามสไตล์และธีมที่ต้องการ</p>
-                        <div class="bg-[#1C1926] border border-white/5 rounded-2xl p-4">
-                           <div class="flex justify-between items-center mb-3">
-                              <span class="flex items-center gap-1.5 text-[#BA9FF5] font-medium text-sm"><i data-lucide="star" style="width:14px; height:14px; fill:currentColor;"></i> Rate</span>
-                              <span class="text-sm font-bold text-[#BA9FF5]">ติดต่อสอบถามราคา</span>
-                           </div>
-                           <ul class="space-y-2.5">
-                                 <li class="flex gap-2 text-xs text-stone-300 items-start"><i data-lucide="check" class="text-[#BA9FF5] mt-0.5 shrink-0" style="width:14px; height:14px;"></i> <span>ระบุเรฟความต้องการได้ชัดเจน</span></li>
-                                 <li class="flex gap-2 text-xs text-stone-300 items-start"><i data-lucide="check" class="text-[#BA9FF5] mt-0.5 shrink-0" style="width:14px; height:14px;"></i> <span>การันตีความสวย คุมโทนมืดดำสะใจ</span></li>
-                           </ul>
-                        </div>
-                    </div>
-                    <!-- Price Card 2 -->
-                    <div class="bg-[#252136] rounded-[32px] p-6 shadow-xl relative mt-6 border border-white/5">
-                        <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#8A63D2]/30 text-[#BA9FF5] text-[10px] font-bold px-3 py-1 rounded-full flex items-center gap-1 shadow-sm border border-[#8A63D2]/40">
-                          POPULAR <i data-lucide="sparkles" style="width:10px; height:10px;"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-center text-white mt-2 mb-1">MV FIVEM</h3>
-                        <p class="text-center text-xs text-stone-400 mb-4">งานวิดีโอ ลื่นไหล เอฟเฟกต์จัดเต็ม</p>
-                        <div class="bg-[#1C1926] border border-white/5 rounded-2xl p-4">
-                           <div class="flex justify-between items-center mb-3">
-                              <span class="flex items-center gap-1.5 text-[#BA9FF5] font-medium text-sm"><i data-lucide="star" style="width:14px; height:14px; fill:currentColor;"></i> Rate</span>
-                              <span class="text-sm font-bold text-[#BA9FF5]">ติดต่อสอบถามราคา</span>
-                           </div>
-                           <ul class="space-y-2.5">
-                                 <li class="flex gap-2 text-xs text-stone-300 items-start"><i data-lucide="check" class="text-[#BA9FF5] mt-0.5 shrink-0" style="width:14px; height:14px;"></i> <span>ตัดต่อละเอียดตามจังหวะเพลง</span></li>
-                                 <li class="flex gap-2 text-xs text-stone-300 items-start"><i data-lucide="check" class="text-[#BA9FF5] mt-0.5 shrink-0" style="width:14px; height:14px;"></i> <span>ปรับความเร็วคิว x2 ถึง x6 ได้</span></li>
-                           </ul>
-                        </div>
-                    </div>
-                </div>
-                <!-- Bottom Logo -->
-                <div class="flex justify-center mt-10 mb-2 relative z-10">
-                    <div class="w-20 h-20 rounded-full border-[3px] border-[#1C1926] shadow-xl overflow-hidden bg-[#1C1926] flex items-center justify-center">
-                        <img src="https://drive.google.com/file/d/1Uml5dUWG_txsCY9P96QKndwPBPTVRkQC/view?usp=drivesdk" alt="Profile Mini" class="w-full h-full object-cover"/>
-                    </div>
-                </div>
-            </div>
-
-            <!-- CONTACT -->
-            <div id="content-CONTACT" class="hidden animate-fadeIn flex flex-col items-center pb-8 relative">
-                <div class="absolute top-10 right-4 text-[#8A63D2]/40 animate-float"><i data-lucide="message-circle" style="width:32px; height:32px;"></i></div>
-            
-                <div class="text-center mb-6 relative mt-4">
-                    <p class="text-stone-400 font-medium text-sm mb-1 drop-shadow-sm">Get in touch</p>
-                    <h2 class="text-2xl font-bold text-white flex items-center justify-center gap-2 drop-shadow-md">
-                      <i data-lucide="star" class="text-[#BA9FF5]" style="width:18px; height:18px; fill:currentColor;"></i>
-                      Contact
-                      <i data-lucide="star" class="text-[#BA9FF5]" style="width:18px; height:18px; fill:currentColor;"></i>
-                    </h2>
-                </div>
-                <p class="text-center text-sm text-stone-400 mb-8 drop-shadow-sm">ช่องทางการติดต่อและสั่งงาน</p>
-                
-                <div class="w-full space-y-4 relative z-10">
-                  <a href="https://www.facebook.com/share/1DqnhnQqhD/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="flex items-center p-4 rounded-[24px] bg-[#252136] shadow-xl border border-transparent hover:border-[#8A63D2]/40 transition-all group">
-                    <div class="bg-white/5 text-white p-3 rounded-2xl group-hover:scale-110 group-hover:bg-[#8A63D2] transition-all mr-4">
-                      <i data-lucide="facebook" style="width:24px; height:24px;"></i>
-                    </div>
-                    <div class="flex-grow">
-                      <p class="font-bold text-white text-lg">Facebook</p>
-                      <p class="text-sm text-stone-400">Yuninx</p>
-                    </div>
-                    <div class="text-[#BA9FF5] group-hover:text-white transition-colors">
-                        <i data-lucide="external-link" style="width:20px; height:20px;"></i>
-                    </div>
-                  </a>
-            
-                  <a href="https://discord.gg/yPFwC9Q8NU" target="_blank" rel="noopener noreferrer" class="flex items-center p-4 rounded-[24px] bg-[#252136] shadow-xl border border-transparent hover:border-[#8A63D2]/40 transition-all group">
-                    <div class="bg-white/5 text-white p-3 rounded-2xl group-hover:scale-110 group-hover:bg-[#8A63D2] transition-all mr-4">
-                      <i data-lucide="message-circle" style="width:24px; height:24px;"></i>
-                    </div>
-                    <div class="flex-grow">
-                      <p class="font-bold text-white text-lg">Discord</p>
-                      <p class="text-sm text-stone-400">Join Community</p>
-                    </div>
-                     <div class="text-[#BA9FF5] group-hover:text-white transition-colors">
-                        <i data-lucide="external-link" style="width:20px; height:20px;"></i>
-                    </div>
-                  </a>
-                </div>
-                <!-- Bottom Logo -->
-                <div class="flex justify-center mt-10 mb-2 relative z-10">
-                    <div class="w-20 h-20 rounded-full border-[3px] border-[#1C1926] shadow-xl overflow-hidden bg-[#1C1926] flex items-center justify-center">
-                        <img src="https://drive.google.com/file/d/1Uml5dUWG_txsCY9P96QKndwPBPTVRkQC/view?usp=drivesdk" alt="Profile Mini" class="w-full h-full object-cover"/>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- Footer -->
-        <div class="py-6 text-center text-xs text-[#BA9FF5]/60 mt-auto bg-gradient-to-t from-[#8A63D2]/10 to-transparent relative z-10">
-          © 2026 Yuninx. All rights reserved.
         </div>
     </div>
 
-    <!-- Application Logic -->
-    <script>
-        // Initialize Lucide Icons
-        lucide.createIcons();
+    <!-- Top Bar -->
+    <div class="w-full bg-[#221c30]/90 backdrop-blur-md border-b border-[#503d6e] py-3 px-4 flex justify-between items-center text-[10px] sm:text-xs font-slackey text-purple-400 font-medium uppercase tracking-wider sticky top-0 z-30 shadow-sm">
+        <div class="flex items-center gap-2 sm:gap-3">
+            <!-- Hamburger Menu (3 ขีด) -->
+            <button onclick="toggleMenu()" class="p-1.5 hover:bg-purple-900 rounded-md text-purple-400 transition-colors focus:outline-none cursor-pointer">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+            <span>YUNINX ></span>
+            <span class="text-purple-500 hidden sm:inline">></span>
+        </div>
+        <div class="flex items-center gap-4">
+            <span class="flex items-center gap-1">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>
+                NO COPY
+            </span>
+            <span class="hidden sm:inline border-l border-[#503d6e] pl-4">DO NOT STEAL</span>
+        </div>
+    </div>
 
-        const tabs = ['HOME', 'T.O.S', 'ORDERING', 'EXAMPLE', 'PRICE', 'CONTACT'];
+    <!-- Main Container -->
+    <main class="max-w-2xl mx-auto mt-6 sm:mt-10 px-4 relative z-0">
         
-        function switchTab(tabId) {
-            // Hide all contents
-            tabs.forEach(t => {
-                document.getElementById('content-' + t).classList.add('hidden');
-            });
-            // Show target content
-            document.getElementById('content-' + tabId).classList.remove('hidden');
+        <!-- The Clean Board -->
+        <div class="clean-box p-6 sm:p-10 z-0 border border-purple-900/30">
+            
+            <!-- Header Section -->
+            <div class="text-center mb-8 relative flex flex-col items-center">
+                <!-- Decorations (Stars & Sparkles) ✨ -->
+                <svg class="absolute top-2 left-2 sm:left-10 w-6 h-6 text-[#b67eff] animate-pulse" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 0C12 0 12 10 22 12C12 14 12 24 12 24C12 24 12 14 2 12C12 10 12 0 12 0Z" />
+                </svg>
+                <svg class="absolute top-6 right-4 sm:right-12 w-5 h-5 text-purple-400 animate-bounce" style="animation-duration: 2.5s;" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2l2.4 7.6H22l-6.2 4.5 2.4 7.6-6.2-4.5-6.2 4.5 2.4-7.6-6.2-4.5h7.6z"/>
+                </svg>
+                <svg class="absolute bottom-4 left-8 sm:left-16 w-4 h-4 text-purple-500 animate-pulse" style="animation-delay: 1s;" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 0C12 0 12 10 22 12C12 14 12 24 12 24C12 24 12 14 2 12C12 10 12 0 12 0Z" />
+                </svg>
+                <svg class="absolute bottom-8 right-8 sm:right-16 w-4 h-4 text-[#b67eff]" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2l2.4 7.6H22l-6.2 4.5 2.4 7.6-6.2-4.5-6.2 4.5 2.4-7.6-6.2-4.5h7.6z"/>
+                </svg>
 
-            // Update active state in menu buttons
-            tabs.forEach(t => {
-                const btn = document.getElementById('btn-' + t);
-                if(t === tabId) {
-                    btn.className = "px-5 py-3 text-sm font-semibold text-left transition-colors flex items-center gap-2 bg-[#8A63D2]/20 text-[#BA9FF5] border-l-4 border-[#8A63D2]";
-                } else {
-                    btn.className = "px-5 py-3 text-sm font-semibold text-left transition-colors flex items-center gap-2 text-stone-400 hover:bg-[#252136] hover:text-[#BA9FF5] border-l-4 border-transparent";
-                }
-            });
+                <!-- Profile Picture -->
+                <div class="relative w-28 h-28 sm:w-32 sm:h-32 mb-2 group">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-[#b67eff] to-[#503d6e] rounded-full opacity-40 blur-md group-hover:opacity-60 transition duration-300"></div>
+                    <img src="https://drive.google.com/thumbnail?id=1Uml5dUWG_txsCY9P96QKndwPBPTVRkQC&sz=w500" alt="Profile Picture" class="relative w-full h-full object-cover rounded-full border-4 border-[#221c30] shadow-md z-10 transition-transform duration-300 group-hover:scale-105">
+                    <div class="absolute -bottom-1 -right-1 bg-[#221c30] rounded-full p-1.5 shadow-sm z-20 border border-purple-900/40">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="#b67eff"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                    </div>
+                </div>
 
-            // Close the menu after clicking
-            closeMenu();
-        }
+                <h1 class="font-slackey text-4xl sm:text-5xl font-bold text-[#b67eff] text-shadow-cute mb-3 tracking-wide mt-3">Yuninx</h1>
+                <h2 class="font-slackey text-xl text-[#e2d9f3] bg-[#2d243d] inline-block px-6 py-1.5 rounded-full shadow-sm">Welcome to my shop</h2>
+            </div>
 
+            <!-- Image Slider Section -->
+            <div class="mb-10 relative rounded-3xl overflow-hidden shadow-md group">
+                <div class="slider-track" id="slider-track">
+                    <!-- Slide 1 -->
+                    <div class="slide bg-gradient-to-r from-purple-900 to-[#221c30] h-40 sm:h-56 flex flex-col items-center justify-center text-center p-4">
+                        <span class="font-slackey text-2xl sm:text-3xl text-[#b67eff] mb-2">ทำรูปออฟไลน์ FiveM</span>
+                        <span class="text-sm text-[#e2d9f3] bg-black/40 px-4 py-1 rounded-full">ดีไซน์สวยงามเป็นเอกลักษณ์</span>
+                    </div>
+                    <!-- Slide 2 -->
+                    <div class="slide bg-gradient-to-r from-[#2d243d] to-purple-950 h-40 sm:h-56 flex flex-col items-center justify-center text-center p-4">
+                        <span class="font-slackey text-2xl sm:text-3xl text-[#b67eff] mb-2">MV FIVEM</span>
+                        <span class="text-sm text-[#e2d9f3] bg-black/40 px-4 py-1 rounded-full">ตัดต่อคุณภาพระดับพรีเมียม</span>
+                    </div>
+                    <!-- Slide 3 -->
+                    <div class="slide bg-gradient-to-r from-purple-950 to-purple-900 h-40 sm:h-56 flex flex-col items-center justify-center text-center p-4">
+                        <span class="font-slackey text-2xl sm:text-3xl text-[#b67eff] mb-2">งานกราฟฟิคทุกรูปแบบ</span>
+                        <span class="text-sm text-[#e2d9f3] bg-black/40 px-4 py-1 rounded-full">งานไว มั่นใจคุณภาพ</span>
+                    </div>
+                </div>
+                
+                <!-- Slider Controls -->
+                <button onclick="prevSlide()" class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 text-[#b67eff] w-8 h-8 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity shadow-sm hover:bg-black">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+                </button>
+                <button onclick="nextSlide()" class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 text-[#b67eff] w-8 h-8 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity shadow-sm hover:bg-black">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+                </button>
+                
+                <!-- Slider Dots -->
+                <div class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2" id="slider-dots">
+                    <button class="w-4 h-2 rounded-full bg-[#b67eff] transition-all"></button>
+                    <button class="w-2 h-2 rounded-full bg-white/40 transition-all"></button>
+                    <button class="w-2 h-2 rounded-full bg-white/40 transition-all"></button>
+                </div>
+            </div>
+
+            <!-- Intro Section / บริการของร้าน -->
+            <div id="services" class="text-center mb-10 bg-[#2d243d] p-6 rounded-2xl border border-purple-900/40 shadow-sm mt-6">
+                <div class="flex justify-center mb-4">
+                    <div class="bg-[#1a1525] rounded-full p-2.5 shadow-sm border border-purple-900/40 text-[#b67eff]">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                    </div>
+                </div>
+                <p class="text-[15px] sm:text-base leading-relaxed text-[#e2d9f3]">
+                    ยินดีต้อนรับสู่ร้าน <span class="text-[#b67eff] font-semibold">Yuninx</span> ผู้ให้บริการด้านงานกราฟฟิคและโปรดักชั่น FiveM ครบวงจร<br>
+                    <span class="text-purple-300 text-sm mt-1 inline-block">สร้างสรรค์ผลงานอย่างมืออาชีพตามใจคุณ</span>
+                </p>
+            </div>
+
+            <!-- Services Section -->
+            <div class="mb-10">
+                <h3 class="font-slackey text-2xl font-semibold mb-4 flex items-center gap-2 text-[#b67eff]">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+                    งานที่รับทำ (Services)
+                </h3>
+                <ul class="space-y-3 text-[15px] sm:text-base mb-5 text-[#e2d9f3]">
+                    <li class="flex items-center gap-3 bg-purple-950/40 p-3 rounded-xl border border-purple-900/20"><svg class="w-4 h-4 flex-shrink-0 text-[#b67eff]" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="8"/></svg> ทำรูปออฟไลน์ FiveM ทุกสไตล์</li>
+                    <li class="flex items-center gap-3 bg-purple-950/40 p-3 rounded-xl border border-purple-900/20"><svg class="w-4 h-4 flex-shrink-0 text-[#b67eff]" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="8"/></svg> ตัดต่อและสร้างสรรค์ MV FIVEM คุณภาพสูง</li>
+                    <li class="flex items-center gap-3 bg-purple-950/40 p-3 rounded-xl border border-purple-900/20"><svg class="w-4 h-4 flex-shrink-0 text-[#b67eff]" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="8"/></svg> งานดีไซน์กราฟฟิคทั่วไปตามบรีฟ</li>
+                </ul>
+            </div>
+
+            <!-- Popups for Sample Work -->
+            <div id="portfolio" class="mb-10 bg-[#2d243d] border border-purple-900/40 rounded-2xl p-6 text-center shadow-md relative overflow-hidden mt-6">
+                <svg class="absolute -right-4 -bottom-4 opacity-10 w-24 h-24 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                
+                <div class="flex justify-center mb-4 mt-2 relative z-10">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="#b67eff"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                </div>
+                
+                <h3 class="font-slackey text-white text-2xl font-medium mb-5 relative z-10">ตัวอย่างผลงานของเรา (Portfolio)</h3>
+                <div class="flex flex-wrap justify-center gap-3 relative z-10">
+                    <a href="https://drive.google.com/drive/folders/12naPphb2ytZOvFqNYXu6za_iFL18pasU" target="_blank" class="bg-[#b67eff] text-black px-6 py-2.5 rounded-full hover:bg-white hover:text-[#b67eff] transition duration-300 text-sm font-medium border-2 border-[#b67eff] shadow-sm">งานกราฟฟิค</a>
+                    <a href="https://drive.google.com/drive/folders/1Er_HHdMAEzAtv3GgNQkO0oZ1WdxaeucO" target="_blank" class="bg-[#1a1525] text-white px-6 py-2.5 rounded-full hover:bg-white hover:text-[#1a1525] transition duration-300 text-sm font-medium border-2 border-[#1a1525] shadow-sm">งานรูปภาพ</a>
+                    <a href="https://drive.google.com/drive/folders/1FYcvzfhqCcV6lmzHMK0yRCBixTvHayKf" target="_blank" class="bg-purple-900 text-white px-6 py-2.5 rounded-full hover:bg-white transition duration-300 text-sm font-medium border-2 border-purple-900 shadow-sm">งาน MV FiveM</a>
+                </div>
+            </div>
+
+            <!-- Pricing & Queue System -->
+            <div id="pricing" class="mb-10">
+                <div class="bg-[#221c30] rounded-2xl p-6 border border-purple-900/40 shadow-sm mt-6">
+                    <div class="flex justify-center mb-4">
+                        <div class="bg-[#2d243d] rounded-full p-2.5 border border-purple-900/40 text-[#b67eff]">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58.55 0 1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41 0-.55-.23-1.06-.59-1.42zM5.5 7C4.67 7 4 6.33 4 5.5S4.67 4 5.5 4 7 4.67 7 5.5 6.33 7 5.5 7z"/></svg>
+                        </div>
+                    </div>
+
+                    <h3 class="text-center font-slackey text-2xl text-[#b67eff] mb-2 mt-1">ระยะเวลา & ระดับคิวงาน</h3>
+                    <p class="text-center text-purple-300 font-medium text-sm mb-5">เลือกประเภทคิวงานตามความเร่งด่วนของท่าน</p>
+                    
+                    <!-- ส่วนเช็คคิวรูป/กราฟฟิค -->
+                    <div class="text-[15px] space-y-3 mb-6">
+                        <p class="font-medium text-[#b67eff] border-b border-purple-900/60 pb-2 flex items-center gap-2">
+                            <span>🎨</span> ระยะเวลาคิวงานรูป / กราฟฟิค (มีคลาดเคลื่อนเล็กน้อย)
+                        </p>
+                        <ul class="space-y-2 text-sm text-[#e2d9f3]">
+                            <li class="flex justify-between items-center bg-[#2d243d] p-2.5 rounded-lg"><span>คิวปกติ (Queue Normal)</span> <span class="text-[#b67eff] font-medium">7-14 วัน</span></li>
+                            <li class="flex justify-between items-center bg-[#2d243d] p-2.5 rounded-lg"><span>คิว x2 (Queue x2)</span> <span class="text-[#b67eff] font-medium">5-7 วัน</span></li>
+                            <li class="flex justify-between items-center bg-[#2d243d] p-2.5 rounded-lg"><span>คิว x3 (Queue x3)</span> <span class="text-[#b67eff] font-medium">2-3 วัน</span></li>
+                            <li class="flex justify-between items-center bg-[#2d243d] p-2.5 rounded-lg"><span>คิว x4 (Queue x4)</span> <span class="text-[#b67eff] font-medium">1 วัน</span></li>
+                            <li class="flex justify-between items-center bg-[#2d243d] p-2.5 rounded-lg"><span>คิว x5 (Queue x5)</span> <span class="text-[#b67eff] font-medium">15 ชั่วโมง</span></li>
+                            <li class="flex justify-between items-center bg-[#2d243d] p-2.5 rounded-lg"><span>คิว x6 (Queue x6)</span> <span class="text-[#b67eff] font-medium">10 ชั่วโมง</span></li>
+                            <li class="flex justify-between items-center bg-[#2d243d] p-2.5 rounded-lg"><span>คิว x7 (Queue x7)</span> <span class="text-[#b67eff] font-medium">3-5 ชั่วโมง</span></li>
+                            <li class="flex justify-between items-center bg-[#2d243d] p-2.5 rounded-lg"><span>คิว x8 (Queue x8)</span> <span class="text-[#b67eff] font-medium">1-2 ชั่วโมง</span></li>
+                        </ul>
+                    </div>
+
+                    <!-- ส่วนเช็คคิว MV -->
+                    <div class="text-[15px] space-y-3">
+                        <p class="font-medium text-[#b67eff] border-b border-purple-900/60 pb-2 flex items-center gap-2">
+                            <span>🎬</span> ระยะเวลาคิวงาน MV FIVEM
+                        </p>
+                        <ul class="space-y-2 text-sm text-[#e2d9f3]">
+                            <li class="flex justify-between items-center bg-[#2d243d] p-2.5 rounded-lg"><span>คิวปกติ (Queue Normal)</span> <span class="text-[#b67eff] font-medium">14 วัน</span></li>
+                            <li class="flex justify-between items-center bg-[#2d243d] p-2.5 rounded-lg"><span>คิว x2 (Queue x2)</span> <span class="text-[#b67eff] font-medium">7 วัน</span></li>
+                            <li class="flex justify-between items-center bg-[#2d243d] p-2.5 rounded-lg"><span>คิว x3 (Queue x3)</span> <span class="text-[#b67eff] font-medium">5 วัน</span></li>
+                            <li class="flex justify-between items-center bg-[#2d243d] p-2.5 rounded-lg"><span>คิว x4 (Queue x4)</span> <span class="text-[#b67eff] font-medium">3 วัน</span></li>
+                            <li class="flex justify-between items-center bg-[#2d243d] p-2.5 rounded-lg"><span>คิว x5 (Queue x5)</span> <span class="text-[#b67eff] font-medium">1-2 วัน</span></li>
+                            <li class="flex justify-between items-center bg-[#2d243d] p-2.5 rounded-lg"><span>คิว x6 (Queue x6)</span> <span class="text-purple-300 text-xs text-right">เริ่มทำทันที (ความเร็วขึ้นอยู่กับความยากของงาน)</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Promotion -->
+            <div class="mb-10 bg-gradient-to-br from-[#503d6e] to-[#221c30] rounded-2xl p-6 text-white border border-purple-900/40 shadow-md relative overflow-hidden">
+                 <svg class="absolute top-4 left-4 w-5 h-5 text-purple-400/60 animate-pulse" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C12 0 12 10 22 12C12 14 12 24 12 24C12 24 12 14 2 12C12 10 12 0 12 0Z" /></svg>
+                 <svg class="absolute bottom-6 right-16 w-4 h-4 text-purple-400/50 animate-pulse" style="animation-delay: 0.5s;" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C12 0 12 10 22 12C12 14 12 24 12 24C12 24 12 14 2 12C12 10 12 0 12 0Z" /></svg>
+                 
+                 <div class="absolute -right-2 -top-2 opacity-20">
+                    <svg width="60" height="60" viewBox="0 0 24 24" fill="#ffffff"><path d="M21.03 3.51c-.81-.8-2.31-.81-4.2-.06C14.7 4.3 13.2 5.56 12 7.02 10.8 5.56 9.3 4.3 7.17 3.45c-1.89-.75-3.39-.74-4.2.06-1.12 1.11-1.25 3.33-.29 5.8 1.12 2.87 3.65 6.01 7.14 8.65L12 19.86l2.18-1.9c3.49-2.64 6.02-5.78 7.14-8.65.96-2.47.83-4.69-.29-5.8z"/></svg>
+                 </div>
+                <h3 class="text-xl font-slackey mb-3 text-[#b67eff]">YUNINX QUALITY</h3>
+                <p class="text-lg font-semibold mb-2 text-purple-200">ยินดีให้บริการตลอด 24 ชั่วโมง</p>
+                <p class="text-sm text-purple-300 leading-relaxed">ทุกผลงานของร้านผ่านกระบวนการออกแบบ ตรวจเช็คความสวยงาม และเรนเดอร์ด้วยประสิทธิภาพสูงสุด เพื่อให้คุณได้รับชิ้นงานที่ดีที่สุดในคอมมูนิตี้</p>
+            </div>
+
+            <!-- Rules -->
+            <div class="mb-10">
+                <h3 class="font-slackey text-2xl font-semibold mb-4 text-[#b67eff]">กฎของร้าน (Terms & Rules)</h3>
+                <div class="bg-[#2d243d] p-5 rounded-2xl text-[14px] sm:text-[15px] space-y-4 border border-purple-900/30 text-[#e2d9f3] leading-relaxed">
+                    <p class="flex items-start gap-2"><span>🐰</span> <span>ห้ามนำรูปไปขายต่อ/ปล่อยต่อ หากพบเจอปรับ <b>x20</b> ของราคารูปนั้น</span></p>
+                    <p class="flex items-start gap-2"><span>🐰</span> <span>ห้ามตัดลายน้ำร้านออกเด็ดขาด แจ้งขนาดที่ต้องการให้ชัดเจน หากพบเจอปรับ <b>x10</b></span></p>
+                    <p class="flex items-start gap-2"><span>🐰</span> <span>ห้ามนำรูปร้านไปทำการกระทำใดที่ต้องตัดลายน้ำออก เช่น นำไปใช้ทำ AI หากพบเจอปรับ <b>x20</b> ทั้งตัวร้านค้าและลูกค้าผู้ใช้งาน</span></p>
+                    <p class="flex items-start gap-2"><span>🐰</span> <span>หากโอนเงินผิด โอนเงินเกิน หรือขอยกเลิกงาน ทางร้านไม่คืนเงินทุกกรณี</span></p>
+                    <p class="flex items-start gap-2"><span>🐰</span> <span>หากเป็นรูปที่ร้านทำผิดพลาดเอง ทางร้านจะแก้ให้ฟรีครับ แต่รูปเวอร์ชันที่ส่งไปแก้ไขตอนแรก ลูกค้าห้ามนำไปใช้งานต่อนะครับ หากพบเจอปรับ <b>x10</b> ของราคารูปนั้นๆ</span></p>
+                    <div class="mt-4 p-3 bg-red-950/40 border border-red-900/50 rounded-xl text-center font-medium text-red-300 text-xs sm:text-sm">
+                        📍 การเลือกสั่งซื้อบริการ = ยอมรับเงื่อนไขแล้วนะคะ งดวีนทุกกรณีค่ะ 📍
+                    </div>
+                </div>
+            </div>
+
+            <!-- Course / Goodnote Section -->
+            <div id="course" class="hidden"></div>
+            <div id="goodnote" class="hidden"></div>
+
+            <!-- Footer / Contact -->
+            <div id="contact" class="mt-12 pt-8 border-t border-purple-900/40 text-center">
+                <div class="flex justify-center mb-5">
+                    <div class="bg-[#2d243d] rounded-full p-3 text-[#b67eff]">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    </div>
+                </div>
+
+                <h3 class="font-slackey text-2xl text-[#b67eff] mb-5">ช่องทางการติดต่อ (Contact)</h3>
+                <div class="flex justify-center gap-5 mb-8">
+                    <!-- Facebook -->
+                    <a href="https://www.facebook.com/share/1DqnhnQqhD/?mibextid=wwXIfr" target="_blank" class="w-12 h-12 rounded-full bg-[#2d243d] text-[#b67eff] flex items-center justify-center hover:bg-[#b67eff] hover:text-black transition duration-300 shadow-sm border border-purple-900/30">
+                        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"/></svg>
+                    </a>
+                    <!-- Discord -->
+                    <a href="https://discord.gg/yPFwC9Q8NU" target="_blank" class="w-12 h-12 rounded-full bg-[#2d243d] text-[#b67eff] flex items-center justify-center hover:bg-[#b67eff] hover:text-black transition duration-300 shadow-sm border border-purple-900/30">
+                        <svg width="24" height="24" fill="currentColor" viewBox="0 0 127.14 96.36" style="padding: 2px;"><path d="M107.7,8.07A105.15,105.15,0,0,0,77.26,0a77.19,77.19,0,0,0-3.3,6.83A96.67,96.67,0,0,0,53.22,6.83,77.19,77.19,0,0,0,49.88,0,105.15,105.15,0,0,0,19.44,8.07C3.66,31.58-1.86,54.65,1,77.53A105.73,105.73,0,0,0,32,96.36a77.7,77.7,0,0,0,6.63-10.85,68.43,68.43,0,0,1-10.5-5c.9-.65,1.76-1.34,2.58-2a75.58,75.58,0,0,0,72.9,0c.82.71,1.68,1.4,2.58,2a68.86,68.86,0,0,1-10.5,5,77.7,77.7,0,0,0,6.63,10.85,105.73,105.73,0,0,0,31.58-18.83C129.24,50.7,123.49,27.88,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53S36.18,40.36,42.45,40.36,53.87,46,53.87,53,48.72,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.24,60,73.24,53S78.41,40.36,84.69,40.36,96.11,46,96.11,53,91,65.69,84.69,65.69Z"/></svg>
+                    </a>
+                </div>
+                <p class="text-xs text-purple-400 tracking-widest font-medium uppercase">THANK YOU FOR CHOOSING YUNINX SHOP</p>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Modals (ยังคงโครงสร้างเดิมทั้งหมด) -->
+    <div id="modal-bright" class="fixed inset-0 bg-black/40 backdrop-blur-sm hidden items-center justify-center z-50 px-4"></div>
+    <div id="modal-dark" class="fixed inset-0 bg-black/40 backdrop-blur-sm hidden items-center justify-center z-50 px-4"></div>
+    <div id="modal-pastel" class="fixed inset-0 bg-black/40 backdrop-blur-sm hidden items-center justify-center z-50 px-4"></div>
+
+    <!-- Script for Modals & Slider -->
+    <script>
         function toggleMenu() {
-            const menu = document.getElementById('mobile-menu');
-            const iconMenu = document.getElementById('icon-menu');
-            const iconX = document.getElementById('icon-x');
-
-            if (menu.classList.contains('hidden')) {
-                // Open menu
-                menu.classList.remove('hidden');
-                iconMenu.classList.add('hidden');
-                iconX.classList.remove('hidden');
+            const menu = document.getElementById('side-menu');
+            const overlay = document.getElementById('menu-overlay');
+            if (menu.classList.contains('-translate-x-full')) {
+                menu.classList.remove('-translate-x-full');
+                overlay.classList.remove('hidden');
+                setTimeout(() => overlay.classList.remove('opacity-0'), 10);
             } else {
-                // Close menu
-                closeMenu();
+                menu.classList.add('-translate-x-full');
+                overlay.classList.add('opacity-0');
+                setTimeout(() => overlay.classList.add('hidden'), 300);
             }
         }
 
-        function closeMenu() {
-            document.getElementById('mobile-menu').classList.add('hidden');
-            document.getElementById('icon-menu').classList.remove('hidden');
-            document.getElementById('icon-x').classList.add('hidden');
+        function openModal(id) {
+            const modal = document.getElementById(id);
+            if(!modal) return;
+            modal.classList.remove('hidden');
+            modal.style.display = 'flex';
+            if(modal.children[0]) {
+                modal.children[0].classList.remove('modal-exit');
+                modal.children[0].classList.add('modal-enter');
+            }
         }
+
+        function closeModal(id) {
+            const modal = document.getElementById(id);
+            if(!modal) return;
+            const content = modal.children[0];
+            if(content) {
+                content.classList.remove('modal-enter');
+                content.classList.add('modal-exit');
+            }
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                modal.style.display = 'none';
+            }, 200);
+        }
+
+        window.onclick = function(event) {
+            if (event.target.classList.contains('fixed') && !event.target.id.includes('menu')) {
+                closeModal(event.target.id);
+            }
+        }
+
+        let currentSlide = 0;
+        const track = document.getElementById('slider-track');
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('#slider-dots button');
+        const totalSlides = slides.length;
+        let slideInterval;
+
+        function updateSlider() {
+            if(!track) return;
+            track.style.transform = `translateX(-${currentSlide * 100}%)`;
+            dots.forEach((dot, index) => {
+                if (index === currentSlide) {
+                    dot.classList.remove('bg-white/40', 'w-2');
+                    dot.classList.add('bg-[#b67eff]', 'w-4');
+                } else {
+                    dot.classList.remove('bg-[#b67eff]', 'w-4');
+                    dot.classList.add('bg-white/40', 'w-2');
+                }
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateSlider();
+            resetInterval();
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            updateSlider();
+            resetInterval();
+        }
+
+        function startInterval() {
+            slideInterval = setInterval(nextSlide, 3500);
+        }
+
+        function resetInterval() {
+            clearInterval(slideInterval);
+            startInterval();
+        }
+
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                currentSlide = index;
+                updateSlider();
+                resetInterval();
+            });
+        });
+
+        updateSlider();
+        startInterval();
     </script>
 </body>
 </html>
