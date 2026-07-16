@@ -3,250 +3,176 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yuninx - Course & Graphic Design</title>
+    <title>Yuninx - Welcome to my shop</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Kanit:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Kanit', 'sans-serif'],
-                        serif: ['Cinzel', 'serif'],
-                    },
-                    colors: {
-                        magic: {
-                            900: '#0a0314',
-                            800: '#1a072e',
-                            700: '#2e0b54',
-                            600: '#4c118a',
-                            500: '#7214db',
-                            400: '#9945f7',
-                            300: '#be87fa',
-                            200: '#dfc2fe',
-                        }
-                    },
-                    boxShadow: {
-                        'neon': '0 0 15px rgba(153, 69, 247, 0.6), inset 0 0 10px rgba(153, 69, 247, 0.4)',
-                        'neon-strong': '0 0 25px rgba(153, 69, 247, 0.8), inset 0 0 15px rgba(153, 69, 247, 0.5)',
-                    }
-                }
-            }
-        }
-    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mitr:wght@300;400;500;600&family=Slackey&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --color-pink-bg: #1a1525;
+            --color-pink-dot: #2d243d;
+            --color-pink-dark: #b67eff;
+            --color-pink-light: #503d6e;
+            --color-brown-dark: #e2d9f3;
+            --color-brown-light: #bcaada;
+        }
+
+        /* ใช้ฟอนต์ Mitr สำหรับเนื้อหาทั่วไป */
         body {
-            background-color: #05010a;
-            background-image: 
-                radial-gradient(circle at 15% 50%, rgba(46, 11, 84, 0.4), transparent 25%),
-                radial-gradient(circle at 85% 30%, rgba(76, 17, 138, 0.3), transparent 25%);
-            color: #ffffff;
-            min-height: 100vh;
-            overflow-x: hidden;
+            font-family: 'Mitr', sans-serif;
+            background-color: var(--color-pink-bg);
+            background-image: radial-gradient(var(--color-pink-dot) 15%, transparent 16%), radial-gradient(var(--color-pink-dot) 15%, transparent 16%);
+            background-size: 24px 24px;
+            background-position: 0 0, 12px 12px;
+            color: var(--color-brown-dark);
+            scroll-behavior: smooth;
         }
 
-        .glass-panel {
-            background: linear-gradient(135deg, rgba(26, 7, 46, 0.75) 0%, rgba(10, 3, 20, 0.85) 100%);
+        /* ฟอนต์ส่วนหัว Slackey (เพิ่ม Mitr เป็น Fallback สำหรับภาษาไทย) */
+        .font-slackey {
+            font-family: 'Slackey', 'Mitr', cursive;
+        }
+
+        .text-shadow-cute {
+            text-shadow: 2px 2px 0px #1a1525, 3px 3px 0px var(--color-pink-dark);
+        }
+
+        /* Clean Container แทนแบบเก่า */
+        .clean-box {
+            background: rgba(34, 28, 48, 0.95);
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(153, 69, 247, 0.3);
+            border-radius: 40px;
+            box-shadow: 0 10px 40px rgba(182, 126, 255, 0.15);
         }
 
-        .price-box {
-            background: linear-gradient(90deg, rgba(46, 11, 84, 0.8) 0%, rgba(26, 7, 46, 0.6) 100%);
-            border: 1px solid rgba(153, 69, 247, 0.4);
-            transition: all 0.3s ease;
-        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--color-pink-bg); }
+        ::-webkit-scrollbar-thumb { background: var(--color-pink-dark); border-radius: 10px; }
 
-        .price-box:hover {
-            transform: translateX(10px) scale(1.02);
-            box-shadow: 0 0 20px rgba(153, 69, 247, 0.8), inset 0 0 15px rgba(153, 69, 247, 0.4);
-            border-color: rgba(223, 194, 254, 0.8);
-        }
-
-        .text-glow {
-            text-shadow: 0 0 10px rgba(190, 135, 250, 0.8), 0 0 20px rgba(153, 69, 247, 0.6);
-        }
-
-        .title-glow {
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.8), 0 0 15px rgba(114, 20, 219, 0.8), 0 0 30px rgba(114, 20, 219, 0.6);
-        }
-
-        @keyframes title-glow-pulse {
-            0%, 100% { text-shadow: 2px 2px 4px rgba(0,0,0,0.8), 0 0 15px rgba(114, 20, 219, 0.8), 0 0 30px rgba(114, 20, 219, 0.6); }
-            50% { text-shadow: 2px 2px 4px rgba(0,0,0,0.8), 0 0 20px rgba(153, 69, 247, 1), 0 0 40px rgba(190, 135, 250, 0.9); }
-        }
-
-        .title-animated {
-            animation: title-glow-pulse 3.5s ease-in-out infinite;
-            display: inline-block;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(5deg); }
-            100% { transform: translateY(0px) rotate(0deg); }
-        }
-
-        .floating {
-            animation: float 6s ease-in-out infinite;
-        }
+        .modal-enter { animation: modalFadeIn 0.3s ease-out forwards; }
+        .modal-exit { animation: modalFadeOut 0.2s ease-in forwards; }
         
-        @keyframes pulse-glow {
-            0%, 100% { opacity: 0.5; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.1); }
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
         }
-        
-        .star-pulse {
-            animation: pulse-glow 4s ease-in-out infinite;
+        @keyframes modalFadeOut {
+            from { opacity: 1; transform: scale(1); }
+            to { opacity: 0; transform: scale(0.95); }
+        }
+
+        /* Slider Animations */
+        .slider-track {
+            display: flex;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .slide {
+            min-width: 100%;
         }
     </style>
 </head>
-<body class="flex items-center justify-center p-4 md:p-8">
+<body class="min-h-screen pb-12">
 
-    <!-- Background Decorative SVGs -->
-    <div class="fixed top-10 left-10 opacity-30 star-pulse" style="animation-delay: 0s;">
-        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 2L13.5 9.5L21 11L13.5 12.5L12 20L10.5 12.5L3 11L10.5 9.5L12 2Z" fill="#be87fa" />
-        </svg>
+    <!-- Overlay สำหรับ Sidebar Menu -->
+    <div id="menu-overlay" onclick="toggleMenu()" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 hidden opacity-0 transition-opacity duration-300"></div>
+
+    <!-- Sidebar Menu 🎀 -->
+    <div id="side-menu" class="fixed inset-y-0 left-0 w-64 bg-[#221c30]/95 backdrop-blur-md shadow-2xl z-50 transform -translate-x-full transition-transform duration-300 ease-in-out border-r border-[#b67eff]/20">
+        <div class="p-5 h-full flex flex-col">
+            <!-- Header Menu -->
+            <div class="flex justify-between items-center mb-6 border-b border-[#503d6e] pb-4">
+                <span class="font-slackey text-xl text-[#b67eff] text-shadow-cute">MENU</span>
+                <button onclick="toggleMenu()" class="text-purple-300 hover:text-purple-400 bg-purple-950 p-1 rounded-full transition">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
+            
+            <!-- Menu Links -->
+            <div class="space-y-3 font-medium text-[#e2d9f3] flex-1">
+                <a href="#services" onclick="toggleMenu()" class="flex items-center gap-3 p-3 hover:bg-purple-900/40 rounded-xl transition text-[15px]">
+                    <span class="text-[#b67eff]"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.6H22l-6.2 4.5 2.4 7.6-6.2-4.5-6.2 4.5 2.4-7.6-6.2-4.5h7.6z"/></svg></span> บริการของเรา
+                </a>
+                <a href="#portfolio" onclick="toggleMenu()" class="flex items-center gap-3 p-3 hover:bg-purple-900/40 rounded-xl transition text-[15px]">
+                    <span class="text-[#b67eff]"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></span> ตัวอย่างงาน
+                </a>
+                <a href="#pricing" onclick="toggleMenu()" class="flex items-center gap-3 p-3 hover:bg-purple-900/40 rounded-xl transition text-[15px]">
+                    <span class="text-[#b67eff]"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58.55 0 1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41 0-.55-.23-1.06-.59-1.42zM5.5 7C4.67 7 4 6.33 4 5.5S4.67 4 5.5 4 7 4.67 7 5.5 6.33 7 5.5 7z"/></svg></span> Price List / คิวงาน
+                </a>
+                <a href="#course" onclick="toggleMenu()" class="flex items-center gap-3 p-3 hover:bg-purple-900/40 rounded-xl transition text-[15px]">
+                    <span class="text-[#b67eff]"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20 18c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2H0v2h24v-2h-4zM4 6h16v10H4V6z"/></svg></span> คอร์สสอนทำเว็บ
+                </a>
+                <a href="#goodnote" onclick="toggleMenu()" class="flex items-center gap-3 p-3 hover:bg-purple-900/40 rounded-xl transition text-[15px]">
+                    <span class="text-[#b67eff]"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z"/></svg></span> Goodnote App
+                </a>
+                <a href="#contact" onclick="toggleMenu()" class="flex items-center gap-3 p-3 hover:bg-purple-900/40 rounded-xl transition text-[15px]">
+                    <span class="text-[#b67eff]"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></span> ติดต่อเรา
+                </a>
+            </div>
+            
+            <!-- Bottom Menu Info -->
+            <div class="mt-auto border-t border-[#503d6e] pt-4 text-center">
+                <p class="font-slackey text-xs text-purple-400">YUNINX SHOP</p>
+            </div>
+        </div>
     </div>
-    <div class="fixed bottom-20 right-20 opacity-40 star-pulse" style="animation-delay: 1s;">
-        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 2L13.5 9.5L21 11L13.5 12.5L12 20L10.5 12.5L3 11L10.5 9.5L12 2Z" fill="#9945f7" />
-        </svg>
+
+    <!-- Top Bar -->
+    <div class="w-full bg-[#221c30]/90 backdrop-blur-md border-b border-[#503d6e] py-3 px-4 flex justify-between items-center text-[10px] sm:text-xs font-slackey text-purple-400 font-medium uppercase tracking-wider sticky top-0 z-30 shadow-sm">
+        <div class="flex items-center gap-2 sm:gap-3">
+            <!-- Hamburger Menu (3 ขีด) -->
+            <button onclick="toggleMenu()" class="p-1.5 hover:bg-purple-900 rounded-md text-purple-400 transition-colors focus:outline-none cursor-pointer">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+            <span>YUNINX ></span>
+            <span class="text-purple-500 hidden sm:inline">></span>
+        </div>
+        <div class="flex items-center gap-4">
+            <span class="flex items-center gap-1">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>
+                NO COPY
+            </span>
+            <span class="hidden sm:inline border-l border-[#503d6e] pl-4">DO NOT STEAL</span>
+        </div>
     </div>
 
     <!-- Main Container -->
-    <main class="relative w-full max-w-6xl glass-panel rounded-[2rem] overflow-hidden shadow-2xl flex flex-col lg:flex-row">
+    <main class="max-w-2xl mx-auto mt-6 sm:mt-10 px-4 relative z-0">
         
-        <!-- Left Section: Header & Price List -->
-        <section class="w-full lg:w-[55%] p-6 md:p-10 lg:p-12 z-10 flex flex-col relative">
+        <!-- The Clean Board -->
+        <div class="clean-box p-6 sm:p-10 z-0 border border-purple-900/30">
             
-            <!-- Header (แก้ไขการดึงรูปภาพและข้อความโปรไฟล์ตามสั่ง) -->
-            <div class="mb-10 relative w-fit max-w-full flex items-center gap-4">
-                <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden border-2 border-magic-400 shadow-neon shrink-0 z-10 bg-magic-800">
-                    <!-- ใช้ URL Direct เพื่อให้รูปจาก Drive แสดงผลได้ทันที และกันเหนียวด้วย onerror ถ้าติดสิทธิ์เข้าถึง -->
-                    <img src="https://lh3.googleusercontent.com/d/1Uml5dUWG_txsCY9P96QKndwPBPTVRkQC" alt="Yuninx Profile" class="w-full h-full object-cover" onerror="this.src='https://ui-avatars.com/api/?name=Yuninx&background=7214db&color=fff'">
-                </div>
-                
-                <div class="relative">
-                    <svg class="absolute -top-5 -left-2 w-6 h-6 text-magic-200 star-pulse z-20" style="animation-delay: 0.5s;" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 2L13.5 9.5L21 11L13.5 12.5L12 20L10.5 12.5L3 11L10.5 9.5L12 2Z" fill="currentColor" />
-                    </svg>
-                    <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-white via-magic-200 to-magic-500 title-animated tracking-wider mb-2 relative z-10 whitespace-nowrap">
-                        Yuninx
-                    </h1>
-                    <h2 class="text-xs sm:text-sm md:text-base font-medium text-magic-200 tracking-wide uppercase flex items-center gap-1.5 relative z-10">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-magic-400 shrink-0">
-                            <path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
-                        </svg>
-                        คอร์สดีไซน์ & กราฟิกเซิร์ฟเวอร์
-                    </h2>
-                </div>
-            </div>
-
-            <!-- Price Items Container (คงไว้ 10 กล่องตามโครงสร้างเดิม แต่แก้ไขเนื้อหาและซ่อนบล็อกว่างตามกฎกติกา) -->
-            <div class="flex flex-col gap-4 relative z-10 w-full md:w-[95%]">
-                
-                <!-- ชิ้นที่ 1: คอร์สดีไซน์ (399.-) -->
-                <div class="price-box rounded-xl p-4 flex justify-between items-center shadow-neon cursor-default group">
-                    <div class="flex items-center gap-4">
-                        <div class="w-8 h-8 rounded-full bg-magic-700/50 flex items-center justify-center border border-magic-400/50">
-                            <span class="text-sm font-bold text-magic-300">★</span>
-                        </div>
-                        <span class="text-base sm:text-lg font-medium tracking-wide text-magic-100 group-hover:text-white transition-colors">คอร์สดีไซน์ & ไอเดียจัดทำกราฟิก</span>
-                    </div>
-                    <span class="text-xl sm:text-2xl font-bold text-white text-glow">399 THB</span>
-                </div>
-
-                <!-- ชิ้นที่ 2: ทริคทำวิดีโอ (299.-) -->
-                <div class="price-box rounded-xl p-4 flex justify-between items-center shadow-neon cursor-default group">
-                    <div class="flex items-center gap-4">
-                        <div class="w-8 h-8 rounded-full bg-magic-700/50 flex items-center justify-center border border-magic-400/50">
-                            <span class="text-sm font-bold text-magic-300">★</span>
-                        </div>
-                        <span class="text-base sm:text-lg font-medium tracking-wide text-magic-100 group-hover:text-white transition-colors">รวมทริคและไอเดียการทำวิดีโอ</span>
-                    </div>
-                    <span class="text-xl sm:text-2xl font-bold text-white text-glow">299 THB</span>
-                </div>
-
-                <!-- ชิ้นที่ 3: สโลแกนเพื่อความโดดเด่น -->
-                <div class="price-box rounded-xl p-4 flex justify-between items-center shadow-neon cursor-default group">
-                    <div class="flex items-center gap-4">
-                        <div class="w-8 h-8 rounded-full bg-magic-700/50 flex items-center justify-center border border-magic-400/50">
-                            <span class="text-sm font-bold text-magic-300">💡</span>
-                        </div>
-                        <span class="text-sm sm:text-base font-medium tracking-wide text-magic-200">เพื่อความโดดเด่นของเซิร์ฟเวอร์คุณ</span>
-                    </div>
-                    <span class="text-sm font-bold text-magic-300">Premium Tips</span>
-                </div>
-
-                <!-- ชิ้นที่ 4 ถึง 10: คงโครงสร้างไว้ครบถ้วน 10 ชิ้นตามเงื่อนไขเดิม แต่ซ่อนไว้เพื่อความสวยงามทางเลย์เอาต์ -->
-                <div class="price-box hidden rounded-xl p-4 justify-between items-center"></div>
-                <div class="price-box hidden rounded-xl p-4 justify-between items-center"></div>
-                <div class="price-box hidden rounded-xl p-4 justify-between items-center"></div>
-                <div class="w-full h-px bg-gradient-to-r from-transparent via-magic-400/50 to-transparent my-2"></div>
-                <div class="price-box hidden rounded-xl p-4 justify-between items-center"></div>
-                <div class="price-box hidden rounded-xl p-4 justify-between items-center"></div>
-                <div class="price-box hidden rounded-xl p-4 justify-between items-center"></div>
-                <div class="price-box hidden rounded-xl p-4 justify-between items-center"></div>
-            </div>
-        </section>
-
-        <!-- Right Section: Details & Info -->
-        <section class="w-full lg:w-[45%] bg-gradient-to-br from-magic-800/80 to-magic-900/95 p-6 md:p-10 lg:p-12 border-t lg:border-t-0 lg:border-l border-magic-400/20 flex flex-col justify-between relative overflow-hidden">
-            
-            <!-- Background Graphic -->
-            <div class="absolute inset-0 flex items-center justify-center opacity-10 pointer-events-none floating z-0">
-                <svg width="400" height="400" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M100 10L115 80L185 95L115 110L100 180L85 110L15 95L85 80L100 10Z" fill="#9945f7"/>
-                    <path d="M100 30L108 85L165 95L108 105L100 160L92 105L35 95L92 85L100 30Z" fill="#dfc2fe"/>
-                    <circle cx="100" cy="95" r="15" fill="#ffffff" filter="blur(4px)"/>
+            <!-- Header Section (คงโครงสร้างเดิม 100%) -->
+            <div class="text-center mb-8 relative flex flex-col items-center">
+                <!-- Decorations (Stars & Sparkles) ✨ -->
+                <svg class="absolute top-2 left-2 sm:left-10 w-6 h-6 text-[#b67eff] animate-pulse" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 0C12 0 12 10 22 12C12 14 12 24 12 24C12 24 12 14 2 12C12 10 12 0 12 0Z" />
                 </svg>
-            </div>
+                <svg class="absolute top-6 right-4 sm:right-12 w-5 h-5 text-purple-400 animate-bounce" style="animation-duration: 2.5s;" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2l2.4 7.6H22l-6.2 4.5 2.4 7.6-6.2-4.5-6.2 4.5 2.4-7.6-6.2-4.5h7.6z"/>
+                </svg>
+                <svg class="absolute bottom-4 left-8 sm:left-16 w-4 h-4 text-purple-500 animate-pulse" style="animation-delay: 1s;" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 0C12 0 12 10 22 12C12 14 12 24 12 24C12 24 12 14 2 12C12 10 12 0 12 0Z" />
+                </svg>
+                <svg class="absolute bottom-8 right-8 sm:right-16 w-4 h-4 text-[#b67eff]" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2l2.4 7.6H22l-6.2 4.5 2.4 7.6-6.2-4.5-6.2 4.5 2.4-7.6-6.2-4.5h7.6z"/>
+                </svg>
 
-            <div class="relative z-10 flex flex-col h-full gap-6 justify-center">
-                
-                <!-- Detail Content Box (กล่องรายละเอียดขวาอยู่ครบถ้วน) -->
-                <div class="bg-magic-900/60 p-6 rounded-2xl border border-magic-500/30 backdrop-blur-sm shadow-neon-strong">
-                    <h3 class="text-xl font-semibold text-white mb-4 flex items-center gap-2 border-b border-magic-500/30 pb-2">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#be87fa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <line x1="12" y1="16" x2="12" y2="12"></line>
-                            <line x1="12" y1="8" x2="12.01" y2="8"></line>
-                        </svg>
-                        รายละเอียดคอร์สและข้อมูล
-                    </h3>
-                    <p class="text-sm text-gray-200 leading-relaxed mb-4">
-                        รวบรวมเทคนิค ไอเดีย และทริคต่าง ๆ ในการออกแบบกราฟิกและจัดทำวิดีโอ เพื่อสร้างความโดดเด่น ดึงดูดสายตา และยกระดับเซิร์ฟเวอร์ของคุณให้มีเอกลักษณ์ มีมิติ และน่าสนใจในสไตล์พรีเมียม
-                    </p>
-                    
-                    <!-- Action Button (ดูรายละเอียด - เอาปุ่มอ่านกฎเพิ่มเติมออกตามสั่งแล้ว) -->
-                    <div class="mt-6">
-                        <a href="#" class="w-full inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-magic-600 to-magic-500 hover:from-magic-500 hover:to-magic-400 border border-magic-300/40 shadow-neon text-white font-medium text-sm transition-all transform hover:scale-[1.02] active:scale-[0.98]">
-                            ดูรายละเอียด
-                        </a>
+                <!-- Profile Picture (เปลี่ยนรูปโปรไฟล์เป็นของร้าน Yuninx) -->
+                <div class="relative w-28 h-28 sm:w-32 sm:h-32 mb-2 group">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-[#b67eff] to-[#503d6e] rounded-full opacity-40 blur-md group-hover:opacity-60 transition duration-300"></div>
+                    <img src="https://drive.google.com/thumbnail?id=1Uml5dUWG_txsCY9P96QKndwPBPTVRkQC&sz=w500" alt="Profile Picture" class="relative w-full h-full object-cover rounded-full border-4 border-[#221c30] shadow-md z-10 transition-transform duration-300 group-hover:scale-105">
+                    <div class="absolute -bottom-1 -right-1 bg-[#221c30] rounded-full p-1.5 shadow-sm z-20 border border-purple-900/40">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="#b67eff"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
                     </div>
                 </div>
 
-                <!-- Contact Footer (ส่วนติดต่อด้านล่างอยู่ครบถ้วน) -->
-                <div class="mt-4 pt-4 border-t border-magic-500/20 text-center flex flex-col sm:flex-row justify-center gap-3">
-                    <a href="https://www.facebook.com/share/1DqnhnQqhD/?mibextid=wwXIfr" target="_blank" class="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-full bg-magic-600/30 border border-magic-400/50 hover:bg-magic-500/40 hover:border-magic-300 transition-all text-white font-medium text-xs text-glow">
-                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.8z"/>
-                        </svg>
-                        Facebook ร้าน
-                    </a>
-                    <a href="https://discord.gg/yPFwC9Q8NU" target="_blank" class="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-full bg-magic-600/30 border border-magic-400/50 hover:bg-magic-500/40 hover:border-magic-300 transition-all text-white font-medium text-xs text-glow">
-                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994.021-.041.001-.09-.041-.106a13.094 13.094 0 0 1-1.873-.894.077.077 0 0 1-.008-.128c.126-.093.252-.19.372-.287a.075.075 0 0 1 .077-.011c3.92 1.793 8.18 1.793 12.061 0a.073.073 0 0 1 .078.009c.12.099.246.195.373.289a.077.077 0 0 1-.006.127 12.298 12.298 0 0 1-1.873.894.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/>
-                        </svg>
-                        Discord ร้าน
-                    </a>
-                </div>
-
+                <!-- ปรับเป็นชื่อร้านลูกค้า -->
+                <h1 class="font-slackey text-4xl sm:text-5xl font-bold text-[#b67eff] text-shadow-cute mb-3 tracking-wide mt-3">Yuninx</h1>
+                <h2 class="font-slackey text-xl text-[#e2d9f3] bg-[#2d243d] inline-block px-6 py-1.5 rounded-full shadow-sm">Welcome to my shop</h2>
             </div>
-        </section>
-    </main>
-
-</body>
-</html>
